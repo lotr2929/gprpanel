@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPRPANEL — GPR Global Plant Database</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+  :root {
+    --green:     #2d6a2d;
+    --green-lt:  #e8f0e8;
+    --bg:        #ffffff;
+    --bg-sec:    #f5f5f4;
+    --bg-info:   #e6f1fb;
+    --text:      #1a1a18;
+    --text-sec:  #6b6b66;
+    --text-ter:  #a3a39e;
+    --text-info: #185fa5;
+    --border:    rgba(0,0,0,0.12);
+    --border-md: rgba(0,0,0,0.22);
+    --radius:    6px;
+    --font:      system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #e8e8e8; font-family: var(--font); font-size: 13px; color: var(--text); display: flex; justify-content: center; }
+  #app { display: flex; flex-direction: column; height: 100vh; width: 100%; max-width: 420px; background: var(--bg); box-shadow: 0 0 24px rgba(0,0,0,0.12); }
+
+  /* ── header ── */
+  .header { background: var(--green); color: #fff; padding: 9px 14px; flex-shrink: 0; }
+  .header-title { font-size: 14px; font-weight: 600; letter-spacing: 0.2px; }
+  .header-sub { font-size: 10px; opacity: 0.65; margin-top: 1px; }
+
+  /* ── tab bar ── */
+  .tab-bar { display: flex; border-bottom: 0.5px solid var(--border); background: var(--green-lt); flex-shrink: 0; }
+  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-sec); border-bottom: 2px solid transparent; margin-bottom: -1px; user-select: none; }
+  .tab.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; background: var(--bg); }
+  .tab-content { display: none; padding: 10px; overflow-y: auto; flex: 1; }
+  .tab-content.active { display: flex; flex-direction: column; }
+
+  /* ── search ── */
+  .search-bar { margin-bottom: 6px; flex-shrink: 0; }
+  .search-bar input {
+    width: 100%; font-size: 12px; padding: 6px 9px;
+    border: 0.5px solid var(--border-md); border-radius: var(--radius);
+    font-family: var(--font); outline: none;
+  }
+  .search-bar input:focus { border-color: var(--green); }
+
+  /* ── tables ── */
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  th { font-size: 11px; font-weight: 500; color: var(--text-sec); text-align: left; padding: 5px 7px;
+       border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
+       background: var(--bg-sec); }
+  td { padding: 4px 7px; border-bottom: 0.5px solid var(--border); font-size: 11px;
+       overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.5; }
+  .r { text-align: right; }
+  .muted { color: var(--text-ter); }
+
+  /* ── plant rows ── */
+  tr.pr { cursor: pointer; }
+  tr.pr:hover td { background: var(--bg-sec); }
+  tr.pr.sel td { background: var(--bg-info); color: var(--text-info); }
+
+  /* ── tier badge ── */
+  .tb { display:inline-block; font-size:9px; font-weight:700; padding:1px 4px; border-radius:2px; margin-left:3px; }
+  .t1 { background:#e8f0e8; color:#2d6a2d; }
+  .t2 { background:#e6f1fb; color:#185fa5; }
+  .t3 { background:#faeeda; color:#7a4f0c; }
+  .t4 { background:#f1efe8; color:#666; }
+
+  /* ── surface header row ── */
+  tr.surf-row td {
+    background: var(--green-lt);
+    color: var(--green);
+    font-weight: 600;
+    font-size: 11px;
+    border-top: 1px solid rgba(45,106,45,0.2);
+  }
+  /* ── subtotal row ── */
+  tr.sub td { background: var(--bg-sec); font-weight: 500; }
+
+  /* ── custom dropdown ── */
+  .dd { position: relative; }
+  .dd-btn { font-family: var(--font); font-size: 11px; font-weight: 500; background: transparent;
+            border: none; cursor: pointer; color: var(--text); padding: 0;
+            display: flex; align-items: center; gap: 3px; line-height: 1.5; }
+  .dd-btn i { font-size: 11px; color: var(--text-sec); }
+  .dd-list { display: none; position: absolute; top: calc(100% + 2px); left: 0; z-index: 20;
+             background: var(--bg); border: 0.5px solid var(--border-md);
+             border-radius: var(--radius); min-width: 130px; overflow: hidden;
+             box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .dd-list.open { display: block; }
+  .dd-item { padding: 5px 10px; font-size: 11px; cursor: pointer; color: var(--text); }
+  .dd-item:hover { background: var(--bg-sec); }
+  .dd-item.active { font-weight: 500; color: var(--green); }
+
+  /* ── site row ── */
+  .site-row { display: flex; justify-content: space-between; padding: 5px 7px;
+              background: var(--bg-sec); border-radius: var(--radius);
+              margin-bottom: 9px; font-size: 11px; flex-shrink: 0; }
+
+  /* ── GPR bar ── */
+  .gpr-bar { margin-top: 10px; padding: 8px 11px; border: 0.5px solid var(--border-md);
+             border-radius: var(--radius); display: flex; align-items: center; gap: 9px; flex-shrink: 0; }
+  .gpr-lbl { font-size: 20px; font-weight: 500; }
+  .eq { font-size: 14px; color: var(--text-sec); }
+  .frac { display: inline-flex; flex-direction: column; align-items: center; }
+  .fnum { font-size: 11px; padding-bottom: 2px; border-bottom: 1px solid var(--text); line-height: 1.4; white-space: nowrap; }
+  .fden { font-size: 11px; padding-top: 2px; line-height: 1.4; }
+  .gpr-val { font-size: 20px; font-weight: 500; }
+
+  /* ── plant detail view ── */
+  #plant-detail { display: none; flex-direction: column; flex: 1; overflow-y: auto; }
+  #plant-detail.active { display: flex; }
+  .detail-back { display: flex; align-items: center; gap: 6px; padding: 7px 10px;
+                 border-bottom: 0.5px solid var(--border); background: var(--bg-sec);
+                 cursor: pointer; flex-shrink: 0; font-size: 11px; color: var(--green);
+                 font-weight: 600; user-select: none; }
+  .detail-back:hover { background: var(--green-lt); }
+  .detail-back i { font-size: 14px; }
+  .detail-illustration { display: flex; justify-content: center; align-items: center;
+                         height: 300px; background: #ffffff;
+                         border-bottom: 0.5px solid var(--border); flex-shrink: 0;
+                         overflow: hidden; position: relative; }
+  .detail-illustration img { max-width: 100%; max-height: 300px; object-fit: contain; display: block; }
+  .detail-img-credit { position: absolute; bottom: 3px; right: 6px; font-size: 9px;
+                       color: rgba(255,255,255,0.75); text-shadow: 0 0 3px rgba(0,0,0,0.6); }
+  .detail-img-placeholder { color: var(--text-ter); font-size: 11px; text-align: center; padding: 10px; }
+  .detail-body { padding: 12px 12px 0; }
+  .detail-name { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.35; }
+  .detail-common { font-size: 11px; color: var(--text-sec); margin-top: 2px; font-style: italic; }
+  .detail-props { margin-top: 12px; border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; width: 50%; }
+  .detail-prop { display: flex; justify-content: space-between; padding: 5px 9px;
+                 border-bottom: 0.5px solid var(--border); font-size: 11px; }
+  .detail-prop:last-child { border-bottom: none; }
+  .detail-prop-label { color: var(--text-sec); }
+  .detail-prop-val { font-weight: 500; }
+  .detail-select { margin: 14px 12px; padding: 7px; background: var(--green); color: #fff;
+                   border: none; border-radius: var(--radius); font-size: 12px; font-weight: 600;
+                   cursor: pointer; width: calc(100% - 24px); letter-spacing: 0.2px; }
+  .detail-select:hover { background: #245424; }
+  .detail-select.selected { background: var(--text-info); }
+
+  /* ── GPR record block ── */
+  .gpr-record { margin: 10px 12px 0; border: 0.5px solid rgba(45,106,45,0.35);
+                border-radius: var(--radius); overflow: hidden; background: var(--green-lt); }
+  .gpr-record-title { font-size: 10px; font-weight: 600; color: var(--green);
+                      padding: 4px 9px; text-transform: uppercase; letter-spacing: 0.4px;
+                      border-bottom: 0.5px solid rgba(45,106,45,0.2); }
+
+  /* ── Report + share controls ── */
+  .report-controls { display: flex; gap: 6px; align-items: center;
+                     margin-top: 10px; flex-shrink: 0; flex-wrap: wrap; }
+  .report-btn { flex: 1; padding: 7px 10px; background: var(--green); color: #fff;
+                border: none; border-radius: var(--radius); font-size: 12px;
+                font-weight: 600; cursor: pointer; letter-spacing: 0.2px; }
+  .report-btn:hover { background: #245424; }
+  .report-btn:disabled { background: var(--text-ter); cursor: default; }
+  .share-btn { padding: 6px 10px; background: var(--bg-sec); border: 0.5px solid var(--border-md);
+               border-radius: var(--radius); cursor: pointer; font-size: 11px;
+               font-weight: 600; color: var(--green); white-space: nowrap; }
+  .share-btn:hover { background: var(--green-lt); }
+  .settings-gear { padding: 6px 8px; background: var(--bg-sec); border: 0.5px solid var(--border-md);
+                   border-radius: var(--radius); cursor: pointer; font-size: 13px; line-height: 1; }
+  .settings-gear:hover { background: var(--green-lt); }
+  .apikey-row { display: flex; gap: 5px; margin-top: 6px; flex-shrink: 0; }
+  .apikey-row input { flex: 1; font-size: 11px; padding: 5px 7px;
+                      border: 0.5px solid var(--border-md); border-radius: var(--radius);
+                      font-family: var(--font); }
+  .apikey-row button { padding: 5px 10px; background: var(--green); color: #fff;
+                       border: none; border-radius: var(--radius); font-size: 11px;
+                       cursor: pointer; }
+  .share-url-row { display: none; gap: 5px; margin-top: 6px; flex-shrink: 0; }
+  .share-url-row input { flex: 1; font-size: 11px; padding: 5px 7px; font-family: monospace;
+                         border: 0.5px solid var(--green); border-radius: var(--radius);
+                         background: var(--green-lt); color: var(--green); }
+  .share-url-row button { padding: 5px 10px; background: var(--green); color: #fff;
+                          border: none; border-radius: var(--radius); font-size: 11px; cursor: pointer; }
+
+  /* ── Report overlay ── */
+  .report-overlay { position: absolute; inset: 0; background: var(--bg);
+                    display: flex; flex-direction: column; z-index: 100; }
+  .report-header { display: flex; justify-content: space-between; align-items: center;
+                   padding: 8px 12px; background: var(--green); color: #fff;
+                   font-size: 13px; font-weight: 600; flex-shrink: 0; }
+  .report-header-btns { display: flex; gap: 6px; }
+  .report-action-btn { padding: 4px 9px; background: rgba(255,255,255,0.2);
+                       border: 0.5px solid rgba(255,255,255,0.4); border-radius: 4px;
+                       color: #fff; font-size: 11px; cursor: pointer; }
+  .report-action-btn:hover { background: rgba(255,255,255,0.35); }
+  .report-body { flex: 1; overflow-y: auto; padding: 14px 16px; font-size: 12px; line-height: 1.6; }
+  .report-body h1 { font-size: 14px; font-weight: 600; margin: 12px 0 4px; }
+  .report-body h2 { font-size: 13px; font-weight: 600; margin: 10px 0 4px; color: var(--green); }
+  .report-body h3 { font-size: 12px; font-weight: 600; margin: 8px 0 3px; }
+  .report-body p  { margin: 0 0 8px; }
+
+  /* ── Status ── */
+  #status { font-size: 10px; color: var(--text-ter); padding: 4px 10px;
+            border-top: 0.5px solid var(--border); flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ── header ── -->
+  <div class="header">
+    <div class="header-title">GPR<span id="hdr-filename" style="font-weight:400"></span></div>
+    <div class="header-sub">Green Plot Ratio · GPR Global Plant Database</div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab active" onclick="switchTab('plants')">Plant Selector</div>
+    <div class="tab" onclick="switchTab('calc')">GPR Calculation</div>
+  </div>
+
+  <!-- ── TAB 1: PLANT SELECTOR ── -->
+  <div id="tab-plants" class="tab-content active">
+
+    <!-- Search -->
+    <div class="search-bar">
+      <input type="text" id="plant-search" placeholder="Search species or common name…"
+             oninput="onSearchInput(this.value)" autocomplete="off" />
+    </div>
+
+    <!-- List view -->
+    <div id="plant-list">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:68%;padding:4px 7px">
+              <div class="dd">
+                <button class="dd-btn" onclick="toggleDD(event)" id="dd-btn">
+                  <span id="dd-label">Trees</span>
+                  <i class="ti ti-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="dd-list" id="dd-list">
+                  <div class="dd-item active"  onclick="selectType('trees','Trees',event)">Trees</div>
+                  <div class="dd-item"         onclick="selectType('shrubs','Shrubs',event)">Shrubs</div>
+                  <div class="dd-item"         onclick="selectType('hedges','Hedges',event)">Hedges</div>
+                  <div class="dd-item"         onclick="selectType('groundcover','Groundcover',event)">Groundcover</div>
+                </div>
+              </div>
+            </th>
+            <th class="r" style="width:32%">Mean LAI</th>
+          </tr>
+        </thead>
+        <tbody id="plant-tbody"><tr><td colspan="2" style="color:var(--text-ter);font-style:italic">Loading…</td></tr></tbody>
+      </table>
+    </div>
+
+    <!-- Detail view -->
+    <div id="plant-detail">
+      <div class="detail-back" onclick="closeDetail()">
+        <i class="ti ti-arrow-left"></i> Back to list
+      </div>
+      <div class="detail-illustration" id="detail-illustration"></div>
+      <div class="detail-body">
+        <div class="detail-name"   id="detail-name"></div>
+        <div class="detail-common" id="detail-common"></div>
+        <div class="detail-props"  id="detail-props"></div>
+        <div class="gpr-record" id="gpr-record" style="display:none">
+          <div class="gpr-record-title">GPR Record</div>
+          <div class="detail-prop">
+            <span class="detail-prop-label">Recorded canopy</span>
+            <span class="detail-prop-val" id="gpr-rec-canopy">—</span>
+          </div>
+          <div class="detail-prop">
+            <span class="detail-prop-label">LAI used</span>
+            <span class="detail-prop-val" id="gpr-rec-lai">—</span>
+          </div>
+          <div class="detail-prop" style="border-bottom:none">
+            <span class="detail-prop-label">Planting area</span>
+            <span class="detail-prop-val" id="gpr-rec-area">—</span>
+          </div>
+        </div>
+      </div>
+      <button class="detail-select" id="detail-select-btn" onclick="selectFromDetail()">Select this plant</button>
+    </div>
+  </div>
+
+  <!-- ── TAB 2: GPR CALCULATION ── -->
+  <div id="tab-calc" class="tab-content">
+
+    <div class="site-row">
+      <span style="color:var(--text-sec)">Site area (projected)</span>
+      <span id="site-area-val" style="font-weight:500">_ m²</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width:36%">Plant</th>
+          <th class="r" style="width:12%">LAI</th>
+          <th class="r" style="width:24%">Canopy m²</th>
+          <th class="r" style="width:28%">(LAI × area)</th>
+        </tr>
+      </thead>
+      <tbody id="calc-tbody">
+        <tr class="surf-row">
+          <td colspan="4" style="color:var(--text-ter);font-weight:400">
+            Planting Surface: <span style="font-style:italic">waiting for GPRAREA…</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="gpr-bar" id="gpr-bar">
+      <div class="gpr-lbl">GPR</div>
+      <div class="eq">=</div>
+      <div id="gpr-content-empty" style="display:flex;align-items:baseline;gap:2px;">
+        <span style="font-size:20px;font-weight:500;color:var(--text-ter);border-bottom:1.5px solid var(--text-ter);min-width:32px;display:inline-block;">&nbsp;&nbsp;&nbsp;</span>
+        <span style="font-size:20px;font-weight:500;color:var(--text-ter)">m<sup style="font-size:12px;">2</sup></span>
+      </div>
+      <div id="gpr-content-data" style="display:none;align-items:center;gap:9px;">
+        <div class="frac">
+          <div class="fnum" id="fnum">—</div>
+          <div class="fden" id="fden">—</div>
+        </div>
+        <div class="eq">=</div>
+        <div class="gpr-val" id="gpr-val">—</div>
+      </div>
+    </div>
+
+    <div class="report-controls">
+      <button class="report-btn" id="report-btn" onclick="generateReport()">Generate Report</button>
+      <button class="share-btn"  id="share-btn"  onclick="saveSession()">↗ Share</button>
+      <button class="settings-gear" onclick="toggleApiKey()" title="Gemini API key">⚙</button>
+    </div>
+    <div class="apikey-row"    id="apikey-row"    style="display:none">
+      <input type="password" id="apikey-input" placeholder="Gemini API key…" />
+      <button onclick="saveApiKey()">Save</button>
+    </div>
+    <div class="share-url-row" id="share-url-row">
+      <input type="text" id="share-url" readonly onclick="this.select()" />
+      <button onclick="copyShareUrl()">Copy</button>
+    </div>
+  </div>
+
+  <div id="status">Connecting…</div>
+
+  <!-- ── Report overlay ── -->
+  <div class="report-overlay" id="report-overlay" style="display:none">
+    <div class="report-header">
+      <span>GPR Assessment Report</span>
+      <div class="report-header-btns">
+        <button class="report-action-btn" onclick="downloadPdf()">↓ PDF</button>
+        <button class="report-action-btn" onclick="closeReport()">✕</button>
+      </div>
+    </div>
+    <div class="report-body" id="report-body"></div>
+  </div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+/* ── Supabase ──────────────────────────────────────────────── */
+const SB_URL = 'https://sfvwhbzxkzlscfsnyrwq.supabase.co';
+const SB_KEY = 'sb_publishable_ZjIAD7ZfEnODLZkRfJUWMw_enaacB4T';
+const sb = supabase.createClient(SB_URL, SB_KEY);
+
+/* ── Category → Supabase filter map ───────────────────────── */
+const CAT_FILTER = {
+  trees:       { col: 'landscape_category', val: 'Tree' },
+  shrubs:      { col: 'landscape_category', val: 'Shrub' },
+  hedges:      { col: 'landscape_category', val: 'Climber' },
+  groundcover: { col: 'landscape_category', val: 'Groundcover' },
+};
+
+/* ── State ─────────────────────────────────────────────────── */
+let _currentState     = null;
+let _pendingGprRecord = null;
+let _detailPlant      = null;
+let _sessionId        = null;
+let currentType       = 'trees';
+let _searchTimer      = null;
+
+/* ── Boot ──────────────────────────────────────────────────── */
+renderPlants();
+const _sid = new URLSearchParams(location.search).get('session');
+if (_sid) loadSession(_sid);
+
+/* ── Plant loading from Supabase ───────────────────────────── */
+async function renderPlants(searchQuery) {
+  const tbody = document.getElementById('plant-tbody');
+  tbody.innerHTML = '<tr><td colspan="2" style="color:var(--text-ter);font-style:italic">Loading…</td></tr>';
+
+  let q = sb.from('gpr_plant_species')
+    .select('species, common_name, lai_mean, tier, landscape_category, growth_form')
+    .not('lai_mean', 'is', null)
+    .order('tier', { ascending: true })
+    .order('species', { ascending: true })
+    .limit(60);
+
+  if (searchQuery) {
+    q = q.or(`species.ilike.%${searchQuery}%,common_name.ilike.%${searchQuery}%`);
+  } else {
+    const f = CAT_FILTER[currentType];
+    if (f) q = q.eq(f.col, f.val);
+  }
+
+  const { data, error } = await q;
+  if (error || !data?.length) {
+    tbody.innerHTML = '<tr><td colspan="2" style="color:var(--text-ter);font-style:italic">No species found.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = '';
+  data.forEach(p => {
+    const tr = document.createElement('tr'); tr.className = 'pr';
+    const shape = p.growth_form || '—';
+    tr.innerHTML = `<td><em>${esc(p.species)}</em>
+      <span class="tb t${p.tier}">T${p.tier}</span>
+      <span style="color:var(--text-ter);font-size:10px"> (${shape})</span></td>
+      <td class="r">${(+p.lai_mean).toFixed(1)}</td>`;
+    tr.addEventListener('click', () => {
+      document.querySelectorAll('.pr').forEach(r => r.classList.remove('sel'));
+      tr.classList.add('sel');
+      writeSelection({ type: currentType, species: p.species, lai: p.lai_mean, shape });
+    });
+    tr.addEventListener('dblclick', () => openDetail(p));
+    tbody.appendChild(tr);
+  });
+}
+
+function onSearchInput(val) {
+  clearTimeout(_searchTimer);
+  _searchTimer = setTimeout(() => renderPlants(val.trim() || null), 280);
+}
+
+/* ── Category dropdown ─────────────────────────────────────── */
+function toggleDD(e) {
+  e.stopPropagation();
+  document.getElementById('dd-list').classList.toggle('open');
+}
+function selectType(type, label, e) {
+  e.stopPropagation(); currentType = type;
+  document.getElementById('dd-label').textContent = label;
+  document.getElementById('dd-list').classList.remove('open');
+  document.querySelectorAll('.dd-item').forEach(el => el.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById('plant-search').value = '';
+  renderPlants();
+}
+document.addEventListener('click', () => {
+  document.getElementById('dd-list').classList.remove('open');
+});
+
+/* ── Detail view ───────────────────────────────────────────── */
+function openDetail(p) {
+  _detailPlant = p;
+  document.getElementById('plant-list').style.display = 'none';
+  document.getElementById('plant-detail').classList.add('active');
+
+  document.getElementById('detail-name').textContent   = p.species || p.name;
+  const common = p.common_name || p.common || '';
+  document.getElementById('detail-common').textContent  = common;
+  document.getElementById('detail-common').style.display = common ? '' : 'none';
+
+  const illus = document.getElementById('detail-illustration');
+  illus.innerHTML = '<div class="detail-img-placeholder">Loading image…</div>';
+  const slug = encodeURIComponent((p.species || p.name).trim().replace(/ /g, '_'));
+  fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      if (data.thumbnail?.source) {
+        const img = new Image();
+        img.onload = () => {
+          const ratio = img.naturalWidth / img.naturalHeight;
+          img.style.objectFit = ratio >= 1.2 ? 'cover' : 'contain';
+          img.style.width     = ratio >= 1.2 ? '100%' : 'auto';
+          img.style.height    = ratio >= 1.2 ? '300px' : 'auto';
+          img.style.maxHeight = '300px';
+          img.style.maxWidth  = '100%';
+          img.style.display   = 'block';
+          img.alt = esc(p.species || p.name);
+          illus.innerHTML = '';
+          illus.appendChild(img);
+          const credit = document.createElement('span');
+          credit.className = 'detail-img-credit';
+          credit.textContent = 'Image: Wikimedia Commons contributors, CC BY-SA';
+          illus.appendChild(credit);
+        };
+        img.onerror = () => { illus.innerHTML = '<div class="detail-img-placeholder">No image available</div>'; };
+        img.src = data.thumbnail.source;
+      } else {
+        illus.innerHTML = '<div class="detail-img-placeholder">No image available</div>';
+      }
+    }).catch(() => { illus.innerHTML = '<div class="detail-img-placeholder">No image available</div>'; });
+
+  const tier = p.tier || '—';
+  const lai  = (+(p.lai_mean ?? p.lai)).toFixed(1);
+  const props = [
+    ['Type',       p.landscape_category || currentType],
+    ['Growth form',p.growth_form || p.shape || '—'],
+    ['Mean LAI',   lai],
+    ['Data tier',  `T${tier} — ${['','Urban field','Open-ground','Genus mean','PFT inferred'][tier] || '—'}`],
+    ['Sources',    (p.sources || p.source || '—').substring(0, 60)],
+  ];
+  document.getElementById('detail-props').innerHTML = props.map(([l,v]) =>
+    `<div class="detail-prop"><span class="detail-prop-label">${l}</span><span class="detail-prop-val">${esc(String(v))}</span></div>`
+  ).join('');
+
+  const btn = document.getElementById('detail-select-btn');
+  btn.textContent = 'Select this plant';
+  btn.classList.remove('selected');
+
+  showGprRecord(_pendingGprRecord);
+  _pendingGprRecord = null;
+}
+
+function closeDetail() {
+  document.getElementById('plant-detail').classList.remove('active');
+  document.getElementById('plant-list').style.display = '';
+}
+
+function selectFromDetail() {
+  if (!_detailPlant) return;
+  const p = _detailPlant;
+  const lai = +(p.lai_mean ?? p.lai);
+  writeSelection({ type: currentType, species: p.species || p.name, lai, shape: p.growth_form || p.shape || '—' });
+  const btn = document.getElementById('detail-select-btn');
+  btn.textContent = '✓ Selected'; btn.classList.add('selected');
+  document.querySelectorAll('.pr').forEach(r => r.classList.remove('sel'));
+}
+
+/* ── Tag query (entity clicked in viewport) ────────────────── */
+function findPlantByName(name) { return null; } // no local cache — unused in online mode
+
+function handleTagQuery(s) {
+  const d = s.data || s;
+  _pendingGprRecord = d;
+  switchTab('plants');
+  openDetailStub(d);
+}
+
+function openDetailStub(s) {
+  _detailPlant = { species: s.species, lai_mean: s.lai };
+  document.getElementById('plant-list').style.display = 'none';
+  document.getElementById('plant-detail').classList.add('active');
+  document.getElementById('detail-name').textContent    = s.species;
+  document.getElementById('detail-common').style.display = 'none';
+  document.getElementById('detail-illustration').innerHTML =
+    '<div class="detail-img-placeholder">Tagged entity</div>';
+  document.getElementById('detail-props').innerHTML =
+    `<div class="detail-prop"><span class="detail-prop-label">Mean LAI</span>
+     <span class="detail-prop-val">${Number(s.lai).toFixed(1)}</span></div>`;
+  showGprRecord(_pendingGprRecord);
+  _pendingGprRecord = null;
+  const btn = document.getElementById('detail-select-btn');
+  btn.textContent = 'Select this plant'; btn.classList.remove('selected');
+}
+
+function showGprRecord(rec) {
+  const el = document.getElementById('gpr-record');
+  if (!rec) { el.style.display = 'none'; return; }
+  document.getElementById('gpr-rec-canopy').textContent = rec.canopy != null ? fmt(rec.canopy) + ' m²' : '—';
+  document.getElementById('gpr-rec-lai').textContent    = rec.lai    != null ? Number(rec.lai).toFixed(1) : '—';
+  document.getElementById('gpr-rec-area').textContent   = rec.area   || '—';
+  el.style.display = '';
+}
+
+/* ── State update (from AutoCAD or session load) ───────────── */
+function applyState(s) {
+  if (s.type === 'tagQuery') { handleTagQuery(s); return; }
+  _currentState = s;
+  if (s.dwg_name) document.getElementById('hdr-filename').textContent = ': ' + s.dwg_name.replace(/\.dwg$/i,'');
+  document.getElementById('site-area-val').textContent = s.site_area ? fmt(s.site_area) + ' m²' : '_ m²';
+
+  const tbody = document.getElementById('calc-tbody');
+  const areas  = s.planting_areas || [];
+  if (!areas.length) {
+    tbody.innerHTML = `<tr class="surf-row"><td colspan="4" style="color:var(--text-ter);font-weight:400">
+      Planting Surface: <span style="font-style:italic">waiting for GPRAREA…</span></td></tr>`;
+    showEmptyGPR(); return;
+  }
+  tbody.innerHTML = '';
+  const subtotals = [];
+  areas.forEach((area, i) => {
+    const sr = document.createElement('tr'); sr.className = 'surf-row';
+    sr.innerHTML = `<td colspan="2">Planting Surface: ${area.name || ('Surface '+(i+1))}</td>
+      <td class="r">${fmt(area.area)} m²</td>
+      <td class="r" style="font-size:10px;color:var(--text-ter)">display only</td>`;
+    tbody.appendChild(sr);
+    let areaTotal = 0;
+    (area.plants || []).forEach(p => {
+      const product = p.lai * p.canopy; areaTotal += product;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${esc(p.name)}</td><td class="r">${Number(p.lai).toFixed(1)}</td>
+        <td class="r">${fmt(p.canopy)}</td><td class="r">${fmt(product)}</td>`;
+      tbody.appendChild(tr);
+    });
+    subtotals.push(areaTotal);
+    if (area.plants?.length) {
+      const sub = document.createElement('tr'); sub.className = 'sub';
+      sub.innerHTML = `<td colspan="3" style="color:var(--text-sec)">Subtotal</td><td class="r">${fmt(areaTotal)}</td>`;
+      tbody.appendChild(sub);
+    }
+  });
+
+  const total    = subtotals.reduce((a, b) => a + b, 0);
+  const siteArea = s.site_area || 0;
+  if (!subtotals.some(v => v > 0) || !siteArea) { showEmptyGPR(); return; }
+  document.getElementById('gpr-content-empty').style.display = 'none';
+  const dataEl = document.getElementById('gpr-content-data'); dataEl.style.display = 'flex';
+  document.getElementById('fnum').textContent = subtotals.map(fmt).join(' + ');
+  document.getElementById('fden').textContent = fmt(siteArea);
+  document.getElementById('gpr-val').textContent = (total / siteArea).toFixed(2);
+}
+
+function showEmptyGPR() {
+  document.getElementById('gpr-content-empty').style.display = 'inline';
+  document.getElementById('gpr-content-data').style.display  = 'none';
+}
+
+/* ── Save / Share session ──────────────────────────────────── */
+async function saveSession() {
+  if (!_currentState?.site_area) { setStatus('No site data — run GPRSITE first.'); return; }
+  setStatus('Saving…');
+  const payload = {
+    project_name: _currentState.dwg_name || 'Unnamed',
+    site_area:    _currentState.site_area,
+    source:       'autocad',
+    gpr_value:    parseFloat(document.getElementById('gpr-val').textContent) || null,
+    plants:       (_currentState.planting_areas || []).flatMap(a =>
+      (a.plants || []).map(p => ({ species: p.name, lai_mean: p.lai, canopy_area: p.canopy }))
+    ),
+  };
+  let res;
+  if (_sessionId) {
+    res = await sb.from('gpr_sessions').update(payload).eq('id', _sessionId).select().single();
+  } else {
+    res = await sb.from('gpr_sessions').insert(payload).select().single();
+  }
+  if (res.error) { setStatus('Save error: ' + res.error.message); return; }
+  _sessionId = res.data.id;
+  const url = `${location.origin}/?session=${_sessionId}`;
+  document.getElementById('share-url').value = url;
+  document.getElementById('share-url-row').style.display = 'flex';
+  history.replaceState({}, '', `/?session=${_sessionId}`);
+  setStatus('Saved — copy URL to share');
+}
+
+async function loadSession(id) {
+  setStatus('Loading session…');
+  const { data, error } = await sb.from('gpr_sessions').select('*').eq('id', id).single();
+  if (error || !data) { setStatus('Session not found'); return; }
+  _sessionId = id;
+  applyState({
+    dwg_name:      data.project_name,
+    site_area:     data.site_area,
+    planting_areas: [{ name: 'Imported', area: data.site_area,
+      plants: (data.plants || []).map(p => ({ name: p.species, lai: p.lai_mean, canopy: p.canopy_area })) }],
+  });
+  setStatus('Session loaded');
+  switchTab('calc');
+}
+
+function copyShareUrl() {
+  const url = document.getElementById('share-url').value;
+  navigator.clipboard.writeText(url).then(() => setStatus('URL copied'));
+}
+
+/* ── CAD communication (unchanged) ────────────────────────── */
+function writeSelection(data) {
+  const json = JSON.stringify(data);
+  if (window.chrome?.webview) {
+    try {
+      window.chrome.webview.hostObjects.sync.gprHost.SetSelection(json);
+      setStatus('Selected: ' + data.species);
+    } catch(e) {
+      try { window.chrome.webview.postMessage(JSON.stringify({ type: 'plantSelected', data })); } catch {}
+    }
+  }
+}
+
+/* ── Report generation (Gemini) ────────────────────────────── */
+function toggleApiKey() {
+  const row = document.getElementById('apikey-row');
+  const opening = row.style.display === 'none';
+  row.style.display = opening ? '' : 'none';
+  if (opening) {
+    document.getElementById('apikey-input').value = localStorage.getItem('geminiKey') || '';
+    document.getElementById('apikey-input').focus();
+  }
+}
+function saveApiKey() {
+  const key = document.getElementById('apikey-input').value.trim();
+  if (key) { localStorage.setItem('geminiKey', key); setStatus('API key saved.'); }
+  document.getElementById('apikey-row').style.display = 'none';
+}
+
+function buildReportPrompt(s) {
+  let plantLines = '', totalLAI = 0;
+  (s.planting_areas || []).forEach(a => {
+    plantLines += `\nPlanting area: ${a.name} (${fmt(a.area)} m²)`;
+    (a.plants || []).forEach(p => {
+      const c = p.lai * p.canopy; totalLAI += c;
+      plantLines += `\n  - ${p.name}: LAI ${Number(p.lai).toFixed(1)}, canopy ${fmt(p.canopy)} m², contribution ${fmt(c)}`;
+    });
+  });
+  const gprVal = s.site_area > 0 ? (totalLAI / s.site_area).toFixed(2) : '—';
+  return `You are writing a professional Green Plot Ratio (GPR) assessment report.
+GPR was invented by Boon Ong (Ong 2003, Landscape and Urban Planning, 464+ citations).
+Formula: GPR = Σ(canopy area × LAI) / site area.
+Benchmarks: GPR < 0.5 minimal; 0.5–1.0 moderate; 1.0–2.0 good; ≥ 2.0 ecological parity.
+Site: ${s.dwg_name || 'Unnamed'} | Site area: ${fmt(s.site_area)} m² | GPR: ${gprVal}
+${plantLines}
+Write a professional assessment with: 1. Executive Summary 2. Site Description
+3. Plant Species Analysis 4. GPR Calculation and Interpretation 5. Recommendations.`;
+}
+
+async function generateReport() {
+  const apiKey = localStorage.getItem('geminiKey');
+  if (!apiKey) { document.getElementById('apikey-row').style.display = ''; document.getElementById('apikey-input').focus(); setStatus('Enter Gemini API key (⚙).'); return; }
+  if (!_currentState?.site_area) { setStatus('Run GPRSITE and GPRAREA first.'); return; }
+  showReportOverlay('<em style="color:var(--text-sec)">Generating report…</em>');
+  try {
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ contents: [{ parts: [{ text: buildReportPrompt(_currentState) }] }] }) }
+    );
+    const data = await res.json();
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || data.error?.message || 'No response.';
+    showReportOverlay(mdToHtml(text));
+    setStatus('Report generated.');
+  } catch(err) { showReportOverlay(`<em>Error: ${err.message}</em>`); }
+}
+
+function mdToHtml(md) {
+  return '<p>' + md
+    .replace(/^### (.+)$/gm, '</p><h3>$1</h3><p>').replace(/^## (.+)$/gm, '</p><h2>$1</h2><p>')
+    .replace(/^# (.+)$/gm, '</p><h1>$1</h1><p>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>') + '</p>';
+}
+function showReportOverlay(html) {
+  document.getElementById('report-body').innerHTML = html;
+  document.getElementById('report-overlay').style.display = 'flex';
+}
+function closeReport() { document.getElementById('report-overlay').style.display = 'none'; }
+
+function downloadPdf() {
+  if (typeof window.jspdf === 'undefined') { setStatus('PDF library not loaded — try again.'); return; }
+  const { jsPDF } = window.jspdf;
+  const pdf  = new jsPDF({ unit:'mm', format:'a4' });
+  const text = document.getElementById('report-body').innerText;
+  const site = (_currentState?.dwg_name || 'site').replace(/\.dwg$/i,'');
+  pdf.setFontSize(11);
+  const lines = pdf.splitTextToSize(text, 180);
+  let y = 20;
+  lines.forEach(line => { if (y > 275) { pdf.addPage(); y = 20; } pdf.text(line, 15, y); y += 6; });
+  pdf.save(`GPR-Report-${site}.pdf`);
+}
+
+/* ── Tab switching ─────────────────────────────────────────── */
+function switchTab(t) {
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab')[t==='plants'?0:1].classList.add('active');
+  document.getElementById('tab-'+t).classList.add('active');
+}
+
+/* ── Helpers ───────────────────────────────────────────────── */
+function fmt(n) { return Number(n).toLocaleString('en-AU', { maximumFractionDigits:1 }); }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function setStatus(msg) { document.getElementById('status').textContent = msg; }
+
+/* ── CAD / browser mode boot ───────────────────────────────── */
+if (window.chrome?.webview) {
+  window.chrome.webview.addEventListener('message', event => {
+    try {
+      const state = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+      applyState(state);
+      setStatus('Updated ' + new Date().toLocaleTimeString('en-AU'));
+    } catch(e) { setStatus('Msg error: ' + e.message); }
+  });
+  setStatus('GPR Plugin connected');
+} else {
+  setStatus('Ready — search for plants or load a session');
+}
+</script>
+</body>
+</html>
