@@ -493,7 +493,7 @@ async function renderPlants(searchQuery) {
   tbody.innerHTML = '<tr><td colspan="2" style="color:var(--text-ter);font-style:italic">Loading…</td></tr>';
 
   let q = sb.from('gpr_plant_species')
-    .select('species, common_name, lai_mean, tier, landscape_category, growth_form')
+    .select('species, common_name, lai_mean, tier, landscape_category, growth_form, image_url, image_credit, image_source')
     .not('lai_mean', 'is', null)
     .order('tier', { ascending: true })
     .order('species', { ascending: true })
@@ -553,19 +553,8 @@ document.addEventListener('click', () => {
   document.getElementById('dd-list').classList.remove('open');
 });
 
-/* ── Detail view ───────────────────────────────────────────── */
-function openDetail(p) {
-  _detailPlant = p;
-  document.getElementById('plant-list').style.display = 'none';
-  document.getElementById('plant-detail').classList.add('active');
-
-  document.getElementById('detail-name').textContent   = p.species || p.name;
-  const common = p.common_name || p.common || '';
-  document.getElementById('detail-common').textContent  = common;
-  document.getElementById('detail-common').style.display = common ? '' : 'none';
-
-  const illus = document.getElementById('detail-illustration');
-  illus.innerHTML = '<div class="detail-img-placeholder">Loading image…</div>';
+/* ── Wikipedia image fallback ──────────────────────────────── */
+function fetchWikipediaImage(p, illus) {
   const slug = encodeURIComponent((p.species || p.name).trim().replace(/ /g, '_'));
   fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
     .then(r => r.ok ? r.json() : Promise.reject())
@@ -577,8 +566,7 @@ function openDetail(p) {
           img.style.objectFit = ratio >= 1.2 ? 'cover' : 'contain';
           img.style.width     = ratio >= 1.2 ? '100%' : 'auto';
           img.style.height    = ratio >= 1.2 ? '300px' : 'auto';
-          img.style.maxHeight = '300px';
-          img.style.maxWidth  = '100%';
+          img.style.maxHeight = '300px'; img.style.maxWidth = '100%';
           img.style.display   = 'block';
           img.alt = esc(p.species || p.name);
           illus.innerHTML = '';
@@ -594,6 +582,49 @@ function openDetail(p) {
         illus.innerHTML = '<div class="detail-img-placeholder">No image available</div>';
       }
     }).catch(() => { illus.innerHTML = '<div class="detail-img-placeholder">No image available</div>'; });
+}
+
+/* ── Detail view ───────────────────────────────────────────── */
+function openDetail(p) {
+  _detailPlant = p;
+  document.getElementById('plant-list').style.display = 'none';
+  document.getElementById('plant-detail').classList.add('active');
+
+  document.getElementById('detail-name').textContent   = p.species || p.name;
+  const common = p.common_name || p.common || '';
+  document.getElementById('detail-common').textContent  = common;
+  document.getElementById('detail-common').style.display = common ? '' : 'none';
+
+  const illus = document.getElementById('detail-illustration');
+  illus.innerHTML = '<div class="detail-img-placeholder">Loading image…</div>';
+
+  // Use pre-fetched image from DB first, fall back to live Wikipedia
+  const imgUrl   = p.image_url;
+  const imgCredit = p.image_credit || 'Wikimedia Commons contributors, CC BY-SA';
+
+  if (imgUrl) {
+    const img = new Image();
+    img.onload = () => {
+      const ratio = img.naturalWidth / img.naturalHeight;
+      img.style.objectFit = ratio >= 1.2 ? 'cover' : 'contain';
+      img.style.width     = ratio >= 1.2 ? '100%' : 'auto';
+      img.style.height    = ratio >= 1.2 ? '300px' : 'auto';
+      img.style.maxHeight = '300px';
+      img.style.maxWidth  = '100%';
+      img.style.display   = 'block';
+      img.alt = esc(p.species || p.name);
+      illus.innerHTML = '';
+      illus.appendChild(img);
+      const credit = document.createElement('span');
+      credit.className = 'detail-img-credit';
+      credit.textContent = imgCredit;
+      illus.appendChild(credit);
+    };
+    img.onerror = () => fetchWikipediaImage(p, illus);
+    img.src = imgUrl;
+  } else {
+    fetchWikipediaImage(p, illus);
+  }
 
   const tier = p.tier || '—';
   const lai  = (+(p.lai_mean ?? p.lai)).toFixed(1);
