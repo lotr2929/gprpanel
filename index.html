@@ -28,6 +28,8 @@
   body.host-cad #app { width: 100%; box-shadow: none; }
   body.host-cad .detail-illustration img { height: 180px; }
   body.host-cad .fdesc-box { max-width: 100%; }
+  /* Narrow viewport = inside CAD panel: always fill width */
+  @media (max-width: 860px) { #app { width: 100% !important; box-shadow: none !important; } }
 
   /* ── header ── */
   .header { background: var(--green); color: #fff; padding: 9px 14px; flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
@@ -286,7 +288,12 @@
   <script>
     (function(){
       var p = new URLSearchParams(window.location.search);
-      if (p.get("host") === "autocad") document.body.classList.add("host-cad");
+      var host = p.get("host");
+      if (host) {
+        var apply = function() { document.body.classList.add("host-" + host); };
+        if (document.body) apply();
+        else document.addEventListener("DOMContentLoaded", apply);
+      }
     })();
   </script>
 </head>
