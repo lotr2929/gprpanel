@@ -23,8 +23,11 @@
     --font:      system-ui, -apple-system, sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; background: #e8e8e8; font-family: var(--font); font-size: 13px; color: var(--text); display: flex; justify-content: center; }
-  #app { display: flex; flex-direction: column; height: 100vh; width: 100%; max-width: 840px; background: var(--bg); box-shadow: 0 0 24px rgba(0,0,0,0.12); }
+  html, body { height: 100%; background: #e8e8e8; font-family: var(--font); font-size: 13px; color: var(--text); display: flex; justify-content: center; align-items: flex-start; }
+  #app { display: flex; flex-direction: column; height: 100vh; width: 840px; max-width: 100%; flex-shrink: 0; background: var(--bg); box-shadow: 0 0 24px rgba(0,0,0,0.12); }
+  body.host-cad #app { width: 100%; box-shadow: none; }
+  body.host-cad .detail-illustration img { height: 180px; }
+  body.host-cad .fdesc-box { max-width: 100%; }
 
   /* ── header ── */
   .header { background: var(--green); color: #fff; padding: 9px 14px; flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
@@ -37,7 +40,10 @@
   .tab-bar { display: flex; border-bottom: 0.5px solid var(--border); background: var(--green-lt); flex-shrink: 0; }
   .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-sec); border-bottom: 2px solid transparent; margin-bottom: -1px; user-select: none; }
   .tab.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; background: var(--bg); }
-  .tab-content { display: none; padding: 10px; overflow-y: auto; flex: 1; }
+  .tab-content { display: none; overflow-y: auto; flex: 1; }
+  #tab-plants { padding: 10px 10px 0; }
+  #tab-calc { padding: 10px; }
+  #tab-docs { padding: 0; }
   .tab-content.active { display: flex; flex-direction: column; }
 
   /* ── search ── */
@@ -124,12 +130,12 @@
   .detail-illustration { display: flex; justify-content: center; align-items: center;
                          height: 300px; background: #ffffff;
                          border-bottom: 0.5px solid var(--border); flex-shrink: 0;
-                         overflow: hidden; position: relative; }
-  .detail-illustration img { max-width: 100%; max-height: 300px; object-fit: contain; display: block; }
-  .detail-img-credit { position: absolute; bottom: 3px; right: 6px; font-size: 9px;
+                         overflow: hidden; }
+  .detail-illustration img { height: 300px; width: auto; max-width: 100%; display: block; margin: 0 auto; }
+  .detail-img-credit { display: block; font-size: 10px; color: var(--text-ter); font-style: italic; font-family: var(--font); padding: 3px 8px 6px; background: var(--bg); text-align: right; }
                        color: rgba(255,255,255,0.75); text-shadow: 0 0 3px rgba(0,0,0,0.6); }
   .detail-img-placeholder { color: var(--text-ter); font-size: 11px; text-align: center; padding: 10px; }
-  .detail-body { padding: 12px 12px 0; }
+  .detail-body { padding: 12px 0 0; }
   .detail-name { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.35; }
   .detail-common { font-size: 11px; color: var(--text-sec); margin-top: 2px; font-style: italic; }
   .detail-props { margin-top: 12px; border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
@@ -143,6 +149,31 @@
                    cursor: pointer; width: calc(100% - 24px); letter-spacing: 0.2px; }
   .detail-select:hover { background: #245424; }
   .detail-select.selected { background: var(--text-info); }
+  .detail-account { margin: 6px 10px 14px; padding: 6px; background: transparent;
+    border: 0.5px solid var(--green); border-radius: var(--radius); font-size: 11px;
+    font-weight: 600; cursor: pointer; width: calc(100% - 20px);
+    color: var(--green); letter-spacing: 0.2px; }
+  .detail-account:hover { background: var(--green-lt); }
+  /* Full Description modal */
+  .fdesc-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:100;
+    justify-content:center; align-items:flex-start; padding:20px; overflow-y:auto; }
+  .fdesc-overlay.open { display:flex; }
+  .fdesc-box { background:#fff; border-radius:10px; width:100%; max-width:680px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.2); overflow:hidden; }
+  .fdesc-header { background:var(--green); color:#fff; padding:12px 16px;
+    display:flex; justify-content:space-between; align-items:center; }
+  .fdesc-header h2 { font-size:14px; font-weight:600; font-style:italic; }
+  .fdesc-header button { background:transparent; border:none; color:#fff;
+    font-size:20px; cursor:pointer; line-height:1; padding:0 4px; }
+  .fdesc-body { padding:16px; font-size:12px; line-height:1.7; overflow-y:auto; max-height:80vh; }
+  .fdesc-section { margin-bottom:16px; }
+  .fdesc-section h3 { font-size:11px; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.5px; color:var(--text-sec); margin-bottom:8px;
+    border-bottom:0.5px solid var(--border); padding-bottom:4px; }
+  .fdesc-row { display:flex; justify-content:space-between; padding:3px 0;
+    border-bottom:0.5px solid var(--border); }
+  .fdesc-row span:first-child { color:var(--text-sec); }
+  .fdesc-row span:last-child { text-align:right; font-weight:500; max-width:60%; }
 
   /* ── GPR record block ── */
   .gpr-record { margin: 10px 12px 0; border: 0.5px solid rgba(45,106,45,0.35);
@@ -198,7 +229,20 @@
   .report-body p  { margin: 0 0 8px; }
 
   /* ── Documentation tab ── */
-  #tab-docs { font-size: 12px; }
+  #tab-docs { font-size: 12px; padding: 0; }
+  #tab-docs.active { display: flex; flex-direction: column; }
+  .doc-inner-tabs { display: none; flex-shrink: 0; overflow-x: auto;
+    border-bottom: 0.5px solid var(--border); background: var(--bg-sec); }
+  .doc-inner-tabs.visible { display: flex; }
+  .doc-inner-tab { padding: 7px 11px; font-size: 11px; white-space: nowrap;
+    cursor: pointer; color: var(--text-sec); border-bottom: 2px solid transparent;
+    margin-bottom: -1px; user-select: none; flex-shrink: 0; }
+  .doc-inner-tab.active { color: var(--green); border-bottom-color: var(--green);
+    font-weight: 600; background: var(--bg); }
+  .doc-inner-tab:hover:not(.active) { background: var(--green-lt); }
+  .doc-contents-wrap { flex: 1; overflow-y: auto; padding: 4px 10px; }
+  .doc-section-wrap { display: none; flex: 1; overflow-y: auto; }
+  .doc-section-wrap.active { display: flex; flex-direction: column; }
   .doc-contents { padding: 4px 0; }
   .doc-contents h3 { font-size: 11px; font-weight: 600; color: var(--text-sec);
                      text-transform: uppercase; letter-spacing: 0.5px;
@@ -239,6 +283,12 @@
   #status { font-size: 10px; color: var(--text-ter); padding: 4px 10px;
             border-top: 0.5px solid var(--border); flex-shrink: 0; }
 </style>
+  <script>
+    (function(){
+      var p = new URLSearchParams(window.location.search);
+      if (p.get("host") === "autocad") document.body.classList.add("host-cad");
+    })();
+  </script>
 </head>
 <body>
 <div id="app">
@@ -320,6 +370,7 @@
         </div>
       </div>
       <button class="detail-select" id="detail-select-btn" onclick="selectFromDetail()">Select this plant</button>
+      <button class="detail-account" id="detail-account-btn" onclick="openFullAccount()">Full Description →</button>
     </div>
   </div>
 
@@ -380,11 +431,16 @@
       <button onclick="copyShareUrl()">Copy</button>
     </div>
   </div>
-
   <div id="status">Connecting…</div>
+
 
   <!-- ── TAB 3: DOCUMENTATION ── -->
   <div id="tab-docs" class="tab-content">
+    <!-- inner tab bar (hidden until a section is opened) -->
+    <div id="doc-inner-tabs" class="doc-inner-tabs">
+      <div class="doc-inner-tab" onclick="docGoContents()">&#9776; Contents</div>
+    </div>
+    <div id="doc-contents-wrap" class="doc-contents-wrap">
     <div id="doc-contents" class="doc-contents">
       <h3>GPR Global Plant Database</h3>
       <div class="doc-toc-item" onclick="openDocSection(0)">
@@ -438,11 +494,9 @@
       </div>
       <div class="doc-version">Working draft v0.1 &#183; May 2026 &#183; Target: <em>Scientific Data</em> (Nature Research)</div>
     </div>
-    <div id="doc-section-view" class="doc-section">
-      <div class="doc-back" onclick="closeDocSection()">
-        <i class="ti ti-arrow-left"></i> Contents
-      </div>
-      <div class="doc-body" id="doc-body"></div>
+    </div>  <!-- /doc-contents-wrap -->
+    <div id="doc-section-view" class="doc-section-wrap">
+      <div class="doc-body" id="doc-body" style="padding:12px;line-height:1.65;overflow-y:auto;flex:1;"></div>
     </div>
   </div>
 
@@ -459,6 +513,40 @@
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+function openFullAccount() {
+  const p = _detailPlant; if (!p) return;
+  document.getElementById('fdesc-title').textContent = p.species || p.name || '';
+  const TIER = ['','Urban field (T1)','Open-ground (T2)','Genus mean (T3)','PFT mean (T4)'];
+  const rw = (l,v) => (v && String(v) !== 'undefined' && String(v).trim() !== '') ?
+    '<div class="fdesc-row"><span>'+l+'</span><span>'+v+'</span></div>' : '';
+  const ht = p.height_mature_m ? p.height_mature_m+' m' : '—';
+  const lv = p.lai_mean ? (+p.lai_mean).toFixed(1) : '—';
+  document.getElementById('fdesc-body').innerHTML =
+    '<div class="fdesc-section"><h3>Identity</h3>'+
+    rw('Scientific name','<em>'+esc(p.species||'')+'</em>')+
+    rw('Common name/s',esc(p.common_name||p.common||''))+
+    rw('Family',esc(p.family||''))+
+    rw('Plant type',esc((p.landscape_category||'')+(p.leaf_phenology?' — '+p.leaf_phenology:'')))+
+    rw('Growth form',esc(p.growth_form||p.shape||''))+'</div>'+
+    '<div class="fdesc-section"><h3>LAI &amp; GPR Data</h3>'+
+    rw('LAI mean',lv)+
+    rw('Data tier',p.tier?'T'+p.tier+' — '+(TIER[p.tier]||''):'')+
+    rw('Source',esc(p.sources||p.source||p.tier_source||''))+'</div>'+
+    '<div class="fdesc-section"><h3>Morphology &amp; Climate</h3>'+
+    rw('Mature height',ht)+rw('Growth rate',esc(p.growth_rate||''))+
+    rw('Climate',esc(p.native_koppen||''))+rw('Drought tolerance',esc(p.drought_tolerance||''))+
+    rw('Shade tolerance',esc(p.shade_tolerance||''))+rw('Fire tolerance',esc(p.fire_tolerance||''))+
+    rw('Frost hardiness',p.frost_hardiness_c!=null?p.frost_hardiness_c+'°C':'')+'</div>'+
+    '<div class="fdesc-section"><h3>Urban</h3>'+
+    rw('Root depth',esc(p.root_depth||''))+rw('Moisture',esc(p.moisture_use||''))+
+    rw('Toxicity',esc(p.toxicity||''))+'</div>';
+  document.getElementById('fdesc-overlay').classList.add('open');
+}
+function closeFdesc() {
+  document.getElementById('fdesc-overlay').classList.remove('open');
+}
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 /* ── Supabase ──────────────────────────────────────────────── */
@@ -493,7 +581,7 @@ async function renderPlants(searchQuery) {
   tbody.innerHTML = '<tr><td colspan="2" style="color:var(--text-ter);font-style:italic">Loading…</td></tr>';
 
   let q = sb.from('gpr_plant_species')
-    .select('species, common_name, lai_mean, tier, landscape_category, growth_form, image_url, image_credit, image_source')
+    .select('species, common_name, lai_mean, lai_min, lai_max, tier, landscape_category, growth_form, leaf_phenology, native_koppen, family, height_mature_m, growth_rate, drought_tolerance, shade_tolerance, fire_tolerance, salinity_tolerance, frost_hardiness_c, canopy_shape, root_depth, moisture_use, toxicity, sources, tier_source, image_url, image_credit, image_source')
     .not('lai_mean', 'is', null)
     .order('tier', { ascending: true })
     .order('species', { ascending: true })
@@ -515,15 +603,13 @@ async function renderPlants(searchQuery) {
   tbody.innerHTML = '';
   data.forEach(p => {
     const tr = document.createElement('tr'); tr.className = 'pr';
-    const shape = p.growth_form || '—';
-    tr.innerHTML = `<td><em>${esc(p.species)}</em>
-      <span class="tb t${p.tier}">T${p.tier}</span>
-      <span style="color:var(--text-ter);font-size:10px"> (${shape})</span></td>
-      <td class="r">${(+p.lai_mean).toFixed(1)}</td>`;
+    const cn = p.common_name ? ` <span style="color:var(--text-ter);font-style:normal">(${esc(p.common_name)})</span>` : '';
+    const imBadge = p.image_url ? ' <span class="tb" style="background:#fff;color:var(--text-sec)">Im</span>' : '';
+    tr.innerHTML = `<td><em>${esc(p.species)}</em>${cn} <span class="tb t${p.tier}">T${p.tier}</span>${imBadge}</td><td class="r">${(+p.lai_mean).toFixed(1)}</td>`;
     tr.addEventListener('click', () => {
       document.querySelectorAll('.pr').forEach(r => r.classList.remove('sel'));
       tr.classList.add('sel');
-      writeSelection({ type: currentType, species: p.species, lai: p.lai_mean, shape });
+      writeSelection({ type: currentType, species: p.species, lai: p.lai_mean, shape: p.growth_form||'' });
     });
     tr.addEventListener('dblclick', () => openDetail(p));
     tbody.appendChild(tr);
@@ -562,19 +648,19 @@ function fetchWikipediaImage(p, illus) {
       if (data.thumbnail?.source) {
         const img = new Image();
         img.onload = () => {
-          const ratio = img.naturalWidth / img.naturalHeight;
-          img.style.objectFit = ratio >= 1.2 ? 'cover' : 'contain';
-          img.style.width     = ratio >= 1.2 ? '100%' : 'auto';
-          img.style.height    = ratio >= 1.2 ? '300px' : 'auto';
-          img.style.maxHeight = '300px'; img.style.maxWidth = '100%';
-          img.style.display   = 'block';
-          img.alt = esc(p.species || p.name);
+          img.style.height  = '300px';
+          img.style.width   = 'auto';
+          img.style.display = 'block';
+          img.alt = (p.species || p.name || '');
           illus.innerHTML = '';
           illus.appendChild(img);
-          const credit = document.createElement('span');
-          credit.className = 'detail-img-credit';
-          credit.textContent = 'Image: Wikimedia Commons contributors, CC BY-SA';
-          illus.appendChild(credit);
+          // Credit goes below the illustration box
+          const creditEl = illus.nextElementSibling?.classList.contains('detail-img-credit')
+            ? illus.nextElementSibling
+            : (() => { const c = document.createElement('div');
+                c.className = 'detail-img-credit';
+                illus.parentNode.insertBefore(c, illus.nextSibling); return c; })();
+          creditEl.textContent = 'Image: Wikimedia Commons contributors, CC BY-SA';
         };
         img.onerror = () => { illus.innerHTML = '<div class="detail-img-placeholder">No image available</div>'; };
         img.src = data.thumbnail.source;
@@ -628,15 +714,31 @@ function openDetail(p) {
 
   const tier = p.tier || '—';
   const lai  = (+(p.lai_mean ?? p.lai)).toFixed(1);
+  const tierLabel = ['','Urban field','Open-ground','Genus mean','PFT inferred'][tier] || '';
+  const laiRange  = (p.lai_min && p.lai_max)
+    ? `${(+p.lai_min).toFixed(1)}–${(+p.lai_max).toFixed(1)} (mean ${lai})` : lai;
+  const laiRow    = tier == 1
+    ? `${laiRange} — <em>${esc(p.sources||p.source||'')}</em>` : laiRange;
+  const klimat    = p.native_koppen ? `${esc(p.native_koppen)}` : '—';
+  const heightVal = p.height_mature_m ? `${p.height_mature_m} m` : (p.height ? `${p.height} m` : '—');
+  const spreadVal = p.canopy_radius_m  ? `${p.canopy_radius_m} m radius` : (p.radius ? `${p.radius} m` : '—');
+  const growthVal = p.growth_rate || '—';
   const props = [
-    ['Type',       p.landscape_category || currentType],
-    ['Growth form',p.growth_form || p.shape || '—'],
-    ['Mean LAI',   lai],
-    ['Data tier',  `T${tier} — ${['','Urban field','Open-ground','Genus mean','PFT inferred'][tier] || '—'}`],
-    ['Sources',    (p.sources || p.source || '—').substring(0, 60)],
+    ['Scientific name', `<em>${esc(p.species||p.name||'')}</em>`, true],
+    ['Common name/s',  esc(p.common_names||p.common_name||p.common||'—')],
+    ['Plant type',     esc((p.landscape_category||currentType) + (p.leaf_phenology ? ' — ' + p.leaf_phenology : ''))],
+    ['Growth form',    esc(p.growth_form||p.shape||'—')],
+    ['Growth rate',    esc(growthVal)],
+    ['Mature height',  esc(heightVal)],
+    ['Canopy spread',  esc(spreadVal)],
+    ['Climate',        esc(klimat)],
+    ['LAI',            laiRow, true],
+    ['Data tier',      tier ? `T${tier} — ${tierLabel}` : '—'],
+    ['Sources',        esc((p.sources_other||p.sources||p.source||'—').substring(0,80))],
   ];
-  document.getElementById('detail-props').innerHTML = props.map(([l,v]) =>
-    `<div class="detail-prop"><span class="detail-prop-label">${l}</span><span class="detail-prop-val">${esc(String(v))}</span></div>`
+  document.getElementById('detail-props').innerHTML = props.map(([l,v,raw]) =>
+    (raw ? `<div class="detail-prop"><span class="detail-prop-label">${l}</span><span class="detail-prop-val">${v}</span></div>`
+         : `<div class="detail-prop"><span class="detail-prop-label">${l}</span><span class="detail-prop-val">${esc(String(v))}</span></div>`)
   ).join('');
 
   const btn = document.getElementById('detail-select-btn');
@@ -1031,15 +1133,41 @@ const DOC_SECTIONS = [
   `},
 ];
 
+// doc section labels for inner tab bar
+const DOC_TAB_LABELS = ['Abstract','Background','Methods','Records',
+  'Validation','Usage','Limits','Future','Code','Refs'];
+const DOC_TAB_TITLES = DOC_TAB_LABELS;  // labels are already the titles
+
+function buildDocTabs(activeIdx) {
+  const bar = document.getElementById('doc-inner-tabs');
+  bar.innerHTML = '<div class="doc-inner-tab" onclick="docGoContents()">&#9776; Contents</div>';
+  DOC_TAB_LABELS.forEach((lbl, idx) => {
+    const t = document.createElement('div');
+    t.className = 'doc-inner-tab' + (idx === activeIdx ? ' active' : '');
+    t.title = DOC_TAB_TITLES[idx];
+    t.textContent = lbl;
+    t.onclick = () => openDocSection(idx);
+    bar.appendChild(t);
+  });
+  bar.classList.add('visible');
+}
+
+function docGoContents() {
+  document.getElementById('doc-inner-tabs').classList.remove('visible');
+  document.getElementById('doc-contents-wrap').style.display = '';
+  document.getElementById('doc-section-view').classList.remove('active');
+}
+
 function openDocSection(i) {
-  document.getElementById('doc-contents').style.display = 'none';
+  document.getElementById('doc-contents-wrap').style.display = 'none';
+  buildDocTabs(i);
   const sv = document.getElementById('doc-section-view');
   sv.classList.add('active');
   document.getElementById('doc-body').innerHTML = DOC_SECTIONS[i].content;
 }
 function closeDocSection() {
   document.getElementById('doc-section-view').classList.remove('active');
-  document.getElementById('doc-contents').style.display = '';
+  docGoContents();
 }
 
 /* ── Tab switching ─────────────────────────────────────────── */
@@ -1070,5 +1198,16 @@ if (window.chrome?.webview) {
   setStatus('Ready — search for plants or load a session');
 }
 </script>
+
+  <!-- Full Description modal -->
+  <div id="fdesc-overlay" class="fdesc-overlay" onclick="if(event.target===this)closeFdesc()">
+    <div class="fdesc-box">
+      <div class="fdesc-header">
+        <h2 id="fdesc-title"></h2>
+        <button onclick="closeFdesc()">&times;</button>
+      </div>
+      <div class="fdesc-body" id="fdesc-body"></div>
+    </div>
+  </div>
 </body>
 </html>
