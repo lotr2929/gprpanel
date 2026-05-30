@@ -1,0 +1,160 @@
+==============================================================
+  GPR Panel DB Enrichment  v2.0
+==============================================================
+
+Loading data sources...
+  Global DB loaded: 34,429 species
+  USDA DB not found - skipping (download from https://data.plantatlas.ai/)
+  Panel species: 130
+
+  [  1/130] Pinus banksiana
+  [  2/130] Eucalyptus globulus
+  [  3/130] Eucalyptus
+  [  4/130] Eucalyptus marginata
+  [  5/130] Eucalyptus sp.
+  [  6/130] Eucalyptus regnans
+  [  7/130] Eucalyptus grandis * camaldulensis hybrid
+  [  8/130] Eucalyptus camaldulensis
+  [  9/130] Eucalyptus nitens
+  [ 10/130] Eucalyptus saligna
+  [ 11/130] Tectona grandis
+  [ 12/130] Eucalyptus microcorys
+  [ 13/130] Shorea robusta
+  [ 14/130] Eucalyptus grandis*Eucalyptus urophylla hybrids
+  [ 15/130] Eucalyptus grandis
+  [ 16/130] Eucalyptus sieberi
+  [ 17/130] Eucalyptus diversicolor
+  [ 18/130] Eucalyptus grandis * urophylla (mono clonal)
+  [ 19/130] Eucalyptus obliqua
+  [ 20/130] Eucalyptus dumosa
+  [ 21/130] Eucalyptus meullerana
+  [ 22/130] Eucalyptus maculata
+  [ 23/130] Tabebuia rigida
+  [ 24/130] Eucalyptus calophylla
+  [ 25/130] Eucalyptus delegatensis
+  [ 26/130] Eucalyptus fasciculosa
+  [ 27/130] Eucalyptus socialis
+  [ 28/130] Eucalyptus sieberii
+  [ 29/130] Swietenia macrophylla
+  [ 30/130] Eucalyptus clone (E. grandis *E. urophylla)
+  [ 31/130] Eucalyptus fastigata
+  [ 32/130] Robinia pseudoacacia
+  [ 33/130] Eucalyptus grandis hybrids
+  [ 34/130] Eucalyptus cypellocarpa
+  [ 35/130] Eucalyptus dives
+  [ 36/130] Eucalyptus radiata
+  [ 37/130] Eucalyptus ovata
+  [ 38/130] Eucalyptus viminalis
+  [ 39/130] Eucalyptus luecoxylon
+  [ 40/130] Eucalyptus pauciflora
+  [ 41/130] Eucalyptus bridgesiana
+  [ 42/130] Eucalyptus porosa
+  [ 43/130] Eucalyptus stellulata
+  [ 44/130] Shorea multiflora
+  [ 45/130] Shorea falciferoides
+  [ 46/130] Dipterocarpus applanatus
+  [ 47/130] Shorea xanthophylla
+  [ 48/130] Shorea leprosula
+  [ 49/130] Dipterocarpus grandiflorus
+  [ 50/130] Dipterocarpus acutangulus
+  [ 51/130] Dipterocarpus caudiferus
+  [ 52/130] Melaleuca leucadendron
+  [ 53/130] Rhododendron maximum
+  [ 54/130] Leiophyllum lyoni
+  [ 55/130] Arbutus unedo
+  [ 56/130] Atriplex canescens
+  [ 57/130] Atriplex lentiformis (Torr.)
+  [ 58/130] Rhododendron catawbiense
+  [ 59/130] Sarcobatus vermiculatus
+  [ 60/130] Cistus albidus
+  [ 61/130] Vaccinium myrtilloides
+  [ 62/130] Atriplex confertifolia
+  [ 63/130] Chrysothamnus consimilis
+  [ 64/130] Rhododendron carolinianum
+  [ 65/130] Chamaedaphne calyculata
+  [ 66/130] Rhododendron nivale
+  [ 67/130] Rhus copallina
+  [ 68/130] Cistus monospeliensis
+  [ 69/130] Adenostoma fasciculatum
+  [ 70/130] Artemisia tridentata
+  [ 71/130] Larrea divaricata
+  [ 72/130] Vaccinium uliginosum
+  [ 73/130] Artemisia ordosica
+  [ 74/130] Andromeda polifolia
+  [ 75/130] Ilex aquifolium
+  [ 76/130] Loiseleuria procumbens
+  [ 77/130] Empetrum hermaphroditum
+  [ 78/130] Morella cerifera
+  [ 79/130] Cassiope tetragona
+  [ 80/130] Rhus typhina
+  [ 81/130] Aegopodium podagraria
+  [ 82/130] Agrostis capillaris
+  [ 83/130] Alopecurus geniculatus
+  [ 84/130] Alopecurus pratensis
+  [ 85/130] Anthoxanthum odoratum
+  [ 86/130] Anthyllis vulneraria
+  [ 87/130] Apera spica-venti
+  [ 88/130] Arctium lappa
+  [ 89/130] Arrhenatherum elatius
+  [ 90/130] Brachypodium sylvaticum
+  [ 91/130] Bromus hordeaceus
+  [ 92/130] Calamagrostis epigejos
+  [ 93/130] Campanula rotundifolia
+  [ 94/130] Centaurium erythraea
+  [ 95/130] Cirsium acaule
+  [ 96/130] Cirsium arvense
+  [ 97/130] Clinopodium vulgare
+  [ 98/130] Deschampsia cespitosa
+  [ 99/130] Digitalis purpurea
+  [100/130] Digitaria sanguinalis
+  [101/130] Festuca ortophylla
+  [102/130] Festuca ovina
+  [103/130] Filipendula ulmaria
+  [104/130] Geranium pratense
+  [105/130] Geranium robertianum
+  [106/130] Holcus lanatus
+  [107/130] Lamium purpureum
+  [108/130] Lapsana communis
+  [109/130] Luzula multiflora
+  [110/130] Medicago lupulina
+  [111/130] Molinia caerulea
+  [112/130] Nardus stricta
+  [113/130] Origanum vulgare
+  [114/130] Phalaris arundinacea
+  [115/130] Phalaris arundinaceae
+  [116/130] Plantago major
+  [117/130] Poa annua
+  [118/130] Pulicaria dysenterica
+  [119/130] Scirpus sylvaticus
+  [120/130] Stellaria media
+  [121/130] Succisa pratensis
+  [122/130] Taraxacum officinale
+  [123/130] Taraxacum spec.
+  [124/130] Thlaspi arvense
+  [125/130] Trifolium pratense
+  [126/130] Trisetum flavescens
+  [127/130] Urtica dioica
+  [128/130] Duranta erecta
+  [129/130] Podocarpus macrophyllus
+  [130/130] Ficus pumila
+
+==============================================================
+  Done. 130 species processed.
+  Global DB matches : 130/130
+  USDA matches      : 0/130
+  Wikipedia hits    : 1/130
+  GBIF hits         : 129/130
+  Full output       : C:\_myProjects\+GPR\GPRTool\lai\plants_db_enriched.json
+  Brief output      : C:\_myProjects\+GPR\GPRTool\lai\plants_db_enriched_brief.json
+==============================================================
+
+  Field coverage:
+    family                          129/130
+    native_koppen                   130/130
+    lai_mean                        130/130
+    tier                            130/130
+    height_mature_m                 127/130
+    growth_rate_label                 0/130
+    drought_tolerance                 0/130
+    shade_tolerance                   0/130
+    fire_tolerance                    0/130

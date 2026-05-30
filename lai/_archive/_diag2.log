@@ -1,0 +1,174 @@
+plant_characteristics columns:
+    0: id (INTEGER)
+    1: plant_id (INTEGER)
+    2: active_growth_period (TEXT)
+    3: bloat (TEXT)
+    4: c_n_ratio (TEXT)
+    5: coppice_potential (TEXT)
+    6: fall_conspicuous (TEXT)
+    7: fire_resistant (TEXT)
+    8: flower_color (TEXT)
+    9: flower_conspicuous (TEXT)
+   10: foliage_color (TEXT)
+   11: foliage_porosity_summer (TEXT)
+   12: foliage_porosity_winter (TEXT)
+   13: foliage_texture (TEXT)
+   14: fruit_seed_color (TEXT)
+   15: fruit_seed_conspicuous (TEXT)
+   16: growth_form (TEXT)
+   17: growth_rate (TEXT)
+   18: height_at_20_years_maximum_feet (TEXT)
+   19: height_mature_feet (TEXT)
+   20: known_allelopath (TEXT)
+   21: leaf_retention (TEXT)
+   22: lifespan (TEXT)
+   23: low_growing_grass (TEXT)
+   24: nitrogen_fixation (TEXT)
+   25: resprout_ability (TEXT)
+   26: shape_and_orientation (TEXT)
+   27: toxicity (TEXT)
+   28: adapted_to_coarse_textured_soils (TEXT)
+   29: adapted_to_fine_textured_soils (TEXT)
+   30: adapted_to_medium_textured_soils (TEXT)
+   31: anaerobic_tolerance (TEXT)
+   32: caco_3_tolerance (TEXT)
+   33: cold_stratification_required (TEXT)
+   34: drought_tolerance (TEXT)
+   35: fertility_requirement (TEXT)
+   36: fire_tolerance (TEXT)
+   37: frost_free_days_minimum (TEXT)
+   38: hedge_tolerance (TEXT)
+   39: moisture_use (TEXT)
+   40: ph_maximum (REAL)
+   41: ph_minimum (REAL)
+   42: planting_density_per_acre_maximum (TEXT)
+   43: planting_density_per_acre_minimum (TEXT)
+   44: precipitation_maximum (TEXT)
+   45: precipitation_minimum (TEXT)
+   46: root_depth_minimum (TEXT)
+   47: salinity_tolerance (TEXT)
+   48: shade_tolerance (TEXT)
+   49: temperature_minimum_f (TEXT)
+   50: bloom_period (TEXT)
+   51: commercial_availability (TEXT)
+   52: fruit_seed_abundance (TEXT)
+   53: fruit_seed_period_begin (TEXT)
+   54: fruit_seed_period_end (TEXT)
+   55: fruit_seed_persistence (TEXT)
+   56: propagated_by_bare_root (TEXT)
+   57: propagated_by_bulb (TEXT)
+   58: propagated_by_container (TEXT)
+   59: propagated_by_corm (TEXT)
+   60: propagated_by_cuttings (TEXT)
+   61: propagated_by_seed (TEXT)
+   62: propagated_by_sod (TEXT)
+   63: propagated_by_sprigs (TEXT)
+   64: propagated_by_tubers (TEXT)
+   65: seed_per_pound (TEXT)
+   66: seed_spread_rate (TEXT)
+   67: seedling_vigor (TEXT)
+   68: small_grain (TEXT)
+   69: vegetative_spread_rate (TEXT)
+   70: berry_nut_seed_product (TEXT)
+   71: christmas_tree_product (TEXT)
+   72: fodder_product (TEXT)
+   73: fuelwood_product (TEXT)
+   74: lumber_product (TEXT)
+   75: naval_store_product (TEXT)
+   76: nursery_stock_product (TEXT)
+   77: palatable_browse_animal (TEXT)
+   78: palatable_human (TEXT)
+   79: post_product (TEXT)
+   80: pulpwood_product (TEXT)
+   81: veneer_product (TEXT)
+
+Sample scientific_names (raw):
+  '<i>Abelia ×grandiflora</i> (Rovelli ex André) Rehder [<i>chinensis × uniflora</i>]'
+  '<i>Abelmoschus esculentus</i> (L.) Moench'
+  '<i>Abelmoschus manihot</i> (L.) Medik. [excluded]'
+  '<i>Abelmoschus moschatus</i> Medik.'
+  '<i>Abies alba</i> Mill.'
+
+Sample scientific_names (cleaned - first 2 words):
+  '<i>Abelia ×grandiflora</i> (Rovelli ex André) Rehd' => 'Abelia ×grandiflora'
+  '<i>Abelmoschus esculentus</i> (L.) Moench' => 'Abelmoschus esculentus'
+  '<i>Abelmoschus manihot</i> (L.) Medik. [excluded]' => 'Abelmoschus manihot'
+  '<i>Abelmoschus moschatus</i> Medik.' => 'Abelmoschus moschatus'
+  '<i>Abies alba</i> Mill.' => 'Abies alba'
+
+First characteristics row (key fields):
+  id: 1
+  plant_id: 15308
+  active_growth_period: Spring and Summer
+  c_n_ratio: High
+  coppice_potential: No
+  fall_conspicuous: Yes
+  fire_resistant: No
+  flower_color: Yellow
+  flower_conspicuous: No
+  foliage_color: Gray-Green
+  foliage_porosity_summer: Dense
+  foliage_porosity_winter: Dense
+  foliage_texture: Medium
+  fruit_seed_color: Brown
+  fruit_seed_conspicuous: No
+  growth_form: Single Stem
+  growth_rate: Slow
+  height_at_20_years_maximum_feet: 20
+  height_mature_feet: 165.0
+  known_allelopath: No
+  leaf_retention: Yes
+  lifespan: Long
+  low_growing_grass: No
+  resprout_ability: No
+  shape_and_orientation: Erect
+  adapted_to_coarse_textured_soils: Yes
+  adapted_to_fine_textured_soils: Yes
+  adapted_to_medium_textured_soils: Yes
+  caco_3_tolerance: Low
+  cold_stratification_required: Yes
+  drought_tolerance: Low
+  fertility_requirement: Low
+  frost_free_days_minimum: 90
+  moisture_use: Medium
+  ph_maximum: 6.0
+  ph_minimum: 3.3
+  planting_density_per_acre_maximum: 700
+  planting_density_per_acre_minimum: 300
+  precipitation_maximum: 260
+  precipitation_minimum: 38
+  root_depth_minimum: 36
+  shade_tolerance: Tolerant
+  temperature_minimum_f: -28
+  bloom_period: Late Spring
+  commercial_availability: Routinely Available
+  fruit_seed_abundance: Low
+  fruit_seed_period_begin: Summer
+  fruit_seed_period_end: Fall
+  fruit_seed_persistence: No
+  propagated_by_bare_root: Yes
+  propagated_by_bulb: No
+  propagated_by_container: Yes
+  propagated_by_corm: No
+  propagated_by_cuttings: No
+  propagated_by_seed: Yes
+  propagated_by_sod: No
+  propagated_by_sprigs: No
+  propagated_by_tubers: No
+  seed_per_pound: 11280
+  seed_spread_rate: Slow
+  seedling_vigor: Low
+  small_grain: No
+  berry_nut_seed_product: No
+  christmas_tree_product: Yes
+  fodder_product: No
+  fuelwood_product: Low
+  lumber_product: Yes
+  naval_store_product: No
+  nursery_stock_product: No
+  palatable_browse_animal: Low
+  palatable_human: No
+  post_product: No
+  pulpwood_product: Yes
+  veneer_product: Yes
+  scientific_name: <i>Abies amabilis</i> (Douglas ex Loudon) Douglas ex Forbes

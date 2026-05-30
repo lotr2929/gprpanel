@@ -1,0 +1,69 @@
+GPR Plant Species — Null-Field Audit
+Generated: 2026-05-30 07:26
+Total species: 34,429
+Total columns: 54
+
+FIELD                                     POPULATED     PCT
+------------------------------------------------------------
+id                                           34,429  100.0%
+species                                      34,429  100.0%
+accepted_name                                     0    0.0%  ← EMPTY
+gbif_taxon_key                                    0    0.0%  ← EMPTY
+family                                            0    0.0%  ← EMPTY
+order                                             0    0.0%  ← EMPTY
+common_name                                     280    0.8%  ← SPARSE
+growth_form                                  34,025   98.8%
+landscape_category                           34,429  100.0%
+leaf_phenology                               34,022   98.8%
+native_region                                     0    0.0%  ← EMPTY
+native_koppen                                34,429  100.0%
+lai_mean                                     34,429  100.0%
+lai_min                                      34,429  100.0%
+lai_max                                      34,429  100.0%
+lai_sd                                            0    0.0%  ← EMPTY
+lai_n                                        34,429  100.0%
+lai_method                                   34,429  100.0%
+lai_context                                  34,429  100.0%
+lai_measurement_koppen                            0    0.0%  ← EMPTY
+pft                                          34,018   98.8%
+tier                                         34,429  100.0%
+tier_source                                  34,429  100.0%
+urban_context                                34,429  100.0%
+sources                                      34,429  100.0%
+notes                                        34,429  100.0%
+entry_date                                   34,429  100.0%
+data_version                                 34,429  100.0%
+data_type                                    34,429  100.0%
+generation_method                            33,666   97.8%
+sla                                               0    0.0%  ← EMPTY
+growth_rate                                       0    0.0%  ← EMPTY
+drought_tolerance                                 0    0.0%  ← EMPTY
+root_depth                                        0    0.0%  ← EMPTY
+pollution_tolerance                               0    0.0%  ← EMPTY
+shade_factor                                      0    0.0%  ← EMPTY
+carbon_seq_kg_yr                                  0    0.0%  ← EMPTY
+usda_zone                                    34,429  100.0%
+shade_tolerance                                   0    0.0%  ← EMPTY
+enrichment_sources                            2,629    7.6%  ← SPARSE
+image_url                                         9    0.0%  ← SPARSE
+image_credit                                      9    0.0%  ← SPARSE
+image_source                                      9    0.0%  ← SPARSE
+salinity_tolerance                                0    0.0%  ← EMPTY
+fire_tolerance                                1,239    3.6%  ← SPARSE
+fire_resistant                                    0    0.0%  ← EMPTY
+height_mature_m                               2,256    6.6%  ← SPARSE
+moisture_use                                      0    0.0%  ← EMPTY
+toxicity                                          0    0.0%  ← EMPTY
+frost_hardiness_c                                 0    0.0%  ← EMPTY
+canopy_shape                                      0    0.0%  ← EMPTY
+foliage_texture                                   0    0.0%  ← EMPTY
+leaf_retention                                    0    0.0%  ← EMPTY
+anaerobic_tolerance                               0    0.0%  ← EMPTY
+
+SECTION SUMMARY
+----------------------------------------
+  taxonomy               5 fields in DB   avg  20.2% populated
+  morphology             3 fields in DB   avg   2.2% populated
+  lai_gpr                9 fields in DB   avg  77.6% populated
+  eco_services           1 fields in DB   avg   0.0% populated
+  urban_perf             1 fields in DB   avg   0.0% populated

@@ -1,0 +1,204 @@
+<script>
+const API = 'http://localhost:7749';
+const SCRIPTS = [
+  {id:'usda_zones',   name:'enrich_usda_zones.py',   label:'USDA hardiness zones'},
+  {id:'usda_traits',  name:'enrich_usda_traits.py',  label:'USDA plant traits'},
+  {id:'austraits',    name:'enrich_austraits.py',     label:'AusTraits v6'},
+  {id:'images',       name:'enrich_images.py',        label:'Species images'},
+  {id:'carbon',       name:'enrich_carbon.py',        label:'Carbon / shade factor'},
+  {id:'try_sla',      name:'enrich_try_sla.py',       label:'TRY specific leaf area'},
+];
+const DB_FIELDS = [
+  {key:'total',           label:'Total species'},
+  {key:'usda_zone',       label:'USDA zone'},
+  {key:'height_mature_m', label:'Height'},
+  {key:'growth_form',     label:'Growth form'},
+  {key:'leaf_phenology',  label:'Leaf phenology'},
+  {key:'sla',             label:'SLA (leaf area)'},
+  {key:'fire_tolerance',  label:'Fire tolerance'},
+  {key:'image_url',       label:'Image URL'},
+  {key:'carbon_seq_kg_yr',label:'Carbon seq.'},
+  {key:'shade_factor',    label:'Shade factor'},
+  {key:'enrichment_sources',label:'Any enrichment'},
+];
+let scriptStates = {};
+let logLines = [];
+let totalRows = 34429;
+
+function parseLog(text) {
+  const lines = text.split('\n').filter(l => l.trim());
+  const states = {};
+  SCRIPTS.forEach(s => { states[s.id] = {status:'wait', elapsed:null, detail:'', last_species:'', done:0, total:0, rate:0, eta:null, timings:[]}; });
+  let currentScript = null;
+  for (const line of lines) {
+    const m_start  = line.match(/START\s+(enrich_\w+\.py)/);
+    const m_done   = line.match(/(DONE|FAIL)\s+(enrich_\w+\.py)\s+\((\d+)m\s+(\d+)s\)/);
+    const m_skip   = line.match(/SKIP\s+(enrich_\w+\.py)/);
+    const m_prog   = line.match(/\[(#+[-]+)\]\s*(\d+)%\s*(\d+)\/(\d+)\s+(\d+)m(\d+)s\s+eta\s+(\d+)m(\d+)s(?:\s+(.+))?/);
+    const m_time   = line.match(/\[(\d{2}:\d{2}:\d{2})\]/);
+    const ts       = m_time ? m_time[1] : null;
+    if (m_start) {
+      const name = m_start[1];
+      const s = SCRIPTS.find(x => x.name === name);
+      if (s) { states[s.id].status = 'run'; states[s.id].start_ts = ts; currentScript = s.id; }
+    }
+    if (m_done) {
+      const name = m_done[2]; const ok = m_done[1] === 'DONE';
+      const s = SCRIPTS.find(x => x.name === name);
+      if (s) {
+        states[s.id].status = ok ? 'done' : 'fail';
+        states[s.id].elapsed = parseInt(m_done[3])*60 + parseInt(m_done[4]);
+        currentScript = null;
+      }
+    }
+    if (m_skip) {
+      const name = m_skip[1];
+      const s = SCRIPTS.find(x => x.name === name);
+      if (s) { states[s.id].status = 'skip'; }
+    }
+    if (m_prog && currentScript) {
+      const st = states[currentScript];
+      const done = parseInt(m_prog[3]); const total = parseInt(m_prog[4]);
+      const elapsed_s = parseInt(m_prog[5])*60 + parseInt(m_prog[6]);
+      const eta_s = parseInt(m_prog[7])*60 + parseInt(m_prog[8]);
+      const species = (m_prog[9] || '').trim().slice(0,30);
+      if (done > 0 && elapsed_s > 0) {
+        const rate = done / elapsed_s;
+        st.timings.push({done, elapsed_s, ts: Date.now()});
+        if (st.timings.length > 20) st.timings.shift();
+        const recent = st.timings.slice(-5);
+        if (recent.length >= 2) {
+          const dt = recent[recent.length-1].elapsed_s - recent[0].elapsed_s;
+          const dd = recent[recent.length-1].done - recent[0].done;
+          st.rate = dt > 0 ? dd / dt : rate;
+        } else { st.rate = rate; }
+        st.eta = st.rate > 0 ? Math.round((total - done) / st.rate) : null;
+      }
+      st.done = done; st.total = total; st.last_species = species;
+    }
+    const m_total_line = line.match(/fetching.*?(\d{4,6})\s*rows/i) || line.match(/(\d{4,6})\s*rows\./i);
+    if (m_total_line && currentScript) {
+      states[currentScript].total = states[currentScript].total || parseInt(m_total_line[1]);
+    }
+  }
+  return states;
+}
+
+function fmtTime(s) {
+  if (s == null || s < 0) return '--';
+  if (s < 60) return s + 's';
+  return Math.floor(s/60) + 'm ' + String(Math.round(s%60)).padStart(2,'0') + 's';
+}
+
+function fmtRate(r) {
+  if (!r || r <= 0) return '';
+  if (r >= 1) return Math.round(r) + '/s';
+  return (1/r).toFixed(1) + 's/row';
+}
+
+function renderScripts(states) {
+  const el = document.getElementById('scripts');
+  let anyRunning = false;
+  el.innerHTML = SCRIPTS.map(s => {
+    const st = states[s.id] || {status:'wait'};
+    const badgeMap = {wait:'badge-wait',run:'badge-run',done:'badge-done',fail:'badge-fail',skip:'badge-skip'};
+    const labelMap = {wait:'WAITING',run:'RUNNING',done:'DONE',fail:'FAILED',skip:'SKIPPED'};
+    const cardClass = {wait:'',run:'running',done:'done',fail:'fail',skip:'skip'}[st.status] || '';
+    if (st.status === 'run') anyRunning = true;
+    const pct = st.total > 0 ? Math.round(st.done / st.total * 100) : 0;
+    const detail = st.last_species ? 'Processing: ' + st.last_species : (st.elapsed ? 'Completed in ' + fmtTime(st.elapsed) : '');
+    const statsStr = st.status === 'run' && st.total > 0
+      ? st.done.toLocaleString() + ' / ' + st.total.toLocaleString() + ' &nbsp; ' + fmtRate(st.rate) + ' &nbsp; ETA: ' + fmtTime(st.eta)
+      : (st.status === 'done' && st.elapsed ? fmtTime(st.elapsed) : '');
+    return \`<div class="script-card \${cardClass}">
+  <div class="sc-head">
+    <span class="sc-name">\${s.name}</span>
+    <span class="sc-badge \${badgeMap[st.status]}">\${labelMap[st.status]}</span>
+  </div>
+  <div class="sc-detail">\${detail || s.label}</div>
+  \${st.total > 0 ? \`<div class="sc-progress">
+    <div class="sc-bar-wrap"><div class="sc-bar \${st.status==='run'?'running':''}" style="width:\${pct}%"></div></div>
+    <span class="sc-stats">\${statsStr}</span>
+  </div>\` : (statsStr ? \`<div class="sc-stats" style="font-size:11px;color:var(--muted)">\${statsStr}</div>\` : '')}
+</div>\`;
+  }).join('');
+  const dot = document.getElementById('status-dot');
+  dot.className = anyRunning ? 'running' : (Object.values(states).some(s=>s.status==='fail') ? 'fail' : Object.values(states).every(s=>['done','skip','wait'].includes(s.status)) ? 'done' : '');
+}
+
+function colorLine(line) {
+  const l = line.trim();
+  if (/DONE/.test(l))   return '<span class="log-line-ok">' + escHtml(line) + '</span>';
+  if (/FAIL/.test(l))   return '<span class="log-line-fail">' + escHtml(line) + '</span>';
+  if (/SKIP/.test(l))   return '<span class="log-line-skip">' + escHtml(line) + '</span>';
+  if (/START/.test(l))  return '<span class="log-line-start">' + escHtml(line) + '</span>';
+  if (/\[#/.test(l))    return '<span class="log-line-progress">' + escHtml(line) + '</span>';
+  return escHtml(line);
+}
+
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function renderLog(text, path) {
+  const lines = text.split('\n');
+  const last = lines.slice(-300);
+  const el = document.getElementById('log-content');
+  el.innerHTML = last.map(colorLine).join('\n');
+  const wrap = document.getElementById('log-wrap');
+  wrap.scrollTop = wrap.scrollHeight;
+  document.getElementById('log-path').textContent = path || '';
+  const sub = document.getElementById('header-sub');
+  const m = path ? path.match(/enrich_(\d{8}_\d{4})/) : null;
+  if (m) { const ts = m[1]; sub.textContent = 'Log: ' + ts.slice(0,4)+'-'+ts.slice(4,6)+'-'+ts.slice(6,8)+' '+ts.slice(9,11)+':'+ts.slice(11); }
+}
+
+function renderDB(data) {
+  const total = data.total || 1;
+  const el = document.getElementById('db-rows');
+  el.innerHTML = DB_FIELDS.map(f => {
+    const v = data[f.key] != null ? data[f.key] : '?';
+    const pct = f.key === 'total' ? 100 : (typeof v === 'number' ? Math.min(100, Math.round(v/total*100)) : 0);
+    const display = typeof v === 'number' ? v.toLocaleString() : v;
+    return \`<div class="db-row">
+  <span class="db-label" title="\${f.label}">\${f.label}</span>
+  <div class="db-bar-wrap"><div class="db-bar" style="width:\${pct}%"></div></div>
+  <span class="db-count">\${display}</span>
+</div>\`;
+  }).join('');
+  document.getElementById('db-updated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+
+function updateClock() {
+  document.getElementById('footer-time').textContent = new Date().toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+}
+
+async function pollLog() {
+  try {
+    const r = await fetch(API + '/log');
+    const d = await r.json();
+    const states = parseLog(d.content || '');
+    renderScripts(states);
+    renderLog(d.content || '', d.path || '');
+    document.getElementById('log-age').textContent = 'polled ' + new Date().toLocaleTimeString();
+  } catch(e) {
+    document.getElementById('header-sub').textContent = 'Server offline - start enrich_panel_server.py';
+    document.getElementById('status-dot').className = 'fail';
+  }
+}
+
+async function pollDB() {
+  try {
+    const r = await fetch(API + '/db');
+    const d = await r.json();
+    renderDB(d);
+  } catch {}
+}
+
+setInterval(pollLog, 2000);
+setInterval(pollDB, 30000);
+setInterval(updateClock, 1000);
+pollLog();
+pollDB();
+updateClock();
+</script>
+</body>
+</html>

@@ -282,6 +282,12 @@
                          padding: 4px 10px; color: var(--text-sec); font-style: italic; }
   .doc-version { font-size: 10px; color: var(--text-ter); padding: 8px 0 0;
                  border-top: 0.5px solid var(--border); margin-top: 8px; }
+  /* Hide GPR Calculation tab on web (no host param) */
+  body:not([class*="host-"]) .tab:nth-child(2),
+  body:not([class*="host-"]) #tab-calc {
+    display: none;
+  }
+
   #status { font-size: 10px; color: var(--text-ter); padding: 4px 10px;
             border-top: 0.5px solid var(--border); flex-shrink: 0; }
 </style>

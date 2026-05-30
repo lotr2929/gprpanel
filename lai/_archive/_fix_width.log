@@ -1,0 +1,5 @@
+body align-items fixed
+app width fixed to min(840px,100%)
+select fixed - removed invalid fields
+field name refs fixed in JS
+Done.

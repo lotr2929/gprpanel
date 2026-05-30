@@ -1,0 +1,17 @@
+[17:19:02] GPR Overnight Enrichment Run
+[17:19:02] Started: Thu 28 May 2026 17:19
+[17:19:02] Log: C:\_myProjects\+GPR\GPRTool\lai\logs\overnight_20260528_1719.log
+[17:19:02] ==================================================
+[17:19:02] START enrich_usda_traits.py
+[17:20:08] DONE enrich_usda_traits.py in 1m 05s
+[17:20:08] ==================================================
+[17:20:08] START enrich_austraits.py
+[17:22:48] DONE enrich_austraits.py in 2m 40s
+[17:22:48] ==================================================
+[17:22:48] START enrich_carbon.py
+[17:22:48] FAILED (exit 2) enrich_carbon.py in 0m 00s
+[17:22:48] ==================================================
+[17:22:48] START enrich_images.py
+[02:08:15] FAILED (exit 1) enrich_images.py in 525m 27s
+[02:08:15] ==================================================
+[02:08:15] All overnight scripts complete.

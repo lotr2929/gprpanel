@@ -1,0 +1,4 @@
+MISS: line 505 not openFullAccount
+'<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'
+imgDot -> imgIcon at line 569
+tr.innerHTML imgDot->imgIcon at line 570

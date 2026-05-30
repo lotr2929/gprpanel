@@ -1,0 +1,11 @@
+min-width 390px
+tab-plants padding
+plant-list inline padding removed
+scientific name raw flag
+MISS: imgDot
+Full Account -> Full Description
+fdesc modal CSS added
+fdesc modal HTML added
+MISS: openFullAccount stub
+select expanded
+Done.

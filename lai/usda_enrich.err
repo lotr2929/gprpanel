@@ -1,0 +1,4 @@
+  File "C:\_myProjects\+GPR\GPRTool\lai\enrich_usda_traits.py", line 1
+    """
+    ^^^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 1232-1233: truncated \uXXXX escape

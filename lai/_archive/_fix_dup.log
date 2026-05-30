@@ -1,0 +1,9 @@
+new_block_start=597, old_block_start=596
+Removing old block lines 596-601:
+  596: "    const shape = p.growth_form || '—';\n"
+  597: '    const cn = p.common_name ? ` <span style="color:var(--text-ter);font-style:n'
+  598: '    const imBadge = p.image_url ? \' <span class="tb" style="background:#fff;colo'
+  599: '    tr.innerHTML = `<td><em>${esc(p.species)}</em>${cn}\n'
+  600: '      <span class="tb t${p.tier}">T${p.tier}</span>${imBadge}</td>\n'
+  601: '      <td class="r">${(+p.lai_mean).toFixed(1)}</td>`;\n'
+Done.

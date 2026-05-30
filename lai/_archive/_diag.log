@@ -1,0 +1,147 @@
+TABLES: ['plants', 'plant_ancestors', 'plant_native_statuses', 'plant_map_coordinates', 'plant_characteristics', 'plant_notes', 'states', 'state_plants', 'sqlite_sequence', 'plant_distribution', 'plant_taxonomic_paths', 'sqlite_stat1']
+
+plants (32,800 rows):
+  id (INTEGER)
+  symbol (TEXT)
+  scientific_name (TEXT)
+  common_name (TEXT)
+  group_name (TEXT)
+  rank_id (INTEGER)
+  rank (TEXT)
+  accepted_id (INTEGER)
+  has_synonyms (BOOLEAN)
+  has_subordinate_taxa (BOOLEAN)
+  has_wildlife (BOOLEAN)
+  has_wetland_data (BOOLEAN)
+  has_images (BOOLEAN)
+  has_related_links (BOOLEAN)
+  has_legal_statuses (BOOLEAN)
+
+plant_ancestors (333,455 rows):
+  id (INTEGER)
+  plant_id (INTEGER)
+  ancestor_id (INTEGER)
+  ancestor_symbol (TEXT)
+  ancestor_scientific_name (TEXT)
+  ancestor_common_name (TEXT)
+  ancestor_rank_id (INTEGER)
+  ancestor_rank (TEXT)
+  ancestor_accepted_id (INTEGER)
+  hierarchy_level (INTEGER)
+
+plant_native_statuses (48,213 rows):
+  id (INTEGER)
+  plant_id (INTEGER)
+  region (TEXT)
+  status (TEXT)
+  status_type (TEXT)
+
+plant_map_coordinates (164,000 rows):
+  id (INTEGER)
+  plant_id (INTEGER)
+  state_abbr (TEXT)
+  x_min (REAL)
+  y_min (REAL)
+  x_max (REAL)
+  y_max (REAL)
+
+plant_characteristics (2,162 rows):
+  id (INTEGER)
+  plant_id (INTEGER)
+  active_growth_period (TEXT)
+  bloat (TEXT)
+  c_n_ratio (TEXT)
+  coppice_potential (TEXT)
+  fall_conspicuous (TEXT)
+  fire_resistant (TEXT)
+  flower_color (TEXT)
+  flower_conspicuous (TEXT)
+  foliage_color (TEXT)
+  foliage_porosity_summer (TEXT)
+  foliage_porosity_winter (TEXT)
+  foliage_texture (TEXT)
+  fruit_seed_color (TEXT)
+
+plant_notes (4 rows):
+  plant_id (INTEGER)
+  general_notes (TEXT)
+  synonym_notes (TEXT)
+  subordinate_taxa_notes (TEXT)
+  legal_notes (TEXT)
+  noxious_notes (TEXT)
+  rarity_notes (TEXT)
+  wetland_notes (TEXT)
+  related_links_notes (TEXT)
+  wildlife_notes (TEXT)
+  sources_notes (TEXT)
+  characteristic_notes (TEXT)
+  pollinator_notes (TEXT)
+  cultural_notes (TEXT)
+  ethnobotany_notes (TEXT)
+
+states (77 rows):
+  plant_location_id (INTEGER)
+  plant_location_name (TEXT)
+  plant_location_category (TEXT)
+  county_name (TEXT)
+  created_at (TIMESTAMP)
+
+state_plants (249,479 rows):
+  id (INTEGER)
+  state_location_id (INTEGER)
+  plant_symbol (TEXT)
+
+sqlite_sequence (1 rows):
+  name ()
+  seq ()
+
+plant_distribution (32,800 rows):
+  plant_id (INTEGER)
+  plant_symbol (TEXT)
+  native_states (TEXT)
+  introduced_states (TEXT)
+  total_native_states (INTEGER)
+  total_introduced_states (INTEGER)
+
+plant_taxonomic_paths (32,800 rows):
+  plant_id (INTEGER)
+  kingdom (TEXT)
+  phylum (TEXT)
+  class_name (TEXT)
+  order_name (TEXT)
+  family (TEXT)
+  genus (TEXT)
+  species (TEXT)
+  subspecies (TEXT)
+  variety (TEXT)
+  form (TEXT)
+  full_path (TEXT)
+
+sqlite_stat1 (17 rows):
+  tbl ()
+  idx ()
+  stat ()
+
+Sample plants: (601, 'ECTE5', '<i>Echinoplaca tetrapla</i> (Zahlbr.) Lücking', 'echinoplaca lichen', 'Lichen', 180, 'Species', 601, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 'ecte5_001_shp.jpg', 'https://plants.sc.egov.usda.gov/ImageLibrary/standard/ecte5_001_shp.jpg', 0, 0, '[]', '["Lichenous"]', '[]', '[]', '[]', '2025-10-06 14:24:02', '2025-10-06 14:24:02', '2dca93f7026e19398105fd7d4bb33051')
+
+Sample plant_ancestors: (1, 65791, 7168, 'Plantae', '<i>Plantae</i>', 'Plants', 10, 'Kingdom', 7168, 0)
+
+Sample plant_native_statuses: (1, 65791, 'L48', 'N', 'Native')
+
+Sample plant_map_coordinates: (1, 65791, 'AK', -179.14733, 51.21526, -129.97951, 71.38961)
+
+Sample plant_characteristics: (1, 15308, 'Spring and Summer', 'None', 'High', 'No', 'Yes', 'No', 'Yellow', 'No', 'Gray-Green', 'Dense', 'Dense', 'Medium', 'Brown', 'No', 'Single Stem', 'Slow', '20', '165.0', 'No', 'Yes', 'Long', 'No', 'None', 'No', 'Erect', 'None', 'Yes', 'Yes', 'Yes', 'None', 'Low', 'Yes', 'Low', 'Low', 'None', '90', 'None', 'Medium', 6.0, 3.3, '700', '300', '260', '38', '36', 'None', 'Tolerant', '-28', 'Late Spring', 'Routinely Available', 'Low', 'Summer', 'Fall', 'No', 'Yes', 'No', 'Yes', 'No', 'No', 'Yes', 'No', 'No', 'No', '11280', 'Slow', 'Low', 'No', 'None', 'No', 'Yes', 'No', 'Low', 'Yes', 'No', 'No', 'Low', 'No', 'No', 'Yes', 'Yes')
+
+Sample plant_notes: (20548, 'G.L. Nesom (<i>Arthraxon hispidus</i> (Poaceae) in Texas: Update. <i>Phytoneuron</i> 2011-39:  1—5. 2011, <a href="https://www.phytoneuron.net/PhytoN-Arthraxon.pdf">https://www.phytoneuron.net/PhytoN-Arthraxon.pdf</a>) erroneously reported <i>Arthraxon hispidus</i> from Tarrant County, Texas.  The specimen belongs to a species of <i>Urochloa</i>, likely <i>U. reptans.</i>', None, None, None, None, None, None, None, None, None, None, None, None, None)
+
+Sample states: (3292, 'Alabama', 'U.S. States', None, '2025-10-06 14:20:33')
+
+Sample state_plants: (1, 152850, 'AGLI')
+
+Sample sqlite_sequence: ('state_plants', 249479)
+
+Sample plant_distribution: (601, 'ECTE5', '[]', '[]', 0, 0)
+
+Sample plant_taxonomic_paths: (601, '<i>Fungi</i>', '<i>Ascomycota</i>', None, None, '<i>Gomphillaceae</i> Walt. Watson', '<i>Echinoplaca</i> Fée', '<i>Echinoplaca tetrapla</i>', None, None, None, '<i>Fungi</i> > <i>Ascomycota</i> > <i>Gomphillaceae</i> Walt. Watson > <i>Echinoplaca</i> Fée')
+
+Sample sqlite_stat1: ('plant_taxonomic_paths', 'idx_taxonomic_paths_genus', '32800 9')

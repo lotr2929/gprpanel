@@ -1,0 +1,18 @@
+[10:25:52] ==================================================
+[10:25:52] GPR Nightly Enrichment  Sat 30 May 2026 10:25
+[10:25:52] dry-run=True  log=C:\_myProjects\_GPR\GPR-PlantDB\lai\logs\enrich_20260530_1025.log
+[10:25:52] ==================================================
+[10:25:52] SKIP enrich_try_sla.py -- file missing (request #50077)
+[10:25:52] 
+SUMMARY
+[10:25:52]   USDA Zones               SKIP   
+[10:25:52]   USDA Traits              SKIP   
+[10:25:52]   AusTraits                SKIP   
+[10:25:52]   GBIF Taxonomy            SKIP   
+[10:25:52]   Images                   SKIP   
+[10:25:52]   Carbon Seq.              SKIP   
+[10:25:52]   TRY SLA                  SKIP   
+[10:25:52]   Sync SQLite              SKIP   
+[10:25:52]   Rebuild Panel JSON       SKIP   
+[10:25:52] Total: 0s
+[10:25:52] Log: C:\_myProjects\_GPR\GPR-PlantDB\lai\logs\enrich_20260530_1025.log

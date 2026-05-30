@@ -1,0 +1,15 @@
+forEach: lines 594-606
+  594: '  data.forEach(p => {\n'
+  595: "    const tr = document.createElement('tr'); tr.className = 'pr';\n"
+  596: '      <span class="tb t${p.tier}">T${p.tier}</span>\n'
+  597: '      <span style="color:var(--text-ter);font-size:10px"> (${shape})</span></td>\n'
+  598: '      <td class="r">${(+p.lai_mean).toFixed(1)}</td>`;\n'
+  599: "    tr.addEventListener('click', () => {\n"
+  600: "      document.querySelectorAll('.pr').forEach(r => r.classList.remove('sel'));\n"
+  601: "      tr.classList.add('sel');\n"
+  602: '      writeSelection({ type: currentType, species: p.species, lai: p.lai_mean, shape });\n'
+  603: '    });\n'
+  604: "    tr.addEventListener('dblclick', () => openDetail(p));\n"
+  605: '    tbody.appendChild(tr);\n'
+  606: '  });\n'
+forEach rewritten cleanly.

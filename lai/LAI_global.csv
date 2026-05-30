@@ -1,0 +1,593 @@
+id,species,common_name,category,mean_lai,lai_min,lai_max,measurement_count,pft,canopy_form,climate,deciduous,tier,tier_source,sources,notes
+1,Terminalia catappa,Sea Almond,Tree,3.8,2.8,4.8,1,TrBD,spreading,tropical,TRUE,1,Direct_Urban_Field,Tan & Sia (2009); panel.html,Tan & Sia 2009 guidebook; pending PDF verification
+2,Ficus benjamina,Weeping Fig,Tree,4.2,3.2,5.2,1,TrBE,round,tropical,FALSE,1,Direct_Urban_Field,Tan & Sia (2009); panel.html,Tan & Sia 2009 guidebook; pending PDF verification
+3,Samanea saman,Rain Tree,Tree,3.6,2.6,4.6,1,TrBE,spreading,tropical,FALSE,1,Direct_Urban_Field,Tan & Sia (2009); panel.html,Tan & Sia 2009 guidebook; pending PDF verification
+4,Pterocarpus indicus,Angsana,Tree,4.5,3.5,5.5,1,TrBD,spreading,tropical,TRUE,1,Direct_Urban_Field,Tan & Sia (2009); panel.html,Tan & Sia 2009 guidebook; pending PDF verification
+5,Swietenia mahagoni,Mahogany,Tree,3.1,2.1,4.1,1,TrBE,round,tropical,FALSE,1,Direct_Urban_Field,Tan & Sia (2009); panel.html,Tan & Sia 2009 guidebook; pending PDF verification
+6,Agrostis capillaris,Common Bentgrass,Grass,8.4,8.4,8.4,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+7,Arrhenatherum elatius,False Oat-grass,Grass,7.66,7.66,7.66,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+8,Alopecurus pratensis,Meadow Foxtail,Grass,7.65,7.65,7.65,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+9,Anthoxanthum odoratum,Sweet Vernal Grass,Grass,5.53,3.72,7.34,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+10,Alopecurus geniculatus,Floating Foxtail,Grass,7.21,7.21,7.21,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+11,Apera spica-venti,Loose Silky-bent,Grass,7.04,7.04,7.04,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+12,Clinopodium vulgare,Wild Basil,Groundcover,6.93,6.93,6.93,1,TeGC,hemisphere,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+13,Acer spicatum,Mountain Maple,Tree,6.91,6.91,6.91,1,TeBD,round,temperate,TRUE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+14,Cirsium arvense,Creeping Thistle,Groundcover,6.62,6.62,6.62,1,TeGC,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+15,Calamagrostis epigejos,Wood Small-reed,Grass,4.82,3.21,6.42,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+16,Anthyllis vulneraria,Kidney Vetch,Groundcover,5.52,5.52,5.52,1,TeGC,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+17,Digitalis purpurea,Foxglove,Groundcover,5.42,5.42,5.42,1,TeGC,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+18,Cirsium acaule,Stemless Thistle,Groundcover,5.31,5.31,5.31,1,TeGC,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+19,Aegopodium podagraria,Ground Elder,Groundcover,5.04,5.04,5.04,1,TeGC,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+20,Arctium lappa,Greater Burdock,Groundcover,4.72,4.72,4.72,1,TeGC,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+21,Deschampsia cespitosa,Tufted Hair-grass,Grass,4.52,4.52,4.52,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+22,Centaurium erythraea,Common Centaury,Groundcover,3.83,3.83,3.83,1,TeGC,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+23,Bromus hordeaceus,Soft Brome,Grass,3.79,3.79,3.79,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+24,Brachypodium sylvaticum,False Brome,Grass,3.5,3.5,3.5,1,TeGr,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+25,Campanula rotundifolia,Harebell,Groundcover,2.97,2.97,2.97,1,TeGC,flat,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+26,Dalbergia miscolobium,Brazilian Rosewood,Tree,2.52,2.52,2.52,1,TrBD,round,tropical,TRUE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+27,Byrsonima coccolobifolia,Murici,Tree,2.57,2.57,2.57,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+28,Byrsonima verbascifolia,Maria Preta,Tree,2.39,2.39,2.39,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+29,Caryocar brasiliense,Pequi,Tree,2.36,2.36,2.36,1,TrBD,spreading,tropical,TRUE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+30,Annona crassiflora,Marolo,Tree,1.57,1.57,1.57,1,TrBD,round,tropical,TRUE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+31,Dacryodes rostrata,Kedongdong Hutan,Tree,1.06,1.06,1.06,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+32,Canarium denticulatum,Kedongdong,Tree,1.05,1.05,1.05,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+33,Cleistanthus paxii,Cleistanthus,Tree,0.98,0.98,0.98,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+34,Dacryodes laxa,Forest Canarium,Tree,0.96,0.96,0.96,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+35,Cleistanthus baramicus,Cleistanthus,Tree,0.89,0.89,0.89,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+36,Aporusa lucida,Aporusa,Tree,0.86,0.86,0.86,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+37,Canarium pilosum,Hairy Canarium,Tree,0.71,0.71,0.71,1,TrBE,round,tropical,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+38,Aextoxicon punctatum,Olivillo,Tree,4.6,4.6,4.6,1,TeBE,round,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+39,Amomyrtus meli,Meli,Tree,3.6,3.6,3.6,1,TeBE,round,temperate,FALSE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+40,Cornus stolonifera,Red-osier Dogwood,Shrub,0.23,0.23,0.23,1,TeDS,hemisphere,temperate,TRUE,1,Direct_Field,Singapore field (Boon & Tan 2009),Singapore field measurement (Boon & Tan 2009)
+41,Abies concolor,,Tree,14.48,8.17,20.75,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+42,Thujopsis dolabrata,,Tree,14.27,12.6,17.5,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+43,Sequoia sempervirens,,Tree,12.8,9.5,14.48,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+44,Pseudotsuga menziesii,,Tree,12.64,3.37,34.96,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+45,Abies fraseri,,Tree,12.3,12.3,12.3,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+46,Abies amabilis,,Tree,11.63,11.63,11.63,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+47,Pinus nigra,,Tree,11.46,8.2,14.73,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+48,Abies lasiocarpa,,Tree,11.38,8.07,14.7,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+49,Eucalyptus sieberii,,Tree,11.0,11.0,11.0,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+50,Shorea robusta,,Tree,10.83,6.0,14.02,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+51,Abies georget,,Tree,10.48,8.86,12.41,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+52,Swietenia macrophylla,,Tree,10.4,10.4,10.4,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+53,Abies balsamea,,Tree,10.32,5.2,15.6,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+54,Quercus crispula,,Tree,10.1,8.1,12.1,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+55,Metasequoia glyptostroboides,,Tree,9.53,9.53,9.53,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+56,Tectona grandis,,Tree,9.33,0.96,17.4,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+57,Cryptomeria japonica,,Tree,9.26,2.71,17.2,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+58,Picea sitchensis,,Tree,9.1,9.1,9.1,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+59,Abies homolepis,,Tree,9.0,7.4,10.6,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+60,Turreanthus africana,,Tree,9.0,9.0,9.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+61,Dacryodes klaineana,,Tree,9.0,9.0,9.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+62,Abies fabri,,Tree,8.99,7.78,10.21,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+63,Castanopsis cuspidata,,Tree,8.79,5.2,12.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+64,Carpinus betulus,,Tree,8.73,8.73,8.73,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+65,Quercus myrsinifolia,,Tree,8.37,8.0,9.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+66,Tsuga canadensis,,Tree,8.1,3.09,13.1,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+67,Pinus echinata,,Tree,7.8,7.8,7.8,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+68,Nothofagus truncata,,Tree,7.4,7.4,7.4,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+69,Dacryodes excelsa,,Tree,7.34,7.34,7.34,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+70,Graffenrieda emarginata,,Tree,7.19,6.59,8.08,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+71,Nothofagus fusca,,Tree,7.0,7.0,7.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+72,Quercus semicarpiforlia,,Tree,6.81,6.81,6.81,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+73,Pinus elliottii var. elliottii x Pinus caribaea var. hondurensis,,Tree,6.73,4.46,9.77,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+74,Pinus radiata,,Tree,6.72,1.56,14.0,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+75,Abies firma,,Tree,6.7,6.7,6.7,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+76,Larix leptolepis,,Tree,6.68,6.68,6.68,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+77,Liriodendron tulipifera,,Tree,6.65,5.1,7.4,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+78,Picea rubens,,Tree,6.58,1.73,14.8,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+79,Acer saccharum,,Tree,6.58,3.25,8.1,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+80,Picea stichensis,,Tree,6.55,4.79,8.5,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+81,Abies alba,,Tree,6.5,5.4,7.8,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+82,Quercus prinus,,Tree,6.33,4.3,8.2,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+83,Hopea ferrea,,Tree,6.3,6.3,6.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+84,Populus deltoides,,Tree,6.25,5.7,6.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+85,Aesculus octandra,,Tree,6.2,6.2,6.2,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+86,Cinnamomum camphora,,Tree,6.11,6.11,6.11,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+87,Picea abies,,Tree,6.09,0.48,21.6,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+88,Fagus grandifolia,,Tree,6.06,2.9,14.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+89,Fraxinus oruns,,Tree,6.05,6.05,6.05,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+90,Populus balsamifera,,Tree,6.0,6.0,6.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+91,Pinus elliotti,,Tree,5.99,5.99,5.99,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+92,Acer,,Tree,5.99,5.99,5.99,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+93,Acer rubrum,,Tree,5.97,5.14,6.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+94,Tsuga mertensiana,,Tree,5.9,2.8,10.0,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+95,Fagus sylvatica,,Tree,5.85,2.28,10.2,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+96,Quercus phillyraeoides,,Tree,5.82,5.74,5.9,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+97,Elaeagnus umbellata,,Tree,5.8,5.8,5.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+98,Nothofagus solandri,,Tree,5.78,3.0,8.9,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+99,Prunus pensylvanica,,Tree,5.73,5.4,6.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+100,Chamaecyparis obtusa,,Tree,5.71,3.8,7.1,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+101,Castanea sativa and others,,Tree,5.54,2.88,7.45,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+102,Liquidambar styraciflua,,Tree,5.5,5.5,5.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+103,Quercus mongolica,,Tree,5.5,5.5,5.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+104,Quercus serrata,,Tree,5.48,3.1,8.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+105,Pinus resinosa,,Tree,5.47,2.5,10.7,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+106,Betula ermanii,,Tree,5.4,5.2,5.55,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+107,Quercus,,Tree,5.37,4.31,6.03,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+108,Theobroma cacao,,Tree,5.37,4.1,6.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+109,Alnus glutinosa,,Tree,5.34,2.07,8.26,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+110,Pinus strobus,,Tree,5.31,1.5,17.8,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+111,Magnolia obovata,,Tree,5.3,5.3,5.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+112,Abies grandis,,Tree,5.3,5.3,5.3,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+113,Tsuga sieboldii,,Tree,5.3,5.3,5.3,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+114,Quercus petraea and others,,Tree,5.26,4.67,5.86,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+115,Quercus acutissima,,Tree,5.25,2.9,7.1,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+116,Alnus rubra,,Tree,5.2,3.9,6.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+117,Quercus patraea,,Tree,5.2,5.2,5.2,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+118,Fagus crenata,,Tree,5.06,3.19,7.84,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+119,Abies veitchii,,Tree,5.0,5.0,5.0,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+120,Quercus petraea,,Tree,4.99,1.71,6.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+121,Cyrilla racemiflora,,Tree,4.96,4.96,4.96,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+122,Abies religiosa,,Tree,4.96,4.96,4.96,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+123,Castanea sativa,,Tree,4.87,3.29,6.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+124,Tamarix chinensis,,Tree,4.85,4.85,4.85,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+125,Quercus cerris,,Tree,4.84,3.8,7.4,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+126,Fagus orientalis,,Tree,4.77,4.3,5.2,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+127,Micarandra sprucei,,Tree,4.72,4.72,4.72,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+128,Fraxinus excelsior,,Tree,4.69,3.6,5.4,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+129,Pinus densiflora,,Tree,4.65,4.08,5.15,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+130,Pinus,,Tree,4.65,2.01,7.29,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+131,Metrosideros polymorpha,,Tree,4.61,0.61,8.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+132,Picea glauca,,Tree,4.58,2.76,6.4,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+133,Eucalyptus regnans,,Tree,4.57,3.11,9.0,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+134,Eucalyptus grandis*Eucalyptus urophylla hybrids,,Tree,4.49,3.54,5.83,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+135,Podocarpus nubigena,,Tree,4.45,4.2,4.7,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+136,Larix sibirica,,Tree,4.4,4.4,4.4,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+137,Betula verrucosa,,Tree,4.35,1.7,6.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+138,Betula maximowixziana,,Tree,4.31,3.67,5.19,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+139,Nothofagus pumila,,Tree,4.3,4.3,4.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+140,Eucalyptus meullerana,,Tree,4.3,3.8,4.8,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+141,Hevea brasiliensis,,Tree,4.27,3.2,5.34,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+142,Quercus robur,,Tree,4.24,2.0,6.33,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+143,Pinus contorta,,Tree,4.2,0.01,35.7,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+144,Eucalyptus nitens,,Tree,4.15,2.24,7.43,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+145,Quercus coccifera,,Tree,4.15,4.15,4.15,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+146,Cecropia,,Tree,4.13,4.13,4.13,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+147,Picea mariana,,Tree,4.11,1.13,8.97,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+148,Quercus rubra,,Tree,4.11,2.7,4.9,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+149,Abies sibirica,,Tree,4.1,4.1,4.1,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+150,Picea engelmannii,,Tree,4.1,4.1,4.1,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+151,Quercus alba,,Tree,4.0,4.0,4.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+152,Zelkovab serrata,,Tree,3.95,3.95,3.95,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+153,Pinus ponderosa,,Tree,3.9,1.02,9.0,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+154,Pinus pinaster,,Tree,3.9,1.76,14.6,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+155,Cupressus lusitanica,,Tree,3.85,3.84,3.86,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+156,Quercus ilex,,Tree,3.84,1.7,6.56,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+157,Eucalyptus maculata,,Tree,3.84,2.78,4.9,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+158,Pinus sylvestris,,Tree,3.83,0.15,14.21,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+159,Betula aetnensis,,Tree,3.8,3.8,3.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+160,Dacrydium cupressinum,,Tree,3.7,3.7,3.7,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+161,Larix cajanderi,,Tree,3.7,3.7,3.7,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+162,Nothofagus dombeyi,,Tree,3.7,3.7,3.7,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+163,Alnus sp.,,Tree,3.62,3.45,3.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+164,Eucalyptus globulus,,Tree,3.57,1.39,6.1,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+165,Eucalyptus microcorys,,Tree,3.56,2.0,5.2,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+166,Marquesia macroura,,Tree,3.47,3.47,3.47,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+167,Quercus pedunculiflora,,Tree,3.43,3.43,3.43,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+168,Larix decidua,,Tree,3.42,1.74,5.1,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+169,Eucalyptus grandis,,Tree,3.4,2.07,4.15,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+170,Eucalyptus clone (E. grandis *E. urophylla),,Tree,3.4,3.4,3.4,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+171,Betula erumani,,Tree,3.35,3.11,3.59,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+172,Prestoea montana,,Tree,3.3,3.3,3.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+173,Pinus canariensis,,Tree,3.26,3.09,3.53,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+174,Pinus banksiana,,Tree,3.26,1.22,11.0,1,TeBD,conical,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+175,Eucalyptus sieberi,,Tree,3.24,1.96,4.0,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+176,Populus trichocarpa,,Tree,3.23,3.23,3.23,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+177,Pinus cembra,,Tree,3.2,2.5,3.9,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+178,Salix dasyclados,,Tree,3.2,3.2,3.2,1,TeBD,spreading,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+179,Nothofagus nitida,,Tree,3.2,3.2,3.2,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+180,Combretodendron africanum,,Tree,3.16,3.16,3.16,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+181,Nothofagus betuloides,,Tree,3.15,2.58,3.73,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+182,Betula pendula,,Tree,3.11,0.66,5.34,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+183,Pinus taeda,,Tree,3.08,0.94,5.34,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+184,Eperua molenillo,,Tree,3.04,3.04,3.04,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+185,Fraxinus pennsylvanica,,Tree,3.0,3.0,3.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+186,Picea,,Tree,2.97,2.97,2.97,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+187,Eucalyptus fastigata,,Tree,2.93,2.93,2.93,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+188,Populus tremula,,Tree,2.91,2.43,4.22,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+189,Quercus liaotungensis,,Tree,2.9,2.9,2.9,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+190,Carapa guianensis,,Tree,2.9,2.9,2.9,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+191,Eucryphia cordifolia,,Tree,2.9,2.1,3.7,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+192,Robinia pseudoacacia,,Tree,2.89,2.89,2.89,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+193,Betula pubescens,,Tree,2.83,0.76,5.12,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+194,Eucalyptus grandis * urophylla (mono clonal),,Tree,2.8,2.4,3.0,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+195,Picea obovata,,Tree,2.8,2.8,2.8,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+196,Populus tremuloides,,Tree,2.77,0.37,6.6,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+197,Alnus incana,,Tree,2.77,0.62,5.43,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+198,Quercus pubescens,,Tree,2.76,2.54,3.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+199,Eucalyptus saligna,,Tree,2.7,1.46,5.18,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+200,Eucalyptus obliqua,,Tree,2.66,1.23,5.4,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+201,Tabebuia rigida,,Tree,2.62,1.99,3.25,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+202,Populus fremontii,,Tree,2.6,2.6,2.6,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+203,Quercus frainetto,,Tree,2.56,2.1,2.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+204,Eucalyptus diversicolor,,Tree,2.55,1.3,5.0,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+205,Larix principis-rupprechtii,,Tree,2.54,2.54,2.54,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+206,Toona ciliata,,Tree,2.5,2.1,2.9,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+207,Pinus caribaea,,Tree,2.5,2.5,2.5,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+208,Pinus elliottii,,Tree,2.47,2.47,2.47,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+209,Populus grandidentata,,Tree,2.43,2.43,2.43,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+210,Populus davidiana,,Tree,2.37,2.37,2.37,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+211,Quercus pyrenaica,,Tree,2.35,1.8,3.4,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+212,Eucalyptus grandis hybrids,,Tree,2.3,2.3,2.3,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+213,Betula platyphylla,,Tree,2.3,1.1,3.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+214,Pinus patula,,Tree,2.29,2.13,2.46,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+215,Eucalyptus grandis * camaldulensis hybrid,,Tree,2.29,1.18,3.95,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+216,Pinus tabulaeformis,,Tree,2.28,2.28,2.28,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+217,Nothofagus glauca,,Tree,2.27,2.06,2.63,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+218,Betula,,Tree,2.27,2.27,2.27,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+219,Salix viminalis,,Tree,2.2,1.9,2.5,1,TeBD,spreading,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+220,Eucalyptus calophylla,,Tree,2.1,1.9,2.3,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+221,Weinmannia trichosperma,,Tree,2.1,2.1,2.1,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+222,Nothofagus pumilio,,Tree,2.07,1.19,2.9,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+223,Eucalyptus marginata,,Tree,2.04,0.85,4.0,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+224,Populus canadensis Moench (clone I-214),,Tree,2.02,2.02,2.02,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+225,Nothofagus antarctica,,Tree,2.0,0.75,4.7,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+226,Larix gmelinii,,Tree,2.0,1.03,5.7,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+227,Eucalyptus camaldulensis,,Tree,2.0,0.28,3.58,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+228,Populus spp,,Tree,1.96,1.96,1.96,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+229,Eucalyptus cypellocarpa,,Tree,1.95,1.95,1.95,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+230,Pinus mugo,,Tree,1.9,1.9,1.9,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+231,Abies faxoniana,,Tree,1.9,1.9,1.9,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+232,Pinus sibirica,,Tree,1.89,1.89,1.89,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+233,Eucalyptus delegatensis,,Tree,1.8,1.5,2.11,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+234,Eucalyptus dives,,Tree,1.8,1.8,1.8,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+235,Podocarpus falcatus,,Tree,1.78,1.78,1.78,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+236,Qualea grandiflora,,Tree,1.76,0.73,3.04,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+237,Pinus yunnanensis,,Tree,1.75,1.7,1.8,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+238,Taxodium distichum,,Tree,1.7,0.5,2.9,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+239,Scaphium macropodum,,Tree,1.68,1.68,1.68,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+240,Diospyros fusiformis,,Tree,1.65,1.65,1.65,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+241,Eucalyptus,,Tree,1.58,0.01,4.4,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+242,Betula nana,,Tree,1.54,0.97,2.64,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+243,Litsea lancifolia,,Tree,1.51,1.51,1.51,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+244,Picea purpurea,,Tree,1.5,1.5,1.5,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+245,Urophyllum griffithianum,,Tree,1.43,1.43,1.43,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+246,Pinus halepensis,,Tree,1.43,1.15,1.8,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+247,Scaphium longipetiolatum,,Tree,1.38,1.38,1.38,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+248,Aporusa grandistipula,,Tree,1.32,1.32,1.32,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+249,Urophyllum glabrum,,Tree,1.28,1.28,1.28,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+250,Litsea accedens,,Tree,1.23,1.23,1.23,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+251,Qualea parviflora,,Tree,1.16,0.68,2.07,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+252,Eucalyptus radiata,,Tree,1.13,1.13,1.13,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+253,Shorea multiflora,,Tree,1.13,1.13,1.13,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+254,Eucalyptus ovata,,Tree,1.08,1.08,1.08,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+255,Eucalyptus sp.,,Tree,0.99,0.36,2.31,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+256,Eucalyptus viminalis,,Tree,0.99,0.99,0.99,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+257,Shorea falciferoides,,Tree,0.99,0.99,0.99,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+258,Dipterocarpus applanatus,,Tree,0.97,0.97,0.97,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+259,Eucalyptus luecoxylon,,Tree,0.95,0.95,0.95,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+260,Shorea xanthophylla,,Tree,0.87,0.87,0.87,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+261,Eucalyptus dumosa,,Tree,0.85,0.6,1.21,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+262,Eucalyptus pauciflora,,Tree,0.85,0.85,0.85,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+263,Quercus douglasii,,Tree,0.83,0.83,0.83,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+264,Shorea leprosula,,Tree,0.82,0.82,0.82,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+265,Dipterocarpus grandiflorus,,Tree,0.8,0.8,0.8,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+266,Larix laricina,,Tree,0.75,0.38,1.0,1,TeBD,conical,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+267,Eucalyptus bridgesiana,,Tree,0.72,0.72,0.72,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+268,Diospyros curranii,,Tree,0.7,0.7,0.7,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+269,Eucalyptus porosa,,Tree,0.69,0.69,0.69,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+270,Eucalyptus stellulata,,Tree,0.66,0.66,0.66,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+271,Eucalyptus fasciculosa,,Tree,0.59,0.44,0.75,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+272,Dipterocarpus acutangulus,,Tree,0.57,0.57,0.57,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+273,Eucalyptus socialis,,Tree,0.56,0.45,0.67,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+274,Betula glandulosa,,Tree,0.52,0.52,0.52,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+275,Dipterocarpus caudiferus,,Tree,0.26,0.26,0.26,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+276,Morella cerifera,,Shrub,9.75,6.7,12.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+277,Rhododendron maximum,,Shrub,8.36,8.36,8.36,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+278,Ilex aquifolium,,Shrub,6.1,5.6,6.6,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+279,Leiophyllum lyoni,,Shrub,3.1,3.1,3.1,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+280,Arbutus unedo,,Shrub,3.05,3.05,3.05,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+281,Atriplex canescens,,Shrub,2.99,2.99,2.99,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+282,Atriplex lentiformis (Torr.),,Shrub,2.82,2.82,2.82,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+283,Rhododendron catawbiense,,Shrub,2.8,2.8,2.8,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+284,Sarcobatus vermiculatus,,Shrub,2.22,2.22,2.22,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+285,Cistus albidus,,Shrub,2.2,2.2,2.2,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+286,Vaccinium myrtilloides,,Shrub,2.18,2.18,2.18,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+287,Atriplex confertifolia,,Shrub,2.12,2.12,2.12,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+288,Chrysothamnus consimilis,,Shrub,2.02,2.02,2.02,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+289,Rhododendron carolinianum,,Shrub,2.0,2.0,2.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+290,Chamaedaphne calyculata,,Shrub,1.92,1.92,1.92,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+291,Rhododendron nivale,,Shrub,1.85,1.85,1.85,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+292,Loiseleuria procumbens,,Shrub,1.66,0.02,3.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+293,Rhus copallina,,Shrub,1.52,1.52,1.52,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+294,Cistus monospeliensis,,Shrub,1.36,1.36,1.36,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+295,Adenostoma fasciculatum,,Shrub,1.1,1.1,1.1,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+296,Artemisia tridentata,,Shrub,1.0,1.0,1.0,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+297,Cassiope tetragona,,Shrub,0.61,0.36,1.1,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+298,Empetrum hermaphroditum,,Shrub,0.61,0.5,0.72,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+299,Larrea divaricata,,Shrub,0.6,0.6,0.6,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+300,Vaccinium uliginosum,,Shrub,0.38,0.38,0.38,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+301,Melaleuca leucadendron,,Shrub,0.37,0.37,0.37,1,TeBD,round,tropical,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+302,Artemisia ordosica,,Shrub,0.3,0.3,0.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+303,Andromeda polifolia,,Shrub,0.23,0.23,0.23,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+304,Rhus typhina,,Shrub,0.1,0.01,1.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+305,Phalaris arundinacea,,Grass,6.1,6.1,6.1,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+306,Trisetum flavescens,,Grass,6.0,3.74,8.14,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+307,Phalaris arundinaceae,,Grass,4.17,1.81,4.86,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+308,Holcus lanatus,,Grass,3.63,1.14,5.63,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+309,Festuca ovina,,Grass,3.45,0.46,6.34,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+310,Scirpus sylvaticus,,Grass,3.38,2.25,4.75,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+311,Luzula multiflora,,Grass,3.27,2.57,4.66,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+312,Digitaria sanguinalis,,Grass,2.47,0.78,3.37,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+313,Poa annua,,Grass,2.42,0.18,5.99,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+314,Nardus stricta,,Grass,2.29,0.59,3.08,1,TeBD,columnar,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+315,Molinia caerulea,,Grass,1.68,0.88,5.65,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+316,Festuca ortophylla,,Grass,0.32,0.32,0.32,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+317,Lapsana communis,,Groundcover,5.52,4.02,6.83,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+318,Succisa pratensis,,Groundcover,5.09,4.15,6.93,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+319,Plantago major,,Groundcover,5.07,4.16,6.57,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+320,Origanum vulgare,,Groundcover,4.49,2.95,5.76,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+321,Trifolium pratense,,Groundcover,4.34,1.95,6.37,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+322,Taraxacum officinale,,Groundcover,4.33,4.33,4.33,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+323,Geranium pratense,,Groundcover,3.92,3.22,5.42,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+324,Geranium robertianum,,Groundcover,3.71,2.68,5.25,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+325,Urtica dioica,,Groundcover,3.57,1.85,4.86,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+326,Taraxacum spec.,,Groundcover,3.03,0.5,4.15,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+327,Filipendula ulmaria,,Groundcover,2.88,0.93,4.34,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+328,Medicago lupulina,,Groundcover,2.76,1.89,3.78,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+329,Stellaria media,,Groundcover,2.46,0.25,4.64,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+330,Pulicaria dysenterica,,Groundcover,2.31,1.34,4.31,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+331,Lamium purpureum,,Groundcover,2.21,1.09,3.39,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+332,Thlaspi arvense,,Groundcover,1.38,1.21,1.82,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,TRY,Natural/plantation context. Urban LAI may be 30-60% lower.
+333,Phyllostachys bambusoides,,Bamboo,11.6,11.6,11.6,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+334,Phyllostachys pubescens,,Bamboo,5.45,2.88,8.02,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+335,Sasa tokugawana,,Bamboo,5.3,5.3,5.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+336,Sasa nikkoensis,,Bamboo,5.2,5.2,5.2,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+337,Dendrocalamus strictus,,Bamboo,5.08,5.08,5.08,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+338,Sasa nipponica,,Bamboo,4.7,4.7,4.7,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+339,Sasa oseana,,Bamboo,4.7,4.7,4.7,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+340,Sasa kurilensis,,Bamboo,3.73,2.15,5.3,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+341,Sasa senanensis,,Bamboo,3.25,3.25,3.25,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+342,Bruguiera conjugata,,Mangrove,7.6,6.5,8.7,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+343,Rhizophora mucronata,,Mangrove,5.4,5.4,5.4,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+344,Sonneratia apetala,,Mangrove,5.14,5.14,5.14,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+345,Laguncularia racemosa,,Mangrove,4.69,4.4,5.29,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+346,Rhizophora mangle,,Mangrove,4.41,2.91,5.86,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+347,Rhizophora apiculata,,Mangrove,4.15,3.36,4.93,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+348,Kandelia obovata,,Mangrove,3.17,3.17,3.17,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+349,Kandelia candel,,Mangrove,2.57,0.64,4.5,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+350,Avicennia germinans,,Mangrove,2.18,1.61,2.75,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+351,Avicennia marina,,Mangrove,1.83,0.56,3.45,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+352,Elaeis guineensis,,Palm,4.65,3.81,5.58,1,TeBD,round,temperate,FALSE,2,ORNL_TRY_Measured,"ORNL, TRY",Natural/plantation context. Urban LAI may be 30-60% lower.
+353,Eucalyptus camaldulensis var.,River Red Gum var.,Tree,2.46,1.35,3.57,0,TeBD,round,subtropical,FALSE,3,Genus_Mean_ORNL_TRY,Genus Eucalyptus mean from ORNL/TRY (37 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 2.46. Intrageneric variation ±20-30%.
+354,Eucalyptus leucoxylon,White Ironbark,Tree,2.46,1.35,3.57,0,TeBD,round,subtropical,FALSE,3,Genus_Mean_ORNL_TRY,Genus Eucalyptus mean from ORNL/TRY (37 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 2.46. Intrageneric variation ±20-30%.
+355,Eucalyptus melliodora,Yellow Box,Tree,2.46,1.35,3.57,0,TeBD,round,temperate,FALSE,3,Genus_Mean_ORNL_TRY,Genus Eucalyptus mean from ORNL/TRY (37 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 2.46. Intrageneric variation ±20-30%.
+356,Eucalyptus polyanthemos,Red Box,Tree,2.46,1.35,3.57,0,TeBD,round,temperate,FALSE,3,Genus_Mean_ORNL_TRY,Genus Eucalyptus mean from ORNL/TRY (37 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 2.46. Intrageneric variation ±20-30%.
+357,Quercus palustris,Pin Oak,Tree,4.77,2.62,6.92,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Quercus mean from ORNL/TRY (24 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 4.77. Intrageneric variation ±20-30%.
+358,Quercus coccinea,Scarlet Oak,Tree,4.77,2.62,6.92,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Quercus mean from ORNL/TRY (24 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 4.77. Intrageneric variation ±20-30%.
+359,Quercus virginiana,Live Oak,Tree,4.77,2.62,6.92,0,TeBD,round,subtropical,FALSE,3,Genus_Mean_ORNL_TRY,Genus Quercus mean from ORNL/TRY (24 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 4.77. Intrageneric variation ±20-30%.
+360,Acer platanoides,Norway Maple,Tree,6.18,3.4,8.96,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Acer mean from ORNL/TRY (3 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 6.18. Intrageneric variation ±20-30%.
+361,Acer saccharinum,Silver Maple,Tree,6.18,3.4,8.96,0,TeBD,spreading,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Acer mean from ORNL/TRY (3 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 6.18. Intrageneric variation ±20-30%.
+362,Acer palmatum,Japanese Maple,Tree,6.18,3.4,8.96,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Acer mean from ORNL/TRY (3 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 6.18. Intrageneric variation ±20-30%.
+363,Betula papyrifera,Paper Birch,Tree,3.07,1.69,4.45,0,TeBD,conical,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Betula mean from ORNL/TRY (11 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 3.07. Intrageneric variation ±20-30%.
+364,Populus alba,White Poplar,Tree,3.25,1.79,4.72,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Populus mean from ORNL/TRY (10 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 3.25. Intrageneric variation ±20-30%.
+365,Salix babylonica,Weeping Willow,Tree,2.7,1.49,3.92,0,TeBD,spreading,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Salix mean from ORNL/TRY (2 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 2.70. Intrageneric variation ±20-30%.
+366,Salix x sepulcralis,Weeping Willow hybrid,Tree,2.7,1.49,3.92,0,TeBD,spreading,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Salix mean from ORNL/TRY (2 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 2.70. Intrageneric variation ±20-30%.
+367,Prunus serrulata,Japanese Cherry,Tree,5.73,3.15,8.31,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Prunus mean from ORNL/TRY (1 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 5.73. Intrageneric variation ±20-30%.
+368,Prunus avium,Wild Cherry,Tree,5.73,3.15,8.31,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Prunus mean from ORNL/TRY (1 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 5.73. Intrageneric variation ±20-30%.
+369,Prunus cerasifera,Cherry Plum,Tree,5.73,3.15,8.31,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Prunus mean from ORNL/TRY (1 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 5.73. Intrageneric variation ±20-30%.
+370,Picea pungens,Blue Spruce,Tree,4.84,2.66,7.01,0,TeBD,conical,temperate,FALSE,3,Genus_Mean_ORNL_TRY,Genus Picea mean from ORNL/TRY (10 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 4.84. Intrageneric variation ±20-30%.
+371,Picea omorika,Serbian Spruce,Tree,4.84,2.66,7.01,0,TeBD,conical,temperate,FALSE,3,Genus_Mean_ORNL_TRY,Genus Picea mean from ORNL/TRY (10 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 4.84. Intrageneric variation ±20-30%.
+372,Nothofagus obliqua,Roble,Tree,4.09,2.25,5.93,0,TeBD,round,temperate,TRUE,3,Genus_Mean_ORNL_TRY,Genus Nothofagus mean from ORNL/TRY (10 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 4.09. Intrageneric variation ±20-30%.
+373,Melaleuca alternifolia,Tea Tree,Shrub,0.37,0.2,0.54,0,TeBD,round,subtropical,FALSE,3,Genus_Mean_ORNL_TRY,Genus Melaleuca mean from ORNL/TRY (1 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 0.37. Intrageneric variation ±20-30%.
+374,Melaleuca decussata,Cross-leaf Honey Myrtle,Shrub,0.37,0.2,0.54,0,TeBD,round,subtropical,FALSE,3,Genus_Mean_ORNL_TRY,Genus Melaleuca mean from ORNL/TRY (1 measured species). Kattge et al. (2020) TRY genus extrapolation methodology.,Genus mean LAI = 0.37. Intrageneric variation ±20-30%.
+375,Albizia lebbeck,Woman's Tongue,Tree,3.4,2.0,5.0,0,TrBD,spreading,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Albizia; PFT TrBD analogy
+376,Albizia procera,White Siris,Tree,3.2,1.8,4.8,0,TrBD,spreading,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD
+377,Falcataria moluccana,Batai,Tree,3.5,2.0,5.5,0,TrBE,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+378,Leucaena leucocephala,Leucaena,Tree,2.8,1.5,4.5,0,TrBE,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+379,Acacia auriculiformis,Earleaf Acacia,Tree,3.0,1.8,4.5,0,TrBE,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; Acacia
+380,Acacia mangium,Mangium,Tree,3.2,1.8,5.0,0,TrBE,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; Acacia
+381,Delonix regia,Flame Tree,Tree,2.8,1.5,4.5,0,TrBD,spreading,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD; spreading umbrella canopy
+382,Caesalpinia pulcherrima,Peacock Flower,Shrub,2.2,1.0,3.5,0,TrES,hemisphere,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+383,Cassia fistula,Golden Shower,Tree,2.5,1.2,4.0,0,TrBD,round,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD
+384,Cassia javanica,Pink Cassia,Tree,2.6,1.3,4.2,0,TrBD,spreading,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD
+385,Senna siamea,Siamese Senna,Tree,3.0,1.8,4.8,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+386,Senna spectabilis,Golden Wonder,Tree,2.8,1.5,4.5,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+387,Calliandra haematocephala,Powder Puff,Shrub,2.3,1.0,3.8,0,TrES,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+388,Terminalia mantaly,Umbrella Tree,Tree,3.2,1.8,4.8,0,TrBD,spreading,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Terminalia; PFT TrBD
+389,Terminalia muelleri,Australian Almond,Tree,3.0,1.5,4.5,0,TrBD,spreading,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Terminalia
+390,Terminalia arjuna,Arjun Tree,Tree,3.5,2.0,5.0,0,TrBD,spreading,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Terminalia
+391,Ficus microcarpa,Chinese Banyan,Tree,4.0,2.8,5.5,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Ficus; analogy Ficus benjamina
+392,Ficus elastica,Rubber Plant,Tree,4.5,3.0,6.0,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Ficus; large leaf dense canopy
+393,Ficus lyrata,Fiddle-leaf Fig,Tree,3.8,2.5,5.5,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Ficus
+394,Ficus religiosa,Bodhi Tree,Tree,3.5,2.0,5.0,0,TrBD,round,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Ficus; semi-deciduous
+395,Ficus rumphii,Bhendi,Tree,4.0,2.5,5.5,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Ficus
+396,Ficus altissima,Council Tree,Tree,4.2,2.8,5.8,0,TrBE,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Ficus
+397,Ficus variegata,Red-stem Fig,Tree,4.0,2.5,5.5,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Ficus
+398,Spathodea campanulata,African Tulip Tree,Tree,3.8,2.2,5.5,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+399,Tabebuia rosea,Pink Trumpet Tree,Tree,2.9,1.5,4.5,0,TrBD,round,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD
+400,Handroanthus chrysanthus,Golden Trumpet,Tree,2.7,1.3,4.2,0,TrBD,round,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD
+401,Jacaranda mimosifolia,Jacaranda,Tree,2.5,1.2,4.0,0,TrBD,spreading,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD; fine pinnate foliage
+402,Tecoma stans,Yellow Elder,Shrub,2.6,1.2,4.2,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+403,Crescentia cujete,Calabash Tree,Tree,2.8,1.5,4.5,0,TrBE,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+404,Plumeria obtusa,White Frangipani,Tree,2.3,1.0,3.8,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Plumeria analogy
+405,Plumeria alba,White Plumeria,Tree,2.0,0.8,3.5,0,TrBD,round,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Plumeria
+406,Nerium oleander,Oleander,Shrub,2.2,1.0,3.8,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE; Mediterranean to tropical
+407,Thevetia peruviana,Yellow Oleander,Tree,2.0,0.8,3.5,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+408,Alstonia scholaris,Pulai,Tree,3.5,2.0,5.2,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; Singapore common tree
+409,Khaya senegalensis,African Mahogany,Tree,3.5,2.0,5.2,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+410,Khaya anthotheca,White Mahogany,Tree,3.3,1.8,5.0,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+411,Cedrela odorata,Spanish Cedar,Tree,3.0,1.5,4.8,0,TrBD,round,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD
+412,Azadirachta indica,Neem,Tree,3.5,2.0,5.2,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+413,Mangifera indica,Mango,Tree,4.2,2.8,5.8,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; dense canopy
+414,Anacardium occidentale,Cashew,Tree,3.5,2.0,5.2,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+415,Spondias dulcis,Ambarella,Tree,3.0,1.5,4.8,0,TrBD,round,tropical,TRUE,4,PFT_Mean,PFT mean: Tropical broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBD
+416,Syzygium jambos,Rose Apple,Tree,4.0,2.5,5.8,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+417,Syzygium grande,Sea Apple,Tree,4.2,2.8,6.0,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; NParks Singapore
+418,Syzygium cumini,Java Plum,Tree,4.0,2.5,5.8,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+419,Syzygium malaccense,Malay Apple,Tree,4.0,2.5,5.8,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+420,Syzygium oleana,Red Tip Brush Cherry,Shrub,3.0,1.5,4.5,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+421,Psidium guajava,Guava,Tree,3.5,2.0,5.0,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE
+422,Persea americana,Avocado,Tree,4.0,2.5,5.8,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE
+423,Cinnamomum iners,Wild Cinnamon,Tree,3.8,2.2,5.5,0,TrBE,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; Cinnamomum genus
+424,Casuarina equisetifolia,Horsetail Tree,Tree,2.5,1.2,4.0,0,TrN,conical,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical needleleaf tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrN; needleleaf
+425,Casuarina cunninghamiana,River Sheoak,Tree,2.4,1.2,3.8,0,TrN,conical,subtropical,FALSE,4,PFT_Mean,PFT mean: Tropical needleleaf tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrN
+426,Casuarina glauca,Swamp Sheoak,Tree,2.3,1.0,3.8,0,SuBE,conical,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE
+427,Allocasuarina fraseriana,Fraser Sheoak,Tree,2.0,1.0,3.5,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE; WA native
+428,Araucaria heterophylla,Norfolk Island Pine,Tree,2.5,1.2,4.0,0,TrN,conical,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical needleleaf tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrN; panel species
+429,Araucaria columnaris,Coral Sea Pine,Tree,2.3,1.0,3.8,0,TrN,columnar,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical needleleaf tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Araucaria
+430,Araucaria cunninghamii,Hoop Pine,Tree,2.4,1.2,3.8,0,TrN,conical,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical needleleaf tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Araucaria
+431,Podocarpus macrophyllus,Buddhist Pine,Tree,3.2,1.8,5.0,0,SuBE,columnar,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Panel species; hedge use
+432,Podocarpus elatus,Brown Pine,Tree,3.0,1.5,4.8,0,SuBE,columnar,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Podocarpus; Australian
+433,Fagraea fragrans,Tembusu,Tree,4.5,3.0,6.0,0,TrBE,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; Singapore heritage tree
+434,Polyalthia longifolia,False Ashoka,Tree,3.5,2.0,5.2,0,TrBE,columnar,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; columnar form
+435,Hopea odorata,Chengal Pasir,Tree,3.8,2.2,5.5,0,TrBE,conical,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Hopea in CSV; forest species
+436,Cocos nucifera,Coconut Palm,Palm,3.2,2.0,5.0,0,Palm,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; tropical
+437,Phoenix dactylifera,Date Palm,Palm,2.8,1.5,4.5,0,Palm,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm
+438,Phoenix roebelenii,Pygmy Date Palm,Palm,2.5,1.2,4.0,0,Palm,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm
+439,Livistona chinensis,Chinese Fan Palm,Palm,3.0,1.8,4.8,0,Palm,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; Singapore
+440,Washingtonia robusta,Mexican Fan Palm,Palm,2.5,1.2,4.0,0,Palm,columnar,subtropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; tall columnar
+441,Roystonea regia,Royal Palm,Palm,3.2,1.8,5.0,0,Palm,columnar,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; columnar
+442,Roystonea oleracea,Caribbean Royal Palm,Palm,3.0,1.8,4.8,0,Palm,columnar,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm
+443,Bismarckia nobilis,Bismarck Palm,Palm,3.5,2.0,5.2,0,Palm,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; large crown
+444,Dypsis lutescens,Golden Cane Palm,Palm,3.0,1.5,4.8,0,Palm,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; clumping
+445,Dypsis decaryi,Triangle Palm,Palm,2.8,1.5,4.5,0,Palm,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm
+446,Syagrus romanzoffiana,Queen Palm,Palm,3.0,1.5,4.8,0,Palm,spreading,subtropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm
+447,Archontophoenix cunninghamiana,Bangalow Palm,Palm,2.8,1.5,4.5,0,Palm,columnar,subtropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; Australian
+448,Wodyetia bifurcata,Foxtail Palm,Palm,3.2,1.8,5.0,0,Palm,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; Australian tropical
+449,Livistona australis,Cabbage Tree Palm,Palm,3.0,1.5,4.8,0,Palm,spreading,subtropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; Australian
+450,Brahea armata,Blue Hesper Palm,Palm,2.5,1.2,4.0,0,Palm,spreading,subtropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; arid
+451,Trachycarpus fortunei,Windmill Palm,Palm,2.8,1.5,4.5,0,Palm,spreading,subtropical,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; cool climate palm
+452,Ficus macrophylla,Moreton Bay Fig,Tree,4.5,3.0,6.5,0,SuBE,spreading,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE; massive canopy
+453,Lophostemon confertus,Brush Box,Tree,4.2,2.8,6.0,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE; Queensland
+454,Tristaniopsis laurina,Water Gum,Tree,4.0,2.5,5.8,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE
+455,Corymbia citriodora,Lemon Scented Gum,Tree,3.0,1.5,4.8,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Eucalyptus relative; ORNL genus
+456,Corymbia ficifolia,Flowering Gum,Tree,3.5,2.0,5.2,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Eucalyptus relative
+457,Corymbia calophylla,Marri,Tree,3.2,1.8,5.0,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,WA native; Eucalyptus relative
+458,Agathis robusta,Queensland Kauri,Tree,4.0,2.5,5.8,0,SuBE,conical,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE
+459,Brachychiton populneus,Kurrajong,Tree,3.5,2.0,5.2,0,SuBE,conical,subtropical,TRUE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE; semi-deciduous
+460,Brachychiton acerifolius,Illawarra Flame Tree,Tree,3.2,1.8,5.0,0,SuBE,round,subtropical,TRUE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE; deciduous when flowering
+461,Agonis flexuosa,Peppermint Tree,Tree,3.8,2.2,5.5,0,SuBE,spreading,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,WA native; PFT SuBE
+462,Nuytsia floribunda,Christmas Tree,Tree,2.5,1.2,4.0,0,SuBE,spreading,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,WA endemic
+463,Olea europaea,Olive,Tree,2.8,1.5,4.5,0,MedBE,spreading,mediterranean,FALSE,4,PFT_Mean,PFT mean: Mediterranean broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT MedBE; drought-adapted
+464,Quercus suber,Cork Oak,Tree,3.0,1.5,5.0,0,MedBE,round,mediterranean,FALSE,4,PFT_Mean,PFT mean: Mediterranean broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT MedBE
+465,Ceratonia siliqua,Carob,Tree,2.8,1.5,4.5,0,MedBE,spreading,mediterranean,FALSE,4,PFT_Mean,PFT mean: Mediterranean broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT MedBE
+466,Pinus pinea,Stone Pine,Tree,3.5,1.5,6.0,0,TeNE,spreading,mediterranean,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE; umbrella form
+467,Phoenix canariensis,Canary Palm,Palm,3.0,1.5,5.0,0,Palm,spreading,mediterranean,FALSE,4,PFT_Mean,PFT mean: Palm. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Palm; Mediterranean
+468,Platanus acerifolia,London Plane,Tree,4.0,2.5,6.0,0,TeBD,spreading,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; very common urban tree
+469,Platanus occidentalis,American Sycamore,Tree,4.0,2.5,6.0,0,TeBD,spreading,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+470,Tilia cordata,Small-leaf Lime,Tree,4.5,2.8,6.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; common urban
+471,Tilia x europaea,Common Lime,Tree,4.5,2.8,6.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+472,Ulmus procera,English Elm,Tree,4.0,2.5,6.0,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+473,Ulmus pumila,Siberian Elm,Tree,3.5,2.0,5.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+474,Gleditsia triacanthos,Honey Locust,Tree,3.5,2.0,5.5,0,TeBD,spreading,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; fine leaflets
+475,Cercis siliquastrum,Judas Tree,Tree,3.0,1.5,4.8,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; small tree
+476,Koelreuteria paniculata,Golden Rain Tree,Tree,3.5,2.0,5.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+477,Ginkgo biloba,Maidenhair Tree,Tree,3.8,2.2,5.8,0,TeBD,conical,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; ancient species
+478,Catalpa bignonioides,Indian Bean Tree,Tree,4.0,2.5,6.0,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; large leaves
+479,Magnolia grandiflora,Southern Magnolia,Tree,4.5,2.8,6.5,0,TeBE,round,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBE; evergreen
+480,Magnolia x soulangeana,Saucer Magnolia,Tree,3.5,2.0,5.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; deciduous
+481,Nyssa sylvatica,Black Tupelo,Tree,4.0,2.5,6.0,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; autumn colour
+482,Amelanchier lamarckii,Juneberry,Tree,3.5,2.0,5.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; small tree
+483,Zelkova serrata,Japanese Zelkova,Tree,4.0,2.5,6.0,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+484,Cercidiphyllum japonicum,Katsura,Tree,3.8,2.2,5.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+485,Styrax japonicus,Japanese Snowbell,Tree,3.5,2.0,5.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; small tree
+486,Pyrus calleryana,Callery Pear,Tree,4.0,2.5,6.0,0,TeBD,conical,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; urban tree
+487,Sorbus aucuparia,Rowan,Tree,3.5,2.0,5.5,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+488,Crataegus laevigata,Midland Hawthorn,Tree,3.0,1.5,4.8,0,TeBD,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD; small tree
+489,Parrotia persica,Persian Ironwood,Tree,3.8,2.2,5.5,0,TeBD,spreading,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate broadleaf deciduous tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeBD
+490,Cedrus deodara,Deodar Cedar,Tree,5.0,3.0,8.0,0,TeNE,conical,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE
+491,Cedrus atlantica,Atlas Cedar,Tree,5.2,3.0,8.5,0,TeNE,conical,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE
+492,Cedrus libani,Cedar of Lebanon,Tree,5.0,3.0,8.0,0,TeNE,spreading,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE; flat spreading canopy
+493,Sequoiadendron giganteum,Giant Sequoia,Tree,5.5,3.5,9.0,0,TeNE,conical,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE
+494,Thuja plicata,Western Red Cedar,Tree,6.0,3.5,9.5,0,TeNE,conical,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE
+495,Thuja occidentalis,Eastern White Cedar,Tree,5.5,3.0,9.0,0,TeNE,conical,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE
+496,Chamaecyparis lawsoniana,Lawson Cypress,Tree,5.5,3.0,9.0,0,TeNE,columnar,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE
+497,Chamaecyparis nootkatensis,Nootka Cypress,Tree,5.5,3.0,9.0,0,TeNE,conical,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate needleleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeNE
+498,Hibiscus rosa-sinensis,Chinese Hibiscus,Shrub,2.4,1.2,4.0,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES; panel species
+499,Ixora coccinea,Jungle Flame,Shrub,2.1,1.0,3.5,0,TrES,hemisphere,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES; Singapore common
+500,Ixora javanica,Jungle Geranium,Shrub,2.0,0.9,3.5,0,TrES,hemisphere,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Ixora
+501,Gardenia jasminoides,Cape Jasmine,Shrub,2.5,1.2,4.0,0,TrES,hemisphere,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+502,Mussaenda frondosa,Mussaenda,Shrub,2.2,1.0,3.8,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+503,Duranta erecta,Golden Dewdrop,Shrub,2.4,1.2,4.0,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Panel species
+504,Lantana camara,Lantana,Shrub,1.9,0.8,3.2,0,TrES,hemisphere,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+505,Bougainvillea spectabilis,Bougainvillea,Climber,2.2,1.0,3.8,0,CLM,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; tropical climber/shrub
+506,Bougainvillea glabra,Paper Flower,Climber,2.0,0.8,3.5,0,CLM,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Bougainvillea
+507,Acalypha wilkesiana,Copperleaf,Shrub,2.2,1.0,3.8,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+508,Codiaeum variegatum,Croton,Shrub,2.0,0.8,3.5,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+509,Heliconia psittacorum,Parrot's Flower,Groundcover,2.5,1.2,4.0,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC; panel species
+510,Heliconia rostrata,Hanging Lobster Claw,Groundcover,2.8,1.5,4.5,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Heliconia
+511,Strelitzia reginae,Bird of Paradise,Groundcover,2.0,0.8,3.5,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC
+512,Ravenala madagascariensis,Traveller's Palm,Tree,3.0,1.5,4.8,0,TrBE,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrBE; Strelitziaceae
+513,Clerodendrum paniculatum,Pagoda Flower,Shrub,2.2,1.0,3.8,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+514,Thunbergia grandiflora,Blue Trumpet Vine,Climber,2.5,1.2,4.2,0,CLM,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM
+515,Thunbergia erecta,King's Mantle,Shrub,2.0,0.8,3.5,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Thunbergia
+516,Plumbago auriculata,Cape Plumbago,Shrub,2.0,0.8,3.5,0,SuBE,spreading,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE/TrES
+517,Hamelia patens,Firebush,Shrub,2.2,1.0,3.8,0,TrES,round,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES
+518,Pentas lanceolata,Star Flower,Shrub,1.8,0.8,3.0,0,TrES,hemisphere,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrES; low shrub
+519,Alpinia purpurata,Red Ginger,Groundcover,2.8,1.5,4.5,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC
+520,Alpinia zerumbet,Shell Ginger,Groundcover,2.5,1.2,4.0,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Alpinia
+521,Etlingera elatior,Torch Ginger,Groundcover,3.0,1.5,5.0,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC; tall groundcover
+522,Rosa x hybrida,Garden Rose,Shrub,2.0,0.8,3.8,0,TeDS,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate deciduous shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeDS; Genus Rosa in CSV
+523,Rhododendron ponticum,Pontic Rhododendron,Shrub,2.5,1.2,4.2,0,TeES,hemisphere,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Rhododendron
+524,Azalea x hybrida,Garden Azalea,Shrub,2.2,1.0,3.8,0,TeES,hemisphere,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeES
+525,Forsythia x intermedia,Border Forsythia,Shrub,2.5,1.2,4.2,0,TeDS,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate deciduous shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeDS
+526,Viburnum opulus,Guelder Rose,Shrub,2.8,1.5,4.5,0,TeDS,round,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate deciduous shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeDS
+527,Viburnum tinus,Laurustinus,Shrub,2.8,1.5,4.5,0,TeES,round,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeES; evergreen
+528,Spirea japonica,Japanese Spiraea,Shrub,2.0,0.8,3.5,0,TeDS,hemisphere,temperate,TRUE,4,PFT_Mean,PFT mean: Temperate deciduous shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeDS
+529,Photinia x fraseri,Red Robin,Shrub,3.0,1.5,4.8,0,TeES,round,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeES; hedge use
+530,Pittosporum tobira,Japanese Pittosporum,Shrub,2.8,1.5,4.5,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE
+531,Lonicera nitida,Box Honeysuckle,Shrub,2.5,1.2,4.0,0,TeES,round,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeES; hedge shrub
+532,Ligustrum japonicum,Japanese Privet,Shrub,2.8,1.5,4.5,0,TeES,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Temperate evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE/TeES
+533,Lavandula angustifolia,Lavender,Shrub,1.8,0.8,3.0,0,MedS,hemisphere,mediterranean,FALSE,4,PFT_Mean,PFT mean: Mediterranean shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT MedS
+534,Salvia officinalis,Sage,Shrub,1.8,0.8,3.0,0,MedS,hemisphere,mediterranean,FALSE,4,PFT_Mean,PFT mean: Mediterranean shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT MedS
+535,Rosmarinus officinalis,Rosemary,Shrub,2.0,0.8,3.5,0,MedS,round,mediterranean,FALSE,4,PFT_Mean,PFT mean: Mediterranean shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT MedS
+536,Cistus x purpureus,Purple Cistus,Shrub,1.8,0.8,3.0,0,MedS,hemisphere,mediterranean,FALSE,4,PFT_Mean,PFT mean: Mediterranean shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT MedS; Cistus in CSV
+537,Buxus sempervirens,Common Box,Shrub,2.5,1.2,4.2,0,TeES,hemisphere,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeES; formal hedge
+538,Euonymus japonicus,Japanese Spindle,Shrub,2.5,1.2,4.2,0,TeES,round,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate evergreen shrub. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeES
+539,Osmanthus fragrans,Sweet Osmanthus,Shrub,2.8,1.5,4.5,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE
+540,Camellia japonica,Japanese Camellia,Shrub,3.0,1.5,4.8,0,SuBE,round,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT SuBE; Camellia in DB
+541,Camellia sinensis,Tea Plant,Shrub,4.0,2.5,6.0,0,SuBE,hemisphere,subtropical,FALSE,4,PFT_Mean,PFT mean: Subtropical broadleaf evergreen tree. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Tea plantations; dense canopy
+542,Bambusa vulgaris,Common Bamboo,Bamboo,3.5,2.0,6.0,0,Bamb,columnar,tropical,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Bamb; Bambusa in DB
+543,Bambusa multiplex,Hedge Bamboo,Bamboo,3.0,1.5,5.0,0,Bamb,columnar,subtropical,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Bamb
+544,Bambusa oldhamii,Giant Timber Bamboo,Bamboo,4.0,2.5,6.5,0,Bamb,columnar,subtropical,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Bamb; large species
+545,Phyllostachys aurea,Golden Bamboo,Bamboo,3.5,2.0,6.0,0,Bamb,columnar,temperate,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Bamb; Phyllostachys in DB
+546,Phyllostachys nigra,Black Bamboo,Bamboo,3.5,2.0,6.0,0,Bamb,columnar,temperate,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Phyllostachys
+547,Phyllostachys edulis,Moso Bamboo,Bamboo,5.0,3.0,8.0,0,Bamb,columnar,temperate,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,High LAI; plantation data
+548,Dendrocalamus asper,Giant Bamboo,Bamboo,4.5,2.8,7.0,0,Bamb,columnar,tropical,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Bamb; Dendrocalamus in DB
+549,Dendrocalamus giganteus,Giant Burma Bamboo,Bamboo,4.5,2.8,7.0,0,Bamb,columnar,tropical,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Dendrocalamus
+550,Guadua angustifolia,Guadua Bamboo,Bamboo,4.0,2.5,6.5,0,Bamb,columnar,tropical,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Bamb; South American
+551,Sasa palmata,Broadleaf Bamboo,Bamboo,3.0,1.5,5.0,0,Bamb,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Bamboo. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Bamb; Sasa in DB
+552,Hedera helix,English Ivy,Climber,2.5,1.2,4.2,0,CLM,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; common green wall
+553,Hedera canariensis,Canary Island Ivy,Climber,2.8,1.5,4.5,0,CLM,flat,subtropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Genus Hedera; PFT CLM
+554,Parthenocissus tricuspidata,Boston Ivy,Climber,3.0,1.5,5.0,0,CLM,flat,temperate,TRUE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; deciduous
+555,Parthenocissus quinquefolia,Virginia Creeper,Climber,2.8,1.2,4.5,0,CLM,flat,temperate,TRUE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; deciduous
+556,Trachelospermum jasminoides,Star Jasmine,Climber,2.5,1.2,4.2,0,CLM,flat,subtropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Panel hedges; PFT CLM
+557,Wisteria sinensis,Chinese Wisteria,Climber,3.0,1.5,5.0,0,CLM,spreading,temperate,TRUE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; deciduous
+558,Lonicera japonica,Japanese Honeysuckle,Climber,2.5,1.2,4.2,0,CLM,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; semi-evergreen
+559,Campsis radicans,Trumpet Vine,Climber,2.8,1.5,4.5,0,CLM,spreading,temperate,TRUE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; deciduous
+560,Ficus pumila,Creeping Fig,Climber,2.5,1.2,4.2,0,CLM,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; green wall use
+561,Monstera deliciosa,Cheese Plant,Climber,2.8,1.5,4.5,0,CLM,spreading,tropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; large leaves
+562,Epipremnum aureum,Golden Pothos,Climber,2.5,1.2,4.2,0,CLM,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; interior/green wall
+563,Philodendron scandens,Heart Leaf Philodendron,Climber,2.5,1.2,4.2,0,CLM,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Climbing vine. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT CLM; interior green wall
+564,Axonopus compressus,Carpet Grass,Grass,1.8,0.8,3.2,0,TrGr,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Panel species; Singapore lawn
+565,Zoysia matrella,Manila Grass,Grass,1.6,0.6,3.0,0,TrGr,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGr; tropical lawn
+566,Zoysia japonica,Japanese Lawngrass,Grass,1.5,0.6,2.8,0,TrGr,flat,subtropical,FALSE,4,PFT_Mean,PFT mean: Tropical turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGr
+567,Cynodon dactylon,Bermuda Grass,Grass,1.8,0.6,3.2,0,TrGr,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGr; widely used lawn
+568,Stenotaphrum secundatum,St Augustine Grass,Grass,2.0,0.8,3.5,0,TrGr,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGr
+569,Paspalum notatum,Bahia Grass,Grass,1.8,0.6,3.2,0,TrGr,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGr
+570,Pennisetum purpureum,Napier Grass,Grass,3.5,1.8,5.5,0,TrGr,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGr; tall ornamental grass
+571,Miscanthus sinensis,Chinese Silver Grass,Grass,3.0,1.5,5.0,0,TeGr,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGr; ornamental
+572,Wedelia trilobata,Creeping Daisy,Groundcover,1.9,0.8,3.2,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,Panel species; Singapore
+573,Ophiopogon japonicus,Mondo Grass,Groundcover,1.6,0.6,3.0,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC; Singapore
+574,Liriope muscari,Big Blue Lilyturf,Groundcover,1.8,0.8,3.2,0,TrGC,flat,subtropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC
+575,Tradescantia spathacea,Moses-in-a-Boat,Groundcover,2.0,0.8,3.5,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC
+576,Rhoeo discolor,Oyster Plant,Groundcover,2.0,0.8,3.5,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,= Tradescantia spathacea
+577,Ipomoea batatas,Sweet Potato Vine,Groundcover,2.2,1.0,3.8,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC; ornamental
+578,Callisia repens,Creeping Inch Plant,Groundcover,1.8,0.8,3.2,0,TrGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Tropical groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TrGC
+579,Lolium perenne,Perennial Ryegrass,Grass,2.0,0.8,3.5,0,TeGr,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGr; lawn
+580,Cynosurus cristatus,Crested Dogstail,Grass,1.5,0.5,3.0,0,TeGr,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGr
+581,Dactylis glomerata,Cocksfoot,Grass,2.0,0.8,3.8,0,TeGr,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate turf/grass. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGr
+582,Vinca minor,Lesser Periwinkle,Groundcover,2.0,0.8,3.5,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC; common
+583,Pachysandra terminalis,Japanese Spurge,Groundcover,2.2,1.0,3.8,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC
+584,Ajuga reptans,Common Bugle,Groundcover,2.0,0.8,3.5,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC
+585,Lamium maculatum,Spotted Dead Nettle,Groundcover,2.2,1.0,3.8,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC
+586,Bergenia cordifolia,Elephant Ears,Groundcover,2.5,1.2,4.0,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC; large leaves
+587,Stachys byzantina,Lamb's Ears,Groundcover,1.5,0.5,3.0,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC
+588,Sedum spurium,Caucasian Stonecrop,Groundcover,1.0,0.3,2.0,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC; green roof plant
+589,Sedum acre,Biting Stonecrop,Groundcover,0.8,0.2,1.8,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC; extensive green roof
+590,Sedum album,White Stonecrop,Groundcover,0.8,0.2,1.8,0,TeGC,flat,temperate,FALSE,4,PFT_Mean,PFT mean: Temperate groundcover. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT TeGC; green roof
+591,Bruguiera gymnorrhiza,Large-leafed Orange Mangrove,Mangrove,3.5,2.0,5.0,0,ManGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Mangrove. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Mangrove; Bruguiera in DB
+592,Sonneratia caseolaris,Crabapple Mangrove,Mangrove,3.2,1.8,4.8,0,ManGC,flat,tropical,FALSE,4,PFT_Mean,PFT mean: Mangrove. Bonan (2008) Science 320:1444; Running et al. (2000) Science 289:1772; Kattge et al. (2020) TRY,PFT Mangrove; Sonneratia in DB
