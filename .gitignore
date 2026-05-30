@@ -1,2 +1,10 @@
 .vercel
 .env*.local
+
+# Large source data files
+lai/source_data/*.db
+lai/source_data/*.db.gz
+lai/source_data/*.zip
+lai/source_data/austraits/
+lai/__pycache__/
+lai/gpr_plants.sqlite
