@@ -290,33 +290,26 @@
 
 
   /* Ecosystem Services Scorecard */
-  .eco-section { margin: 14px 12px 0; }
-  .eco-title { font-size: 10px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.5px; color: var(--text-sec); margin-bottom: 8px; }
-  .eco-row { display: flex; align-items: flex-start; gap: 8px;
-    padding: 6px 0; border-bottom: 0.5px solid var(--border); }
+  .eco-section { margin: 12px 0 0; }
+  .eco-section-title { font-size: 11px; font-weight: 600; color: var(--text-sec);
+    padding: 6px 9px; background: var(--bg-sec);
+    border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+  .eco-row { display: flex; align-items: center; justify-content: space-between;
+    padding: 5px 9px; border-bottom: 0.5px solid var(--border); font-size: 11px; }
   .eco-row:last-child { border-bottom: none; }
-  .eco-label { font-size: 11px; color: var(--text); flex: 1; min-width: 0; }
-  .eco-label-sub { font-size: 10px; color: var(--text-sec); margin-top: 1px; font-style: italic; }
-  .eco-right { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+  .eco-label { color: var(--text-sec); flex: 1; }
+  .eco-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
   .eco-dots { display: flex; gap: 3px; }
-  .eco-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--border-md); }
+  .eco-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-md); }
   .eco-dot.on { background: var(--green); }
   .eco-conf { font-size: 9px; font-weight: 700; padding: 1px 4px; border-radius: 2px;
-    background: var(--bg-sec); color: var(--text-sec); letter-spacing: 0.3px; }
-  .eco-empty { font-size: 10px; color: var(--text-ter); font-style: italic; margin: 6px 0; }
+    background: var(--bg-sec); color: var(--text-sec); letter-spacing: 0.3px;
+    border: 0.5px solid var(--border); }
+  .eco-val { font-size: 11px; font-weight: 500; color: var(--text); min-width: 60px; text-align: right; }
+  .eco-empty { color: var(--text-ter); font-style: italic; }
 
-  /* Growing Conditions strip */
-  .grow-section { margin: 14px 12px 0; }
-  .grow-strip { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-  .grow-chip { display: flex; flex-direction: column; align-items: center;
-    background: var(--bg-sec); border: 0.5px solid var(--border);
-    border-radius: var(--radius); padding: 6px 8px; min-width: 52px; flex: 1; }
-  .grow-chip-icon { font-size: 16px; line-height: 1; margin-bottom: 3px; }
-  .grow-chip-label { font-size: 9px; color: var(--text-sec); text-align: center; line-height: 1.3; }
-  .grow-chip-val { font-size: 10px; font-weight: 600; color: var(--text); text-align: center;
-    margin-top: 2px; line-height: 1.3; }
-  .grow-chip.unknown .grow-chip-val { color: var(--text-ter); font-weight: 400; }
+  /* Growing Conditions — same table style as detail-props */
+  .grow-section { margin: 0; }
 
   #status { font-size: 10px; color: var(--text-ter); padding: 4px 10px;
             border-top: 0.5px solid var(--border); flex-shrink: 0; }
@@ -568,32 +561,91 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 function openFullAccount() {
-  const p = _detailPlant; if (!p) return;
-  document.getElementById('fdesc-title').textContent = p.species || p.name || '';
-  const TIER = ['','Urban field (T1)','Open-ground (T2)','Genus mean (T3)','PFT mean (T4)'];
-  const rw = (l,v) => (v && String(v) !== 'undefined' && String(v).trim() !== '') ?
-    '<div class="fdesc-row"><span>'+l+'</span><span>'+v+'</span></div>' : '';
-  const ht = p.height_mature_m ? p.height_mature_m+' m' : '—';
-  const lv = p.lai_mean ? (+p.lai_mean).toFixed(1) : '—';
-  document.getElementById('fdesc-body').innerHTML =
-    '<div class="fdesc-section"><h3>Identity</h3>'+
-    rw('Scientific name','<em>'+esc(p.species||'')+'</em>')+
-    rw('Common name/s',esc(p.common_name||p.common||''))+
-    rw('Family',esc(p.family||''))+
-    rw('Plant type',esc((p.landscape_category||'')+(p.leaf_phenology?' — '+p.leaf_phenology:'')))+
-    rw('Growth form',esc(p.growth_form||p.shape||''))+'</div>'+
-    '<div class="fdesc-section"><h3>LAI &amp; GPR Data</h3>'+
-    rw('LAI mean',lv)+
-    rw('Data tier',p.tier?'T'+p.tier+' — '+(TIER[p.tier]||''):'')+
-    rw('Source',esc(p.sources||p.source||p.tier_source||''))+'</div>'+
-    '<div class="fdesc-section"><h3>Morphology &amp; Climate</h3>'+
-    rw('Mature height',ht)+rw('Growth rate',esc(p.growth_rate||''))+
-    rw('Climate',esc(p.native_koppen||''))+rw('Drought tolerance',esc(p.drought_tolerance||''))+
-    rw('Shade tolerance',esc(p.shade_tolerance||''))+rw('Fire tolerance',esc(p.fire_tolerance||''))+
-    rw('Frost hardiness',p.frost_hardiness_c!=null?p.frost_hardiness_c+'°C':'')+'</div>'+
-    '<div class="fdesc-section"><h3>Urban</h3>'+
-    rw('Root depth',esc(p.root_depth||''))+rw('Moisture',esc(p.moisture_use||''))+
-    rw('Toxicity',esc(p.toxicity||''))+'</div>';
+  if (!_detailPlant) return;
+  var p = _detailPlant;
+  var esc2 = function(s) { return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;') : ''; };
+  var row = function(label, val) {
+    if (!val) return '';
+    return '<div class="fdesc-row"><span>' + label + '</span><span>' + esc2(val) + '</span></div>';
+  };
+  var tier = +p.tier || 4;
+  var tierLabel = ['','Urban field measured (T1)','Open-ground measured (T2)','Genus mean (T3)','PFT-inferred (T4)'][tier] || '';
+  var laiRange = (p.lai_min && p.lai_max)
+    ? (parseFloat(p.lai_min).toFixed(1) + '–' + parseFloat(p.lai_max).toFixed(1) + ' (mean ' + parseFloat(p.lai_mean).toFixed(1) + ')')
+    : (p.lai_mean ? parseFloat(p.lai_mean).toFixed(1) : '—');
+
+  var html = '';
+
+  /* Section 1: Taxonomy & Identity */
+  html += '<div class="fdesc-section">';
+  html += '<h3>Taxonomy &amp; Identity</h3>';
+  html += row('Scientific name', '<em>' + esc2(p.species || p.name) + '</em>');
+  html += row('Accepted name',   p.accepted_name);
+  html += row('Family',          p.family);
+  html += row('Common name/s',   p.common_names || p.common_name);
+  html += row('Native region',   p.native_region);
+  html += row('Native climate',  p.native_koppen);
+  html += row('Leaf habit',      p.leaf_phenology);
+  html += row('Growth form',     p.growth_form);
+  html += row('Landscape type',  p.landscape_category);
+  html += '</div>';
+
+  /* Section 2: LAI & GPR Data */
+  html += '<div class="fdesc-section">';
+  html += '<h3>LAI &amp; GPR Data</h3>';
+  html += row('LAI range (mean)', laiRange);
+  html += row('LAI std deviation', p.lai_sd ? parseFloat(p.lai_sd).toFixed(2) : null);
+  html += row('Sample size (n)',   p.lai_n && p.lai_n > 0 ? String(p.lai_n) : null);
+  html += row('Measurement method', p.lai_method);
+  html += row('Measurement context', p.lai_context);
+  html += row('Measurement climate', p.lai_measurement_koppen);
+  html += row('Data tier',          tierLabel);
+  html += row('Tier source',        p.tier_source);
+  html += row('Sources',            p.sources);
+  html += '</div>';
+
+  /* Section 3: Morphology */
+  html += '<div class="fdesc-section">';
+  html += '<h3>Morphology &amp; Climate</h3>';
+  html += row('Mature height',   p.height_mature_m ? p.height_mature_m + ' m' : null);
+  html += row('Canopy radius',   p.canopy_radius_m  ? p.canopy_radius_m  + ' m' : null);
+  html += row('Growth rate',     p.growth_rate);
+  html += row('Native climate',  p.native_koppen);
+  html += '</div>';
+
+  /* Section 4: Urban Performance */
+  html += '<div class="fdesc-section">';
+  html += '<h3>Urban Performance</h3>';
+  html += row('Drought tolerance',   p.drought_tolerance);
+  html += row('Shade tolerance',     p.shade_tolerance);
+  html += row('Pollution tolerance', p.pollution_tolerance);
+  html += row('Root depth',          p.root_depth);
+  html += row('USDA hardiness zone', p.usda_zone);
+  html += row('SLA (cm²/g)',    p.sla ? parseFloat(p.sla).toFixed(1) : null);
+  html += '</div>';
+
+  /* Section 5: Ecosystem Services Data */
+  html += '<div class="fdesc-section">';
+  html += '<h3>Ecosystem Services Data</h3>';
+  html += row('Shade factor (0–1)',         p.shade_factor ? parseFloat(p.shade_factor).toFixed(2) : null);
+  html += row('Carbon seq. (kg CO₂/yr)',   p.carbon_seq_kg_yr ? parseFloat(p.carbon_seq_kg_yr).toFixed(1) : null);
+  html += row('Enrichment sources',             p.enrichment_sources);
+  html += '</div>';
+
+  /* Section 6: Provenance */
+  html += '<div class="fdesc-section">';
+  html += '<h3>Provenance &amp; Notes</h3>';
+  html += row('GBIF taxon key', p.gbif_taxon_key ? String(p.gbif_taxon_key) : null);
+  html += row('Data version',   p.data_version);
+  html += row('Notes',          p.notes);
+  html += '</div>';
+
+  if (!html.match(/fdesc-row/)) {
+    html = '<p style="color:var(--text-ter);font-style:italic">No additional data available for this species.</p>';
+  }
+
+  document.getElementById('fdesc-content').innerHTML = html;
+  document.getElementById('fdesc-title').textContent  = p.species || p.name;
   document.getElementById('fdesc-overlay').classList.add('open');
 }
 function closeFdesc() {
@@ -861,28 +913,22 @@ function renderEcoScorecard(p) {
   document.getElementById('eco-rows').innerHTML = rows;
 }
 
-/* Growing Conditions strip */
+/* Growing Conditions — rendered as standard detail-prop rows */
 function renderGrowingConditions(p) {
   var droughtMap = { high: 'Low', moderate: 'Moderate', low: 'High' };
   var shadeMap   = { intolerant: 'Full sun', intermediate: 'Part shade', tolerant: 'Full shade' };
   var cap = function(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : null; };
-  var chips = [
-    { icon: '\ud83d\udca7', label: 'Water needs',
-      val: p.drought_tolerance ? (droughtMap[p.drought_tolerance.toLowerCase()] || cap(p.drought_tolerance)) : null },
-    { icon: '\u2600\ufe0f', label: 'Sunlight',
-      val: p.shade_tolerance ? (shadeMap[p.shade_tolerance.toLowerCase()] || cap(p.shade_tolerance)) : null },
-    { icon: '\ud83c\udf31', label: 'Growth rate',
-      val: cap(p.growth_rate) },
-    { icon: '\ud83c\udf43', label: 'Leaf habit',
-      val: cap(p.leaf_phenology) },
-    { icon: '\ud83c\udf0d', label: 'Origin',
-      val: p.native_region || null }
+  var rows = [
+    ['Water needs',  p.drought_tolerance ? (droughtMap[p.drought_tolerance.toLowerCase()] || cap(p.drought_tolerance)) : null],
+    ['Sunlight',     p.shade_tolerance   ? (shadeMap[p.shade_tolerance.toLowerCase()]   || cap(p.shade_tolerance))   : null],
+    ['Growth rate',  cap(p.growth_rate)],
+    ['Leaf habit',   cap(p.leaf_phenology)],
+    ['Native region', p.native_region || null],
   ];
-  document.getElementById('grow-strip').innerHTML = chips.map(function(c) {
-    return '<div class="grow-chip' + (c.val ? '' : ' unknown') + '">' +
-      '<div class="grow-chip-icon">' + c.icon + '</div>' +
-      '<div class="grow-chip-label">' + c.label + '</div>' +
-      '<div class="grow-chip-val">' + (c.val || '\u2013') + '</div></div>';
+  document.getElementById('grow-strip').innerHTML = rows.map(function(r) {
+    return '<div class="detail-prop">' +
+      '<span class="detail-prop-label">' + r[0] + '</span>' +
+      '<span class="detail-prop-val' + (r[1] ? '' : ' muted') + '">' + (r[1] || '—') + '</span></div>';
   }).join('');
 }
 
