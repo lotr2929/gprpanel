@@ -334,7 +334,7 @@
     <img src="logo.png" alt="GPR logo" class="header-logo" />
     <div class="header-text">
       <div class="header-title">GPR<span id="hdr-filename" style="font-weight:400"></span></div>
-      <div class="header-sub" style="display:flex;gap:8px;width:100%"><span>Green Plot Ratio · GPR Global Plant Database</span><span style="font-style:italic;opacity:0.7;margin-left:auto">v2026.05.31</span></div>
+      <div class="header-sub" style="display:flex;gap:8px;width:100%"><span>Green Plot Ratio · GPR Global Plant Database</span><span style="font-style:italic;opacity:0.7;margin-left:auto">v2026.05.31b</span></div>
     </div>
   </div>
 
@@ -405,17 +405,7 @@
           </div>
         </div>
       </div>
-      <button class="detail-select" <!-- Ecosystem Services Scorecard -->
-      <div class="eco-section" id="eco-section">
-        <div class="eco-section-title">Ecosystem Services</div>
-        <div id="eco-rows"></div>
-      </div>
-      <!-- Growing Conditions -->
-      <div class="grow-section" id="grow-section">
-        <div class="eco-section-title">Growing Conditions</div>
-        <div class="detail-props" id="grow-strip"></div>
-      </div>
-      <button class="detail-select" id="detail-select-btn" onclick="selectFromDetail()">Select this plant</button>
+      <button class="detail-select"       <button class="detail-select" id="detail-select-btn" onclick="selectFromDetail()">Select this plant</button>
       <button class="detail-account" id="detail-account-btn" onclick="openFullAccount()">Full Description →</button>
     </div>
   </div>
@@ -845,14 +835,33 @@ function openDetail(p) {
     (raw ? `<div class="detail-prop"><span class="detail-prop-label">${l}</span><span class="detail-prop-val">${v}</span></div>`
          : `<div class="detail-prop"><span class="detail-prop-label">${l}</span><span class="detail-prop-val">${esc(String(v))}</span></div>`)
   ).join('');
+  // Appended rows: Growing Conditions + Ecosystem Services
+  var _extra = [];
+  var _dm = {high:'Low',moderate:'Moderate',low:'High'};
+  var _sm = {intolerant:'Full sun',intermediate:'Part shade',tolerant:'Full shade'};
+  var _cap = function(s){return s?s.charAt(0).toUpperCase()+s.slice(1):null;};
+  var _row = function(l,v){if(!v)return;_extra.push('<div class="detail-prop"><span class="detail-prop-label">'+l+'</span><span class="detail-prop-val">'+v+'</span></div>');};
+  var _div = function(l){_extra.push('<div class="detail-prop" style="background:var(--bg-sec);font-weight:600;font-size:10px;color:var(--text-sec)"><span>'+l+'</span><span></span></div>');};
+  _div('Growing Conditions');
+  _row('Water needs', p.drought_tolerance?(_dm[p.drought_tolerance.toLowerCase()]||_cap(p.drought_tolerance)):null);
+  _row('Sunlight',    p.shade_tolerance?(_sm[p.shade_tolerance.toLowerCase()]||_cap(p.shade_tolerance)):null);
+  _row('Growth rate', _cap(p.growth_rate));
+  _row('Leaf habit',  _cap(p.leaf_phenology));
+  _row('Native region', p.native_region||null);
+  _div('Ecosystem Services');
+  var _lai=+p.lai_mean||0; var _sw=_lai>0?Math.min(5,Math.max(1,Math.round(_lai))):null;
+  var _conf=p.tier==1?'M':p.tier==2?'D':p.tier==3?'E':'P';
+  if(_sw)_row('Stormwater interception',_sw+'/5 (LAI-based, '+_conf+')');
+  if(p.carbon_seq_kg_yr)_row('Carbon sequestration',parseFloat(p.carbon_seq_kg_yr).toFixed(1)+' kg CO₂/yr ('+_conf+')');
+  if(p.shade_factor)_row('Shade factor (cooling)',parseFloat(p.shade_factor).toFixed(2)+' ('+_conf+')');
+  if(p.pollution_tolerance)_row('Air quality / PM',_cap(p.pollution_tolerance)+' tolerance');
+  if(_extra.length>2)document.getElementById('detail-props').innerHTML+=_extra.join('');
 
   const btn = document.getElementById('detail-select-btn');
   btn.textContent = 'Select this plant';
   btn.classList.remove('selected');
 
   showGprRecord(_pendingGprRecord);
-  renderEcoScorecard(p);
-  renderGrowingConditions(p);
   _pendingGprRecord = null;
 }
 
