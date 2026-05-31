@@ -407,13 +407,13 @@
       </div>
       <button class="detail-select" <!-- Ecosystem Services Scorecard -->
       <div class="eco-section" id="eco-section">
-        <div class="eco-title">Ecosystem Services</div>
+        <div class="eco-section-title">Ecosystem Services</div>
         <div id="eco-rows"></div>
       </div>
       <!-- Growing Conditions -->
       <div class="grow-section" id="grow-section">
-        <div class="eco-title">Growing Conditions</div>
-        <div class="grow-strip" id="grow-strip"></div>
+        <div class="eco-section-title">Growing Conditions</div>
+        <div class="detail-props" id="grow-strip"></div>
       </div>
       <button class="detail-select" id="detail-select-btn" onclick="selectFromDetail()">Select this plant</button>
       <button class="detail-account" id="detail-account-btn" onclick="openFullAccount()">Full Description →</button>
@@ -644,7 +644,7 @@ function openFullAccount() {
     html = '<p style="color:var(--text-ter);font-style:italic">No additional data available for this species.</p>';
   }
 
-  document.getElementById('fdesc-content').innerHTML = html;
+  document.getElementById('fdesc-body').innerHTML = html;
   document.getElementById('fdesc-title').textContent  = p.species || p.name;
   document.getElementById('fdesc-overlay').classList.add('open');
 }
