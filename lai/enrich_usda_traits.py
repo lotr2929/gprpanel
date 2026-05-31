@@ -113,20 +113,29 @@ def fetch_all_species():
     return rows
 
 def flush_buffer(buf):
-    if not buf: return
-    for attempt in range(3):
-        try:
-            r = requests.post(f"{SUPABASE_URL}/rest/v1/gpr_plant_species",
-                headers=HEADERS, json=buf, timeout=30)
-            r.raise_for_status()
-            return
-        except Exception as e:
-            if attempt == 2:
-                body = ""
-                try: body = e.response.text[:200]
-                except: pass
-                _warnings.append(f"WARN 400: {body or str(e)[:120]}")
-            else: time.sleep(2)
+    # PATCH each row individually by id to avoid NOT NULL issues on batch POST
+    for row in buf:
+        row_id = row.get("id")
+        if not row_id:
+            continue
+        payload = {k: v for k, v in row.items() if k != "id"}
+        for attempt in range(3):
+            try:
+                r = requests.patch(
+                    f"{SUPABASE_URL}/rest/v1/gpr_plant_species",
+                    headers=HEADERS,
+                    params={"id": f"eq.{row_id}"},
+                    json=payload,
+                    timeout=30,
+                )
+                if r.status_code not in (200, 204):
+                    _warnings.append(f"WARN {r.status_code} id={row_id}: {r.text[:120]}")
+                break
+            except Exception as e:
+                if attempt == 2:
+                    _warnings.append(f"ERROR id={row_id}: {str(e)[:120]}")
+                else:
+                    time.sleep(2)
 
 def progress(done, matched, total, t0, last_sp):
     elapsed = time.time() - t0
@@ -173,6 +182,16 @@ def main():
     print(f"  Fields: growth_rate, drought/shade/salt/fire tolerance, height, root depth,")
     print(f"          toxicity, frost hardiness, canopy shape, foliage texture")
     print(f"  Upsert batch: {UPSERT_BATCH} | Progress every {PRINT_EVERY} rows\n")
+
+    # Normalise all payloads to identical key sets (fixes PGRST102)
+    all_keys = set()
+    for _, payload in updates:
+        all_keys.update(payload.keys())
+    for i, (sp_name, payload) in enumerate(updates):
+        for k in all_keys:
+            if k not in payload:
+                payload[k] = None
+        updates[i] = (sp_name, payload)
 
     if matched == 0:
         print("No matches found. Check species name format.")

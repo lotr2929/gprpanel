@@ -24,10 +24,13 @@ import os, sys, time, json, argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests
 
-SUPABASE_URL = os.environ.get('GPRTOOL_SUPABASE_URL', 'https://sfvwhbzxkzlscfsnyrwq.supabase.co')
-SUPABASE_KEY = os.environ.get('GPRTOOL_SUPABASE_SECRET_KEY', '')
-SB_HEADERS   = {'apikey': SUPABASE_KEY, 'Authorization': f'Bearer {SUPABASE_KEY}',
-                'Content-Type': 'application/json', 'Prefer': 'return=minimal'}
+from _credentials import SUPABASE_URL, SUPABASE_KEY
+SB_HEADERS = {
+    'apikey':        SUPABASE_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
+    'Content-Type':  'application/json',
+    'Prefer':        'return=minimal,resolution=merge-duplicates',
+}
 
 WIKI_HEADERS  = {'User-Agent': 'GPRPlantDatabase/1.0 (boon.ong@curtin.edu.au)'}
 INAT_HEADERS  = {'User-Agent': 'GPRPlantDatabase/1.0 (boon.ong@curtin.edu.au)'}

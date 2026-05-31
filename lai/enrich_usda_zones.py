@@ -93,6 +93,7 @@ def patch_batch(rows_to_update):
             time.sleep(0.5)  # brief pause every 100 rows
 
 def main():
+    RESUME = '--resume' in __import__('sys').argv
     print('GPR Global Plant Database — USDA Zone Enrichment')
     print(f'Mode: {"RESUME (skipping already populated rows)" if RESUME else "FULL (all rows)"}\n')
 

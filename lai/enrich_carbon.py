@@ -65,12 +65,14 @@ def load_mcpherson(filepath):
     print(f'  Loaded McPherson data for {len(data)} species.')
     return data
 
-def get_all_species():
+def get_all_species(resume=False):
     all_rows, offset = [], 0
     while True:
         url = f"{SUPABASE_URL}/rest/v1/gpr_plant_species"
         params = {'select': 'id,species,accepted_name,landscape_category',
                   'order': 'id.asc', 'offset': offset, 'limit': 1000}
+        if resume:
+            params['carbon_seq_kg_yr'] = 'is.null'
         r = requests.get(url, headers=HEADERS, params=params)
         r.raise_for_status()
         batch = r.json()
@@ -91,8 +93,12 @@ def main():
     if not mp_path:
         _d = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source_data', 'mcpherson_species.csv')
         if os.path.exists(_d): mp_path = _d
-    mcpherson = load_mcpherson(mp_path)
-    rows = get_all_species()
+    if mp_path and not os.path.exists(mp_path):
+        print(f'WARNING: McPherson file not found: {mp_path}'); mp_path = None
+    mcpherson = load_mcpherson(mp_path) if mp_path else {}
+    if not mcpherson:
+        print('  No McPherson file â€” using category means only.')
+    rows = get_all_species(resume=args.resume)
 
     exact, fallback = 0, 0
     for row in rows:
@@ -110,9 +116,11 @@ def main():
 
         traits['enrichment_sources'] = source
         url = f"{SUPABASE_URL}/rest/v1/gpr_plant_species?id=eq.{row['id']}"
-        requests.patch(url, headers=HEADERS, json=traits)
+        r = requests.patch(url, headers=HEADERS, json=traits)
+        if r.status_code not in (200, 204):
+            print(f'  WARN id={row["id"]}: HTTP {r.status_code}')
         if (exact + fallback) % 500 == 0:
-            print(f'  {exact} exact matches, {fallback} category fallbacks...')
+            print(f'  {exact+fallback}/{len(rows)} done  ({exact} exact, {fallback} category means)')
         time.sleep(0.02)
 
     print(f'\nDone. {exact} exact, {fallback} category-mean assignments.')
