@@ -1190,67 +1190,154 @@ function downloadPdf() {
 const DOC_SECTIONS = [
   { title: 'Abstract', content: `
     <h1>Abstract</h1>
-    <p>The Green Plot Ratio (GPR) is an ecological metric for quantifying three-dimensional urban greenery using Leaf Area Index (LAI), introduced by Ong (2003) and adopted in Singapore's Green Mark certification scheme. Despite its growing citation record (464+ citations as of 2026), no open, structured plant database has existed to support its consistent application across climate zones and urban typologies.</p>
-    <p>This paper describes the <strong>GPR Global Plant Database (version 1.0.0)</strong>, a 34,429-species open dataset providing LAI values, botanical classification, biogeographic origin, and full data provenance for use in GPR calculation. The database integrates four source tiers — direct urban field measurement, open-ground scientific measurement, genus-level extrapolation, and Plant Functional Type inference — with each record carrying explicit confidence tier, measurement context, and AI-assistance flags.</p>
-    <p>The dataset is freely accessible via a REST API (Supabase) and is the shared data layer for GPR+ plugins for AutoCAD, Revit, Rhino, and Vectorworks. It is designed to improve as urban-context LAI measurement campaigns expand.</p>
+    <p>The Green Plot Ratio (GPR) is an ecological metric for quantifying three-dimensional urban
+    greenery using Leaf Area Index (LAI), introduced by Ong (2003) and adopted in Singapore's
+    Green Mark certification scheme. Despite its growing citation record (464+ citations as of 2026),
+    no open, structured plant database has existed to support its consistent application across
+    climate zones and urban typologies.</p>
+    <p>This paper describes the <strong>GPR Global Plant Database (version 1.0.0)</strong>, a
+    34,429-species open dataset providing LAI values, botanical classification, biogeographic origin,
+    and full data provenance for use in GPR calculation. The database integrates four confidence
+    tiers — direct urban field measurement, open-ground scientific measurement, genus-mean
+    extrapolation, and Plant Functional Type inference — with each record carrying explicit
+    confidence tier, measurement context, and AI-assistance flags.</p>
+    <p>Beyond LAI, the database is being enriched species by species with morphological, ecological,
+    and urban performance data drawn from a prioritised set of authoritative open botanical
+    databases. This supports ecological service calculation — stormwater interception, carbon
+    sequestration, urban cooling, air quality, and biodiversity value — directly within the GPR+
+    design plugin suite.</p>
+    <p>The dataset is freely accessible via REST API and is the shared data layer for GPR+ plugins
+    for AutoCAD, Revit, Rhino, and Vectorworks.</p>
+    <div class="doc-version">Draft v0.4 &middot; June 2026 &middot; Target: <em>Scientific Data</em> (Nature Research)</div>
   `},
   { title: 'Background and Summary', content: `
     <h1>Background and Summary</h1>
-    <p>Urban greenery delivers measurable ecosystem services — thermal regulation, stormwater attenuation, carbon sequestration, and biodiversity support — yet quantifying it in a form usable by architects and planners has remained methodologically inconsistent.</p>
-    <p>The Green Plot Ratio (GPR), introduced by Ong (2003), addresses this by expressing greenery as a dimensionless ratio of total leaf area to site area:</p>
-    <blockquote>GPR = Total Leaf Area (m²) / Site Area (m²)<br>where Total Leaf Area = &Sigma;(LAI<sub>i</sub> &times; Canopy Area<sub>i</sub>)</blockquote>
-    <p>A GPR of 1.0 signifies that the site carries, in aggregate, one full layer of leaf cover. Singapore's Green Mark scheme uses GPR thresholds as mandatory criteria for certified developments.</p>
-    <p>LAI — the ratio of one-sided leaf area per unit ground area — is the critical input. Existing databases (ORNL DAAC, TRY) were compiled for ecological and climate modelling, not urban design. No open, structured database existed that: (1) provided LAI values queryable by species name; (2) covered the full range of urban plant categories; (3) disclosed confidence and measurement context; and (4) was accessible via API for design tool integration.</p>
-    <p>The GPR Global Plant Database fills this gap.</p>
+    <p>Urban greenery delivers measurable ecosystem services &mdash; thermal regulation, stormwater
+    attenuation, carbon sequestration, and biodiversity support &mdash; yet quantifying it in a form
+    usable by architects and planners has remained methodologically inconsistent.</p>
+    <p>The Green Plot Ratio (GPR), introduced by Ong (2003), addresses this by expressing greenery
+    as a dimensionless ratio of total leaf area to site area:</p>
+    <blockquote>GPR = Total Leaf Area (m&sup2;) / Site Area (m&sup2;)<br>
+    where Total Leaf Area = &Sigma;(LAI<sub>i</sub> &times; Canopy Area<sub>i</sub>)</blockquote>
+    <p>A GPR of 1.0 signifies that the site carries, in aggregate, one full layer of leaf cover.
+    Singapore's Green Mark scheme uses GPR thresholds as mandatory criteria for certified
+    developments. GPR has accumulated 464+ citations across research and practice in Singapore,
+    China, Europe, the Middle East, and Australia.</p>
+    <p>LAI &mdash; the ratio of one-sided leaf area per unit ground area &mdash; is the critical input.
+    Existing databases (ORNL DAAC, TRY) were compiled for ecological and climate modelling, not
+    urban design. No open, structured database existed that: (1) provided LAI values queryable by
+    species name; (2) covered the full range of urban plant categories; (3) disclosed confidence and
+    measurement context; and (4) was accessible via API for design tool integration.</p>
+    <p>The GPR Global Plant Database fills this gap. Beyond LAI, it is being extended to support
+    ecological service calculation directly within GPR+ plugins, following the same approach as
+    iTree (Nowak et al. 2008) and NParks Singapore's urban tree ecosystem services framework.
+    Ecological service values are calculated at runtime from species parameters combined with
+    design inputs from the CAD model.</p>
   `},
   { title: 'Methods', content: `
     <h1>Methods</h1>
-    <h2>Overview</h2>
-    <p>The database was constructed in four stages: (1) source acquisition, (2) source-specific processing, (3) priority-order merging with deduplication, and (4) schema validation. All processing scripts are written in Python.</p>
-    <p>Central design principle: <strong>tier priority</strong>. Where multiple sources provide a value for the same species, the highest-confidence value is retained.</p>
-    <h2>Tier 1 — Direct urban field measurement (40 species)</h2>
-    <p>Source: Tan &amp; Sia (2009). LAI values measured in urban tropical Singapore using a LAI-2000 Plant Canopy Analyser. The only source of LAI measured directly in urban conditions for GPR purposes.</p>
-    <h2>Tier 2 — Open-ground scientific measurement (723 species)</h2>
-    <p>Sources: ORNL DAAC (Scurlock et al. 2001) and TRY Plant Trait Database (Kattge et al. 2020). Measured in natural forests and plantations. Values are typically 30–60% higher than the same species in urban conditions — disclosed in every record's notes field.</p>
-    <h2>Tier 3 — Genus mean (22 species)</h2>
-    <p>For species with no direct value but with measured congeners, a genus mean was calculated from available Tier 1/2 data. Standard practice in trait ecology.</p>
-    <h2>Tier 4 — PFT mean inference (33,644 species)</h2>
-    <p>Species were assigned to Plant Functional Types (Bonan 2008) based on growth form and native climate, then assigned published PFT LAI means. Carries the widest uncertainty range.</p>
-    <h2>Merging and deduplication</h2>
-    <p>All tiers merged by <code>build_gpr_globalplantdb.py</code> in priority order. Species matching is case-insensitive binomial. Once recorded at a higher tier, lower-tier entries are discarded. Output: 34,429 rows, 30 fields.</p>
-    <h2>Schema design</h2>
-    <p>Six sections: Taxonomy (GBIF-anchored), Botanical classification (dual: growth form + landscape category), Biogeography (native region + K&ouml;ppen), LAI data (value + uncertainty + context), Provenance (tier + sources + notes), Record metadata (AI flags).</p>
+    <h2>LAI value derivation by tier</h2>
+    <p>Every record carries a <code>data_type</code> field (<code>measured</code> or
+    <code>generated</code>) and, for generated records, a <code>generation_method</code> field.</p>
+    <p><strong>Tier 1 &mdash; Direct urban field measurement (40 species).</strong>
+    Source: Tan &amp; Sia (2009). LAI-2000 Plant Canopy Analyser measurements in urban tropical
+    Singapore (K&ouml;ppen Af/Am). The only source of LAI measured directly in urban conditions
+    for GPR purposes. No transformation applied.</p>
+    <p><strong>Tier 2 &mdash; Open-ground scientific measurement (723 species).</strong>
+    Sources: ORNL DAAC (Scurlock et al. 2001) and TRY Plant Trait Database (Kattge et al. 2020).
+    Measured in natural forests and plantations. Values are typically 30&ndash;60% higher than
+    urban conditions &mdash; disclosed in every record.</p>
+    <p><strong>Tier 3 &mdash; Genus mean (22 species).</strong>
+    For species with no direct value but with measured congeners: genus mean of all Tier 1/2
+    congeners. Standard practice in trait ecology.</p>
+    <p><strong>Tier 4 &mdash; PFT mean inference (33,644 species).</strong>
+    Species assigned to Plant Functional Types (Bonan 2008) based on growth form and native
+    climate, then assigned published PFT LAI means. <code>ai_assisted = TRUE</code> for all
+    Tier 3/4 records.</p>
+    <h2>Enrichment: the curated species approach</h2>
+    <p>The database is enriched beyond LAI using a <strong>species-by-species curated build</strong>
+    approach rather than field-by-field mass processing. Priority order: Tier 1 (40 species)
+    &rarr; Tier 2 (723 species) &rarr; by landscape category frequency. A species is only marked
+    complete when it has the full set of fields required for the designer card and ecosystem
+    services panel.</p>
+    <h2>Authoritative data sources</h2>
+    <p>Sources used in priority order. Wikipedia is never used for trait data.</p>
+    <table>
+      <tr><th>Source</th><th>Fields</th><th>Region</th></tr>
+      <tr><td>GBIF</td><td>Taxonomy, native region, common name</td><td>Global</td></tr>
+      <tr><td>AusTraits v6.0</td><td>Height, SLA, drought tolerance, growth form</td><td>Australia</td></tr>
+      <tr><td>USDA PLANTS</td><td>Growth rate, drought/shade tolerance, root depth</td><td>N. America</td></tr>
+      <tr><td>Zanne et al. (2009)</td><td>Wood density</td><td>Global</td></tr>
+      <tr><td>TRY v6.0</td><td>SLA, height (request #50077 pending)</td><td>Global</td></tr>
+      <tr><td>McPherson UTD (2016)</td><td>Carbon seq., shade factor</td><td>N. America urban</td></tr>
+      <tr><td>NParks Flora &amp; Fauna Web</td><td>Height, images, urban suitability</td><td>SE Asia tropical</td></tr>
+      <tr><td>FloraBase (WA Herbarium)</td><td>Height, growth form, native status</td><td>W. Australia</td></tr>
+      <tr><td>Plants of the World Online (Kew)</td><td>Taxonomy, images</td><td>Global</td></tr>
+      <tr><td>iNaturalist</td><td>CC-licensed images</td><td>Global</td></tr>
+    </table>
+    <h2>Database construction</h2>
+    <p>Four stages: source acquisition, source-specific processing, priority-order merging with
+    deduplication, schema validation. Central principle: <strong>tier priority</strong> &mdash;
+    where multiple sources provide a value for the same species, the highest-confidence value is
+    retained. Output: 34,429 rows, 30 fields.</p>
   `},
   { title: 'Data Records', content: `
     <h1>Data Records</h1>
-    <p>Single CSV file: <code>gpr_globalplantdb.csv</code> — 34,429 rows, 30 fields, 12.57 MB, version 1.0.0.</p>
+    <p>Single CSV file: <code>gpr_globalplantdb.csv</code> &mdash; 34,429 rows, 30 fields,
+    12.57 MB, version 1.0.0.</p>
     <h2>Distribution by tier</h2>
-    <table><tr><th>Tier</th><th>Name</th><th>Count</th><th>%</th></tr>
-    <tr><td>1</td><td>Urban field measured</td><td>40</td><td>0.1%</td></tr>
-    <tr><td>2</td><td>Open-ground measured</td><td>723</td><td>2.1%</td></tr>
-    <tr><td>3</td><td>Genus mean</td><td>22</td><td>0.1%</td></tr>
-    <tr><td>4</td><td>PFT mean (inferred)</td><td>33,644</td><td>97.7%</td></tr>
+    <table>
+      <tr><th>Tier</th><th>Name</th><th>data_type</th><th>Count</th><th>%</th></tr>
+      <tr><td>1</td><td>Urban field measured</td><td>measured</td><td>40</td><td>0.1%</td></tr>
+      <tr><td>2</td><td>Open-ground measured</td><td>measured</td><td>723</td><td>2.1%</td></tr>
+      <tr><td>3</td><td>Genus mean</td><td>generated</td><td>22</td><td>0.1%</td></tr>
+      <tr><td>4</td><td>PFT mean (inferred)</td><td>generated</td><td>33,644</td><td>97.7%</td></tr>
     </table>
     <h2>Distribution by landscape category</h2>
-    <table><tr><th>Category</th><th>Count</th></tr>
-    <tr><td>Tree</td><td>12,276</td></tr><tr><td>Shrub</td><td>9,530</td></tr>
-    <tr><td>Groundcover</td><td>4,802</td></tr><tr><td>Climber</td><td>2,698</td></tr>
-    <tr><td>Grass</td><td>2,201</td></tr><tr><td>Palm</td><td>1,403</td></tr>
-    <tr><td>Bamboo</td><td>900</td></tr><tr><td>Mangrove</td><td>210</td></tr>
+    <table>
+      <tr><th>Category</th><th>Count</th></tr>
+      <tr><td>Tree</td><td>12,276</td></tr>
+      <tr><td>Shrub</td><td>9,530</td></tr>
+      <tr><td>Groundcover</td><td>4,802</td></tr>
+      <tr><td>Climber</td><td>2,698</td></tr>
+      <tr><td>Grass</td><td>2,201</td></tr>
+      <tr><td>Palm</td><td>1,403</td></tr>
+      <tr><td>Bamboo</td><td>900</td></tr>
+      <tr><td>Mangrove</td><td>210</td></tr>
+    </table>
+    <h2>Enrichment coverage (Tier 1+2, n=763, as of June 2026)</h2>
+    <table>
+      <tr><th>Field</th><th>Coverage</th><th>Source</th></tr>
+      <tr><td>leaf_storage_mm (stormwater)</td><td>100%</td><td>Calculated from LAI + leaf type</td></tr>
+      <tr><td>family</td><td>51%</td><td>GBIF</td></tr>
+      <tr><td>native_region, common_name</td><td>40%</td><td>GBIF</td></tr>
+      <tr><td>wood_density</td><td>28%</td><td>Zanne et al. 2009</td></tr>
+      <tr><td>height_mature_m</td><td>25%</td><td>USDA PLANTS, AusTraits</td></tr>
+      <tr><td>growth_rate, drought_tolerance</td><td>15&ndash;16%</td><td>USDA PLANTS</td></tr>
+      <tr><td>carbon_seq_kg_yr, shade_factor</td><td>0%</td><td>McPherson 2016 (script ready)</td></tr>
     </table>
     <h2>API access</h2>
-    <p>Public REST API (no key required for GET):<br><code>https://sfvwhbzxkzlscfsnyrwq.supabase.co/rest/v1/gpr_plant_species</code></p>
+    <p>Public REST API (no key required for GET):<br>
+    <code>https://sfvwhbzxkzlscfsnyrwq.supabase.co/rest/v1/gpr_plant_species</code></p>
   `},
   { title: 'Technical Validation', content: `
     <h1>Technical Validation</h1>
     <h2>Binomial name validation</h2>
-    <p>All species names validated against standard binomial regex. Non-conforming names (community aggregates, descriptive entries) assigned <code>landscape_category = REVIEW</code>. 361 ORNL/TRY entries excluded from active calculation use.</p>
+    <p>All species names validated against standard binomial regex. Non-conforming names assigned
+    <code>landscape_category = REVIEW</code>. 361 entries excluded from active calculation use.</p>
     <h2>LAI range plausibility</h2>
-    <p>Values not filtered by absolute range — extreme values can be legitimate (dense tropical canopy LAI &gt; 8). The <code>lai_min</code> and <code>lai_max</code> fields communicate the known range. Known anomalies flagged in <code>notes</code>.</p>
+    <p>Values not filtered by absolute range &mdash; extreme values can be legitimate (dense
+    tropical canopy LAI &gt; 8). The <code>lai_min</code> and <code>lai_max</code> fields
+    communicate the known range. Known anomalies flagged in <code>notes</code>.</p>
     <h2>Tier priority integrity</h2>
-    <p>Post-build verification confirmed: no species appears more than once; no Tier 4 entry exists for a species present in Tier 1, 2, or 3.</p>
+    <p>Post-build verification confirmed: no species appears more than once; no Tier 4 entry
+    exists for a species present in Tier 1, 2, or 3.</p>
+    <h2>data_type and generation_method coverage</h2>
+    <p><code>measured</code>: 763 entries. <code>generated</code>: 33,666 entries.
+    <code>genus_mean</code>: 22. <code>pft_bonan2008</code>: 33,644. Zero blank values.</p>
     <h2>AI-assistance flag coverage</h2>
-    <p><code>ai_assisted = TRUE</code> for 33,426 entries (Tier 3+4); <code>FALSE</code> for 1,003 entries (Tier 1+2). Zero blank values — full coverage.</p>
+    <p><code>ai_assisted = TRUE</code> for 33,666 entries (Tier 3+4);
+    <code>FALSE</code> for 763 entries (Tier 1+2). Zero blank values &mdash; full coverage.</p>
   `},
   { title: 'Usage Notes', content: `
     <h1>Usage Notes</h1>
@@ -1259,69 +1346,110 @@ const DOC_SECTIONS = [
     <ul>
       <li>Designer places their own 3D plant objects in the CAD platform.</li>
       <li>GPRSELECT assigns a species name to each plant object.</li>
-      <li>Plugin queries the database for <code>lai_mean</code> and <code>tier</code>.</li>
+      <li>Plugin reads canopy area from the CAD object and queries the database for
+      <code>lai_mean</code> and <code>tier</code>.</li>
       <li>GPR = &Sigma;(LAI &times; Canopy Area) / Site Area.</li>
-      <li>Result reported with tier composition.</li>
+      <li>GPR Report includes ecological services calculated from canopy area + species
+      parameters from the database.</li>
     </ul>
+    <h2>Ecological services confidence bands</h2>
+    <p>All ecosystem service values display a confidence band:</p>
+    <table>
+      <tr><th>Band</th><th>Meaning</th><th>Tier</th></tr>
+      <tr><td><strong>M</strong> &mdash; Measured</td><td>Directly measured in urban conditions</td><td>Tier 1</td></tr>
+      <tr><td><strong>D</strong> &mdash; Derived</td><td>Calculated from peer-reviewed parameters</td><td>Tier 2</td></tr>
+      <tr><td><strong>E</strong> &mdash; Estimated</td><td>Genus mean</td><td>Tier 3</td></tr>
+      <tr><td><strong>P</strong> &mdash; PFT-inferred</td><td>PFT mean, wide uncertainty</td><td>Tier 4</td></tr>
+    </table>
     <h2>Urban LAI adjustment</h2>
-    <p>All Tier 2 values were measured in natural or plantation conditions. Urban LAI is typically 30–60% lower. For research applications, apply an urban adjustment factor where measured urban values are unavailable. For regulatory/professional practice, unadjusted values are appropriate as a conservative upper bound.</p>
-    <h2>Climate-zone filtering</h2>
-    <p>The <code>native_koppen</code> field enables filtering by climate suitability. Practitioners should prefer species native to their project's climate zone.</p>
+    <p>All Tier 2 values were measured in natural or plantation conditions. Urban LAI is typically
+    30&ndash;60% lower. For regulatory and professional practice, unadjusted values are appropriate
+    as a conservative upper bound. Installation-type adjustment factors are planned for v1.3.</p>
     <h2>REVIEW entries</h2>
-    <p>Entries with <code>landscape_category = REVIEW</code> should not be used for GPR calculation without manual verification.</p>
+    <p>Entries with <code>landscape_category = REVIEW</code> should not be used for GPR
+    calculation without manual verification.</p>
   `},
   { title: 'Limitations', content: `
     <h1>Limitations</h1>
     <ol>
-      <li><strong>Urban vs natural LAI mismatch (Tier 2).</strong> 723 species carry natural/plantation LAI values. Urban LAI may be 30–60% lower. No adjustment factors currently in database.</li>
-      <li><strong>PFT inference uncertainty (Tier 4).</strong> 33,644 species carry PFT mean values with wide uncertainty ranges. Appropriate for landscape-scale estimation only.</li>
-      <li><strong>Temperate bias.</strong> Tier 2 data dominated by temperate Northern Hemisphere species. Tropical and subtropical species common in Asian, Australian, and African cities are underrepresented.</li>
-      <li><strong>Canopy form classification.</strong> Growth form and landscape category for Tier 4 entries assigned programmatically. Known to be unreliable for non-standard genera.</li>
-      <li><strong>Synonym resolution.</strong> Species matching is exact binomial string matching. Synonyms not currently resolved.</li>
-      <li><strong>AI-assisted provenance (Tier 3+4).</strong> LAI values are published PFT means from peer-reviewed sources, but assignment logic was developed under AI assistance (Claude, Anthropic). Disclosed via <code>ai_assisted</code> and <code>ai_model</code> fields.</li>
-      <li><strong>Version 1.0.0 is a foundation, not a complete database.</strong> 97.7% of entries at Tier 4. Scientific value lies in schema design, provenance framework, and 763 Tier 1–3 entries.</li>
+      <li><strong>Urban vs natural LAI mismatch (Tier 2).</strong> 723 species carry
+      natural/plantation LAI values. Urban LAI may be 30&ndash;60% lower.</li>
+      <li><strong>PFT inference uncertainty (Tier 4).</strong> 33,644 species carry PFT mean
+      values with wide uncertainty ranges. Appropriate for landscape-scale estimation only.</li>
+      <li><strong>Temperate bias.</strong> Tier 2 dominated by temperate Northern Hemisphere
+      species. Tropical and subtropical urban species are underrepresented in measured data.</li>
+      <li><strong>Canopy form classification.</strong> Growth form and landscape category for
+      Tier 4 assigned programmatically. Known to be unreliable for non-standard genera.</li>
+      <li><strong>Synonym resolution incomplete.</strong> Species matching is exact binomial
+      string matching in v1.0.0.</li>
+      <li><strong>AI-assisted provenance (Tier 3+4).</strong> LAI values derive from
+      peer-reviewed sources, but assignment logic was developed under AI assistance (Claude,
+      Anthropic). Disclosed via <code>ai_assisted</code> and <code>ai_model</code> fields.</li>
+      <li><strong>Enrichment coverage uneven.</strong> Beyond LAI, field coverage for
+      morphological and ecological service fields is currently low for most species. The curated
+      species approach prioritises completeness for the most-used urban species first.</li>
     </ol>
   `},
   { title: 'Future Development', content: `
     <h1>Future Development</h1>
-    <ul>
-      <li><strong>Version 1.1</strong> — Tier 1 expansion: field LAI measurement campaign targeting 50–100 Perth urban species. First urban-context LAI dataset for Australian temperate species.</li>
-      <li><strong>Version 1.2</strong> — Tier 2 enrichment via AusTraits and Singapore NParks Flora &amp; Fauna Web data.</li>
-      <li><strong>Version 1.3</strong> — Urban adjustment factors: <code>urban_adjustment</code> multiplier per installation type (street tree pit, green roof, vertical greenery, podium garden).</li>
-      <li><strong>Version 2.0</strong> — Methodology paper establishing the urban LAI adjustment framework, drawing on multi-city field campaign data.</li>
-    </ul>
+    <table>
+      <tr><th>Version</th><th>Focus</th><th>Timeline</th></tr>
+      <tr><td>v1.1</td><td>Curated complete records for Tier 1 (40) + priority urban species</td><td>In progress &mdash; Jun 2026</td></tr>
+      <tr><td>v1.2</td><td>NParks, FloraBase, GIFT, BIEN integration; image coverage 80%+ for Tier 1+2</td><td>6 months</td></tr>
+      <tr><td>v1.3</td><td>Installation-type LAI adjustment factors; growth-stage modifiers; k and &gamma; by PFT</td><td>12 months</td></tr>
+      <tr><td>v1.4</td><td>Full ecological service output with Penman-Monteith ET</td><td>18 months</td></tr>
+      <tr><td>v2.0</td><td>Methods paper on urban LAI adjustment; multi-city field campaigns</td><td>24&ndash;36 months</td></tr>
+    </table>
+    <h2>Contributor pathway</h2>
+    <p>Researchers measuring urban LAI for regional species are invited to contribute under the
+    GPRI Contributor Licence Agreement. Priority regions: temperate Australia (Perth), subtropical
+    Southeast Asia, temperate continental Europe, arid Middle East.</p>
   `},
   { title: 'Code Availability', content: `
     <h1>Code Availability</h1>
-    <p>All processing scripts in Python 3.11, no dependencies beyond standard library and <code>requests</code>.</p>
-    <table><tr><th>Script</th><th>Function</th></tr>
-    <tr><td><code>build_gpr_globalplantdb.py</code></td><td>Master build — merges all sources into CSV</td></tr>
-    <tr><td><code>download_gbif_comprehensive.py</code></td><td>GBIF API download across 305 genera</td></tr>
-    <tr><td><code>build_lai_global.py</code></td><td>Builds Tier 1–3 LAI CSV</td></tr>
-    <tr><td><code>lai_categorise.py</code></td><td>Assigns landscape categories</td></tr>
-    <tr><td><code>enrich_koppen.py</code></td><td>Populates native_koppen from GBIF occurrences</td></tr>
-    <tr><td><code>enrich_usda_zones.py</code></td><td>Derives USDA zone from K&ouml;ppen mapping</td></tr>
-    <tr><td><code>enrich_try_sla.py</code></td><td>SLA from TRY bulk download</td></tr>
-    <tr><td><code>enrich_usda_traits.py</code></td><td>Drought/shade tolerance from USDA Plants</td></tr>
-    <tr><td><code>enrich_carbon.py</code></td><td>Carbon seq and shade factor (McPherson 2016)</td></tr>
-    <tr><td><code>upload_to_supabase.py</code></td><td>Pushes CSV to Supabase REST API</td></tr>
+    <p>All processing scripts in Python 3.11. Location: <code>GPR-PlantDB/lai/</code></p>
+    <table>
+      <tr><th>Script</th><th>Function</th></tr>
+      <tr><td><code>build_gpr_globalplantdb.py</code></td><td>Master build &mdash; merges all sources into CSV</td></tr>
+      <tr><td><code>download_gbif_comprehensive.py</code></td><td>GBIF API download across 305 genera</td></tr>
+      <tr><td><code>build_lai_global.py</code></td><td>Builds Tier 1&ndash;3 LAI CSV</td></tr>
+      <tr><td><code>lai_categorise.py</code></td><td>Assigns landscape categories</td></tr>
+      <tr><td><code>enrich_gbif.py</code></td><td>GBIF taxonomy, common name, native region</td></tr>
+      <tr><td><code>enrich_usda_traits.py</code></td><td>Drought/shade tolerance, growth rate, root depth</td></tr>
+      <tr><td><code>enrich_austraits.py</code></td><td>AusTraits: height, SLA, growth form</td></tr>
+      <tr><td><code>enrich_wood_density.py</code></td><td>Zanne global wood density database</td></tr>
+      <tr><td><code>enrich_stormwater.py</code></td><td>Calculates leaf_storage_mm for all 34,429 species</td></tr>
+      <tr><td><code>enrich_carbon_utm.py</code></td><td>Carbon seq + shade factor (McPherson 2016)</td></tr>
+      <tr><td><code>enrich_biodiversity.py</code></td><td>GBIF native region pass for Tier 1+2</td></tr>
+      <tr><td><code>enrich_images.py</code></td><td>Images from GBIF / iNaturalist / Wikipedia (fallback)</td></tr>
+      <tr><td><code>enrich_try_sla.py</code></td><td>SLA from TRY bulk download (request #50077 pending)</td></tr>
+      <tr><td><code>enrich_panel_db.py</code></td><td>Rebuilds plants_db_enriched.json for Vercel</td></tr>
+      <tr><td><code>upload_to_supabase.py</code></td><td>Pushes CSV to Supabase REST API</td></tr>
+      <tr><td><code>sync_supabase_sqlite.py</code></td><td>Syncs Supabase &rarr; local SQLite mirror</td></tr>
     </table>
   `},
   { title: 'References', content: `
     <h1>References</h1>
     <ol>
-      <li>Ong, B.L. (2003). Green plot ratio: an ecological measure for architecture and urban planning. <em>Landscape and Urban Planning</em>, 63(4), 197–211.</li>
-      <li>Tan, P.Y. &amp; Sia, A. (2009). <em>LAI of Tropical Plants: A Guidebook on its Use in the Calculation of Green Plot Ratio.</em> National Parks Board, Singapore.</li>
-      <li>Scurlock, J.M.O. et al. (2001). <em>Worldwide Historical Estimates and Bibliography of Leaf Area Index, 1932–2000.</em> ORNL TM-2001/268.</li>
-      <li>Kattge, J. et al. (2020). TRY plant trait database — enhanced coverage and open access. <em>Global Change Biology</em>, 26(1), 119–188.</li>
+      <li>Ong, B.L. (2003). Green plot ratio: an ecological measure for architecture and urban planning. <em>Landscape and Urban Planning</em>, 63(4), 197&ndash;211.</li>
+      <li>Tan, P.Y. &amp; Sia, A. (2009). <em>LAI of Tropical Plants.</em> National Parks Board, Singapore.</li>
+      <li>Scurlock, J.M.O. et al. (2001). <em>Worldwide Historical Estimates of LAI, 1932&ndash;2000.</em> ORNL TM-2001/268.</li>
+      <li>Kattge, J. et al. (2020). TRY plant trait database. <em>Global Change Biology</em>, 26(1), 119&ndash;188.</li>
       <li>GBIF Secretariat (2023). <em>GBIF Backbone Taxonomy.</em> https://doi.org/10.15468/39omei</li>
-      <li>Bonan, G.B. (2008). Forests and climate change. <em>Science</em>, 320(5882), 1444–1449.</li>
-      <li>Running, S.W. et al. (2000). Global terrestrial gross and net primary productivity. <em>Science</em>, 289(5487), 1772–1775.</li>
-      <li>Beck, H.E. et al. (2018). Present and future K&ouml;ppen-Geiger climate classification maps. <em>Scientific Data</em>, 5, 180214.</li>
-      <li>Falster, D. et al. (2021). AusTraits, a curated plant trait database for the Australian flora. <em>Scientific Data</em>, 8, 254.</li>
-      <li>Nowak, D.J. et al. (2008). A ground-based method of assessing urban forest structure. <em>Arboriculture &amp; Urban Forestry</em>, 34(6), 347–358.</li>
+      <li>Bonan, G.B. (2008). Forests and climate change. <em>Science</em>, 320(5882), 1444&ndash;1449.</li>
+      <li>Running, S.W. et al. (2000). Global terrestrial gross and net primary productivity. <em>Science</em>, 289(5487), 1772&ndash;1775.</li>
+      <li>Beck, H.E. et al. (2018). K&ouml;ppen-Geiger climate classification maps. <em>Scientific Data</em>, 5, 180214.</li>
+      <li>Xiao, Q. &amp; McPherson, E.G. (2000). Rainfall interception by urban forest. <em>Urban Ecosystems</em>, 4, 287&ndash;308.</li>
+      <li>McPherson, E.G. et al. (2016). <em>Urban Tree Database and Allometric Equations.</em> USDA Forest Service PSW-GTR-253.</li>
+      <li>Zanne, A.E. et al. (2009). <em>Global wood density database.</em> Dryad. https://doi.org/10.5061/dryad.234</li>
+      <li>Falster, D. et al. (2021). AusTraits. <em>Scientific Data</em>, 8, 254.</li>
+      <li>Nowak, D.J. et al. (2008). A ground-based method of assessing urban forest structure. <em>Arboriculture &amp; Urban Forestry</em>, 34(6), 347&ndash;358.</li>
+      <li>Dong, W. et al. (2025). A global urban tree leaf area index dataset. <em>Scientific Data</em>.</li>
+      <li>Dong, L. et al. (2024). Optimization of LAI measurement method and correction of GPR formula. <em>Environmental Science and Pollution Research</em>, 31, 30914&ndash;30942.</li>
       <li>Building and Construction Authority, Singapore (2021). <em>Green Mark for Buildings (GM:2021).</em></li>
-      <li>USDA NRCS (2024). <em>The PLANTS Database.</em> National Plant Data Team, Greensboro, NC. https://plants.usda.gov. Accessed via PlantAtlas.ai (https://data.plantatlas.ai), October 2025.</li>
+      <li>USDA NRCS (2024). <em>The PLANTS Database.</em> https://plants.usda.gov</li>
+      <li>Wang, H. et al. (2022). China Plant Trait Database version 2. <em>Scientific Data</em>, 9, 262.</li>
+      <li>Nilson, T. (1971). A theoretical analysis of the frequency of gaps in plant stands. <em>Agricultural Meteorology</em>, 8, 25&ndash;38.</li>
     </ol>
   `},
 ];
