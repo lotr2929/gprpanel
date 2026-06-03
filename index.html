@@ -683,6 +683,11 @@ async function renderPlants(searchQuery) {
   let q = sb.from('gpr_plant_species')
     .select('species, common_name, lai_mean, lai_min, lai_max, tier, landscape_category, growth_form, leaf_phenology, native_koppen, native_region, family, height_mature_m, growth_rate, drought_tolerance, shade_tolerance, pollution_tolerance, fire_tolerance, salinity_tolerance, frost_hardiness_c, canopy_shape, root_depth, moisture_use, toxicity, sources, tier_source, image_url, image_credit, image_source, leaf_storage_mm, pm_deposition_rate, wood_density, carbon_seq_kg_yr, shade_factor')
     .not('lai_mean', 'is', null)
+    .not('common_name', 'is', null)
+    .not('native_region', 'is', null)
+    .not('family', 'is', null)
+    .not('leaf_storage_mm', 'is', null)
+    .not('image_url', 'is', null)
     .order('tier', { ascending: true })
     .order('species', { ascending: true })
     .limit(60);
