@@ -405,7 +405,17 @@
           </div>
         </div>
       </div>
-      <button class="detail-select"       <button class="detail-select" id="detail-select-btn" onclick="selectFromDetail()">Select this plant</button>
+      <!-- Growing Conditions strip -->
+      <div class="grow-section">
+        <div class="eco-section-title">Growing Conditions</div>
+        <div class="detail-props" id="grow-strip"></div>
+      </div>
+      <!-- Ecosystem Services scorecard -->
+      <div class="eco-section">
+        <div class="eco-section-title">Ecosystem Services</div>
+        <div id="eco-rows"></div>
+      </div>
+      <button class="detail-select" id="detail-select-btn" onclick="selectFromDetail()">Select this plant</button>
       <button class="detail-account" id="detail-account-btn" onclick="openFullAccount()">Full Description →</button>
     </div>
   </div>
@@ -456,11 +466,6 @@
     <div class="report-controls">
       <button class="report-btn" id="report-btn" onclick="generateReport()">Generate Report</button>
       <button class="share-btn"  id="share-btn"  onclick="saveSession()">↗ Share</button>
-      <button class="settings-gear" onclick="toggleApiKey()" title="Gemini API key">⚙</button>
-    </div>
-    <div class="apikey-row"    id="apikey-row"    style="display:none">
-      <input type="password" id="apikey-input" placeholder="Gemini API key…" />
-      <button onclick="saveApiKey()">Save</button>
     </div>
     <div class="share-url-row" id="share-url-row">
       <input type="text" id="share-url" readonly onclick="this.select()" />
@@ -676,7 +681,7 @@ async function renderPlants(searchQuery) {
   tbody.innerHTML = '<tr><td colspan="2" style="color:var(--text-ter);font-style:italic">Loading…</td></tr>';
 
   let q = sb.from('gpr_plant_species')
-    .select('species, common_name, lai_mean, lai_min, lai_max, tier, landscape_category, growth_form, leaf_phenology, native_koppen, family, height_mature_m, growth_rate, drought_tolerance, shade_tolerance, fire_tolerance, salinity_tolerance, frost_hardiness_c, canopy_shape, root_depth, moisture_use, toxicity, sources, tier_source, image_url, image_credit, image_source')
+    .select('species, common_name, lai_mean, lai_min, lai_max, tier, landscape_category, growth_form, leaf_phenology, native_koppen, native_region, family, height_mature_m, growth_rate, drought_tolerance, shade_tolerance, pollution_tolerance, fire_tolerance, salinity_tolerance, frost_hardiness_c, canopy_shape, root_depth, moisture_use, toxicity, sources, tier_source, image_url, image_credit, image_source, leaf_storage_mm, pm_deposition_rate, wood_density, carbon_seq_kg_yr, shade_factor')
     .not('lai_mean', 'is', null)
     .order('tier', { ascending: true })
     .order('species', { ascending: true })
@@ -835,27 +840,9 @@ function openDetail(p) {
     (raw ? `<div class="detail-prop"><span class="detail-prop-label">${l}</span><span class="detail-prop-val">${v}</span></div>`
          : `<div class="detail-prop"><span class="detail-prop-label">${l}</span><span class="detail-prop-val">${esc(String(v))}</span></div>`)
   ).join('');
-  // Appended rows: Growing Conditions + Ecosystem Services
-  var _extra = [];
-  var _dm = {high:'Low',moderate:'Moderate',low:'High'};
-  var _sm = {intolerant:'Full sun',intermediate:'Part shade',tolerant:'Full shade'};
-  var _cap = function(s){return s?s.charAt(0).toUpperCase()+s.slice(1):null;};
-  var _row = function(l,v){if(!v)return;_extra.push('<div class="detail-prop"><span class="detail-prop-label">'+l+'</span><span class="detail-prop-val">'+v+'</span></div>');};
-  var _div = function(l){_extra.push('<div class="detail-prop" style="background:var(--bg-sec);font-weight:600;font-size:10px;color:var(--text-sec)"><span>'+l+'</span><span></span></div>');};
-  _div('Growing Conditions');
-  _row('Water needs', p.drought_tolerance?(_dm[p.drought_tolerance.toLowerCase()]||_cap(p.drought_tolerance)):null);
-  _row('Sunlight',    p.shade_tolerance?(_sm[p.shade_tolerance.toLowerCase()]||_cap(p.shade_tolerance)):null);
-  _row('Growth rate', _cap(p.growth_rate));
-  _row('Leaf habit',  _cap(p.leaf_phenology));
-  _row('Native region', p.native_region||null);
-  _div('Ecosystem Services');
-  var _lai=+p.lai_mean||0; var _sw=_lai>0?Math.min(5,Math.max(1,Math.round(_lai))):null;
-  var _conf=p.tier==1?'M':p.tier==2?'D':p.tier==3?'E':'P';
-  if(_sw)_row('Stormwater interception',_sw+'/5 (LAI-based, '+_conf+')');
-  if(p.carbon_seq_kg_yr)_row('Carbon sequestration',parseFloat(p.carbon_seq_kg_yr).toFixed(1)+' kg CO₂/yr ('+_conf+')');
-  if(p.shade_factor)_row('Shade factor (cooling)',parseFloat(p.shade_factor).toFixed(2)+' ('+_conf+')');
-  if(p.pollution_tolerance)_row('Air quality / PM',_cap(p.pollution_tolerance)+' tolerance');
-  if(_extra.length>2)document.getElementById('detail-props').innerHTML+=_extra.join('');
+  // Render growing conditions and ecosystem services scorecard into their own containers
+  renderGrowingConditions(p);
+  renderEcoScorecard(p);
 
   const btn = document.getElementById('detail-select-btn');
   btn.textContent = 'Select this plant';
@@ -1107,65 +1094,159 @@ function writeSelection(data) {
   }
 }
 
-/* ── Report generation (Gemini) ────────────────────────────── */
-function toggleApiKey() {
-  const row = document.getElementById('apikey-row');
-  const opening = row.style.display === 'none';
-  row.style.display = opening ? '' : 'none';
-  if (opening) {
-    document.getElementById('apikey-input').value = localStorage.getItem('geminiKey') || '';
-    document.getElementById('apikey-input').focus();
-  }
-}
-function saveApiKey() {
-  const key = document.getElementById('apikey-input').value.trim();
-  if (key) { localStorage.setItem('geminiKey', key); setStatus('API key saved.'); }
-  document.getElementById('apikey-row').style.display = 'none';
+/* ── Report generation (calculated — no AI) ─────────────────── */
+/* All equations from GPR_PlantDB_Methodology.md                  */
+/* Stormwater: Xiao & McPherson (2000)                            */
+/* Carbon: McPherson UTD (2016) / LAI-based GPP                   */
+/* PM capture: dry deposition velocity × LAI × canopy area        */
+/* Biodiversity: native_region × leaf_phenology rating            */
+
+/* Fetch full species data for all plants in the current state */
+async function fetchSpeciesForReport(state) {
+  const names = (state.planting_areas || []).flatMap(a => (a.plants || []).map(p => p.name));
+  const unique = [...new Set(names)];
+  if (!unique.length) return {};
+  const { data } = await sb.from('gpr_plant_species')
+    .select('species, tier, lai_mean, leaf_storage_mm, carbon_seq_kg_yr, shade_factor, pm_deposition_rate, pollution_tolerance, native_region, leaf_phenology, growth_form, common_name, family, native_koppen')
+    .in('species', unique);
+  const map = {};
+  (data || []).forEach(r => { map[r.species] = r; });
+  return map;
 }
 
-function buildReportPrompt(s) {
-  let plantLines = '', totalLAI = 0;
-  (s.planting_areas || []).forEach(a => {
-    plantLines += `\nPlanting area: ${a.name} (${fmt(a.area)} m²)`;
-    (a.plants || []).forEach(p => {
-      const c = p.lai * p.canopy; totalLAI += c;
-      plantLines += `\n  - ${p.name}: LAI ${Number(p.lai).toFixed(1)}, canopy ${fmt(p.canopy)} m², contribution ${fmt(c)}`;
-    });
-  });
-  const gprVal = s.site_area > 0 ? (totalLAI / s.site_area).toFixed(2) : '—';
-  return `You are writing a professional Green Plot Ratio (GPR) assessment report.
-GPR was invented by Boon Ong (Ong 2003, Landscape and Urban Planning, 464+ citations).
-Formula: GPR = Σ(canopy area × LAI) / site area.
-Benchmarks: GPR < 0.5 minimal; 0.5–1.0 moderate; 1.0–2.0 good; ≥ 2.0 ecological parity.
-Site: ${s.dwg_name || 'Unnamed'} | Site area: ${fmt(s.site_area)} m² | GPR: ${gprVal}
-${plantLines}
-Write a professional assessment with: 1. Executive Summary 2. Site Description
-3. Plant Species Analysis 4. GPR Calculation and Interpretation 5. Recommendations.`;
+/* Ecosystem service calculations per plant (canopy_m2 from CAD) */
+function calcEcoServices(sp, canopy_m2, rainfall_mm) {
+  const lai     = +sp.lai_mean || 0;
+  const sLeaf   = +sp.leaf_storage_mm || (lai * 0.15);   // fallback 0.15mm/LAI unit
+  const P       = rainfall_mm || 10;                      // default single event 10mm
+  /* Stormwater — Xiao & McPherson (2000): I = S_max × (1 - e^(-P/S_max)) × A */
+  const sMax    = sLeaf * lai;
+  const storm_m3 = sMax > 0 ? sMax * (1 - Math.exp(-P / sMax)) * canopy_m2 / 1000 : 0;
+  /* Carbon — use stored value if available, else LAI-based GPP proxy */
+  const cSeq    = +sp.carbon_seq_kg_yr || 0;
+  const carbon_kg = cSeq > 0 ? cSeq * (canopy_m2 / 25) : (lai * canopy_m2 * 0.47 * 0.012);
+  /* PM capture — dry deposition: PM = Vd × LAI × A (Vd default 0.02 m/s proxy → annual) */
+  const vd      = +sp.pm_deposition_rate || 0.02;
+  const pm_kg   = vd * lai * canopy_m2 * 3.15e7 * 30e-9; // annual, 30 µg/m³ ambient
+  /* Biodiversity — 1-5 rating from native_region + leaf_phenology */
+  const isNative = sp.native_region && !sp.native_region.toLowerCase().includes('introd');
+  const isEvg    = (sp.leaf_phenology || '').toLowerCase().includes('evergr');
+  const biodiv   = sp.native_region ? (isNative ? (isEvg ? 4 : 3) : 2) : 1;
+  /* Urban cooling — shade_factor × canopy_m2 → effective shaded area */
+  const sf       = +sp.shade_factor || (lai > 4 ? 0.7 : lai > 2 ? 0.5 : 0.3);
+  const shade_m2 = sf * canopy_m2;
+  return { storm_m3, carbon_kg, pm_kg, biodiv, shade_m2, lai, canopy_m2 };
 }
 
 async function generateReport() {
-  const apiKey = localStorage.getItem('geminiKey');
-  if (!apiKey) { document.getElementById('apikey-row').style.display = ''; document.getElementById('apikey-input').focus(); setStatus('Enter Gemini API key (⚙).'); return; }
   if (!_currentState?.site_area) { setStatus('Run GPRSITE and GPRAREA first.'); return; }
-  showReportOverlay('<em style="color:var(--text-sec)">Generating report…</em>');
-  try {
-    const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      { method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ contents: [{ parts: [{ text: buildReportPrompt(_currentState) }] }] }) }
-    );
-    const data = await res.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || data.error?.message || 'No response.';
-    showReportOverlay(mdToHtml(text));
-    setStatus('Report generated.');
-  } catch(err) { showReportOverlay(`<em>Error: ${err.message}</em>`); }
-}
+  setStatus('Calculating report…');
+  showReportOverlay('<em style="color:var(--text-sec)">Calculating…</em>');
 
-function mdToHtml(md) {
-  return '<p>' + md
-    .replace(/^### (.+)$/gm, '</p><h3>$1</h3><p>').replace(/^## (.+)$/gm, '</p><h2>$1</h2><p>')
-    .replace(/^# (.+)$/gm, '</p><h1>$1</h1><p>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>') + '</p>';
+  const spMap = await fetchSpeciesForReport(_currentState);
+  const siteArea = _currentState.site_area;
+  const siteName = _currentState.dwg_name ? _currentState.dwg_name.replace(/\.dwg$/i,'') : 'Unnamed Project';
+
+  /* Aggregate totals */
+  let totalLeafArea = 0, totalStorm = 0, totalCarbon = 0, totalPM = 0, totalShade = 0;
+  let totalCanopy = 0, plantRows = [];
+
+  (_currentState.planting_areas || []).forEach(area => {
+    (area.plants || []).forEach(p => {
+      const sp   = spMap[p.name] || {};
+      const lai  = +sp.lai_mean || +p.lai || 0;
+      const ca   = +p.canopy || 0;
+      const leaf = lai * ca;
+      totalLeafArea += leaf;
+      totalCanopy   += ca;
+      const eco = calcEcoServices({ ...sp, lai_mean: lai }, ca, 10);
+      totalStorm  += eco.storm_m3;
+      totalCarbon += eco.carbon_kg;
+      totalPM     += eco.pm_kg;
+      totalShade  += eco.shade_m2;
+      const tier = +sp.tier || 4;
+      const conf = tier === 1 ? 'M' : tier === 2 ? 'D' : tier === 3 ? 'E' : 'P';
+      plantRows.push({ name: p.name, common: sp.common_name || '', lai: lai.toFixed(1),
+        canopy: ca, leaf: leaf.toFixed(1), conf,
+        storm: eco.storm_m3.toFixed(3), carbon: eco.carbon_kg.toFixed(1),
+        pm: eco.pm_kg.toFixed(3), shade: eco.shade_m2.toFixed(1), biodiv: eco.biodiv });
+    });
+  });
+
+  const gpr    = siteArea > 0 ? (totalLeafArea / siteArea).toFixed(2) : '—';
+  const gprN   = parseFloat(gpr);
+  const gprBand = gprN >= 2.0 ? 'Ecological parity' : gprN >= 1.0 ? 'Good' : gprN >= 0.5 ? 'Moderate' : 'Minimal';
+  const today  = new Date().toLocaleDateString('en-AU', { day:'numeric', month:'long', year:'numeric' });
+
+  /* ── Build HTML report ─────────────────────────────────────── */
+  const tbl = (headers, rows) => {
+    const ths = headers.map(h => `<th>${h}</th>`).join('');
+    const trs = rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('');
+    return `<table style="width:100%;border-collapse:collapse;font-size:11px;margin:8px 0">
+      <thead><tr style="background:var(--bg-sec)">${ths}</tr></thead><tbody>${trs}</tbody></table>`;
+  };
+  const row = (l, v) => `<tr><td style="color:var(--text-sec);padding:3px 6px">${l}</td><td style="font-weight:500;padding:3px 6px">${v}</td></tr>`;
+
+  let html = `
+  <h1 style="font-size:16px;margin:0 0 4px">GPR Assessment Report</h1>
+  <p style="color:var(--text-sec);font-size:11px;margin:0 0 16px">${siteName} &nbsp;·&nbsp; ${today} &nbsp;·&nbsp; Green Plot Ratio Institute</p>
+
+  <h2>1. GPR Summary</h2>
+  <table style="width:100%;border-collapse:collapse;font-size:11px;margin:8px 0">
+    <tbody>
+      ${row('Site name', siteName)}
+      ${row('Site area', fmt(siteArea) + ' m²')}
+      ${row('Total canopy area', fmt(totalCanopy) + ' m²')}
+      ${row('Total leaf area', fmt(totalLeafArea) + ' m²')}
+      ${row('GPR', gpr + ' — ' + gprBand)}
+      ${row('No. of species', plantRows.length)}
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--text-sec)">
+    GPR = Σ(LAI × Canopy Area) / Site Area &nbsp;·&nbsp;
+    Benchmarks: &lt;0.5 Minimal · 0.5–1.0 Moderate · 1.0–2.0 Good · ≥2.0 Ecological parity<br>
+    Reference: Ong, B.L. (2003). <em>Landscape and Urban Planning</em>, 63(4), 197–211.
+  </p>
+
+  <h2>2. Plant Schedule</h2>
+  ${tbl(
+    ['Species', 'Common name', 'LAI', 'Canopy m²', 'Leaf area m²', 'Conf.'],
+    plantRows.map(p => [
+      `<em>${p.name}</em>`, p.common || '—', p.lai,
+      fmt(p.canopy), p.leaf, `<span class="tb">${p.conf}</span>`
+    ])
+  )}
+  <p style="font-size:10px;color:var(--text-sec)">Confidence: M=Measured · D=Derived · E=Estimated · P=PFT-inferred</p>
+
+  <h2>3. Ecosystem Services</h2>
+  <p style="font-size:11px;color:var(--text-sec);margin-bottom:6px">
+    Calculated per-plant from database parameters × CAD canopy area.<br>
+    Stormwater: Xiao &amp; McPherson (2000), single 10mm event. Carbon: McPherson UTD (2016) / LAI-GPP proxy.
+    PM: dry deposition model. All values are estimates — confidence band applies.
+  </p>
+  ${tbl(
+    ['Species', 'Stormwater (m³)', 'Carbon (kg CO₂/yr)', 'PM capture (kg/yr)', 'Shade area (m²)', 'Biodiversity'],
+    plantRows.map(p => [
+      `<em>${p.name}</em>`, p.storm, p.carbon, p.pm, p.shade,
+      `${'★'.repeat(p.biodiv)}${'☆'.repeat(5 - p.biodiv)}`
+    ])
+  )}
+  <table style="width:100%;border-collapse:collapse;font-size:12px;margin:10px 0;border-top:1.5px solid var(--border)">
+    <tbody>
+      ${row('<strong>Total stormwater intercepted</strong>', `<strong>${totalStorm.toFixed(2)} m³</strong> per 10mm rain event`)}
+      ${row('<strong>Total carbon sequestration</strong>',   `<strong>${totalCarbon.toFixed(1)} kg CO₂/yr</strong>`)}
+      ${row('<strong>Total PM capture</strong>',             `<strong>${totalPM.toFixed(2)} kg/yr</strong>`)}
+      ${row('<strong>Total effective shade area</strong>',   `<strong>${fmt(totalShade)} m²</strong>`)}
+    </tbody>
+  </table>
+
+  <p style="font-size:10px;color:var(--text-ter);margin-top:16px;border-top:0.5px solid var(--border);padding-top:8px">
+    Generated by GPRPANEL · GPR Global Plant Database v1.0 · greenplotratio.vercel.app<br>
+    Ong, B.L. (2003). Green plot ratio. <em>Landscape and Urban Planning</em> 63(4), 197–211.
+  </p>`;
+
+  showReportOverlay(html);
+  setStatus('Report ready.');
 }
 function showReportOverlay(html) {
   document.getElementById('report-body').innerHTML = html;
