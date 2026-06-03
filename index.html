@@ -311,18 +311,23 @@
   /* Growing Conditions — same table style as detail-props */
   .grow-section { margin: 0; background: var(--bg); }
 
-  /* ── Location strip ── */
-  .loc-strip { display:none; align-items:center; gap:6px; padding:4px 9px;
-    background:var(--bg-info); border-bottom:0.5px solid rgba(24,95,165,0.2);
+  /* ── Location input + resolved strip ── */
+  .loc-input-row { display:flex; align-items:center; gap:5px; padding:4px 9px 3px;
+    border-bottom:0.5px solid var(--border); flex-shrink:0; }
+  .loc-input-row input { flex:1; font-size:11px; padding:4px 6px;
+    border:0.5px solid var(--border-md); border-radius:var(--radius);
+    font-family:var(--font); outline:none; background:var(--bg); color:var(--text); }
+  .loc-input-row input:focus { border-color:var(--green); }
+  .loc-status { font-size:9px; color:var(--text-ter); white-space:nowrap; }
+  .loc-strip { display:none; align-items:center; gap:6px; padding:2px 9px 4px;
     font-size:10px; color:var(--text-info); flex-shrink:0; }
   .loc-strip.visible { display:flex; }
   .loc-koppen { font-weight:700; padding:1px 5px; border-radius:2px;
     background:rgba(24,95,165,0.12); margin-left:2px; }
   .loc-elev { color:var(--text-sec); }
-  .loc-clear { margin-left:auto; cursor:pointer; font-size:11px;
-    color:var(--text-ter); line-height:1; padding:0 2px; }
+  .loc-clear { cursor:pointer; font-size:11px; color:var(--text-ter);
+    line-height:1; padding:0 2px; flex-shrink:0; }
   .loc-clear:hover { color:var(--text); }
-  .loc-pending { font-style:italic; color:var(--text-ter); }
 
   /* ── Suitability badge on plant rows ── */
   .suit-best  { color:#2d6a2d; font-size:9px; font-weight:700; margin-left:3px; }
@@ -364,19 +369,25 @@
   <!-- ── TAB 1: PLANT SELECTOR ── -->
   <div id="tab-plants" class="tab-content active">
 
-    <!-- Location strip (visible when project location is set) -->
-    <div id="loc-strip" class="loc-strip">
-      <i class="ti ti-map-pin" style="font-size:12px;flex-shrink:0"></i>
-      <span id="loc-address" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1"></span>
-      <span id="loc-koppen" class="loc-koppen"></span>
-      <span id="loc-elev" class="loc-elev"></span>
-      <span class="loc-clear" onclick="clearLocation()" title="Clear location">✕</span>
-    </div>
-
     <!-- Search -->
     <div class="search-bar">
       <input type="text" id="plant-search" placeholder="Search species or common name…"
              oninput="onSearchInput(this.value)" autocomplete="off" />
+    </div>
+
+    <!-- Location filter -->
+    <div class="loc-input-row">
+      <i class="ti ti-map-pin" style="font-size:12px;color:var(--text-ter);flex-shrink:0"></i>
+      <input type="text" id="loc-input" placeholder="Project location (address or city)…"
+             autocomplete="off" />
+      <div id="loc-status" class="loc-status"></div>
+      <span id="loc-clear-btn" class="loc-clear" onclick="clearLocation()" style="display:none" title="Clear location">✕</span>
+    </div>
+    <!-- Resolved location strip (shown after geocoding) -->
+    <div id="loc-strip" class="loc-strip">
+      <span id="loc-address"></span>
+      <span id="loc-koppen" class="loc-koppen"></span>
+      <span id="loc-elev" class="loc-elev"></span>
     </div>
 
     <!-- List view -->
@@ -845,32 +856,52 @@ async function resolveLocation(address) {
 
 /* Apply resolved location to UI + re-render plant list */
 async function applyLocation(address) {
-  document.getElementById('loc-strip').classList.add('visible');
-  document.getElementById('loc-address').textContent = address;
-  document.getElementById('loc-koppen').textContent  = '';
-  document.getElementById('loc-elev').textContent    = '';
-  document.getElementById('loc-address').classList.add('loc-pending');
+  document.getElementById('loc-status').textContent = 'Locating…';
+  document.getElementById('loc-strip').classList.remove('visible');
+  document.getElementById('loc-clear-btn').style.display = '';
 
   const loc = await resolveLocation(address);
   if (!loc) {
-    document.getElementById('loc-strip').classList.remove('visible');
+    document.getElementById('loc-status').textContent = 'Not found';
     return;
   }
   _projectLocation = loc;
+  document.getElementById('loc-status').textContent = '';
   document.getElementById('loc-address').textContent = loc.address.split(',').slice(-3).join(',').trim();
-  document.getElementById('loc-address').classList.remove('loc-pending');
   document.getElementById('loc-koppen').textContent  = loc.koppen + ' · Z' + loc.usda_zone;
   document.getElementById('loc-elev').textContent    = loc.elevation > 10 ? loc.elevation + 'm' : '';
+  document.getElementById('loc-strip').classList.add('visible');
   setStatus('Location: ' + loc.koppen + ' · USDA Z' + loc.usda_zone +
             (loc.elevation > 10 ? ' · ' + loc.elevation + 'm elev.' : ''));
-  renderPlants();   // re-render with suitability ranking
+  renderPlants();
 }
 
 function clearLocation() {
   _projectLocation = null;
+  document.getElementById('loc-input').value = '';
+  document.getElementById('loc-status').textContent = '';
   document.getElementById('loc-strip').classList.remove('visible');
+  document.getElementById('loc-clear-btn').style.display = 'none';
   renderPlants();
 }
+
+/* Wire location input — resolve on Enter or after 1s pause */
+(function() {
+  var _locTimer = null;
+  document.addEventListener('DOMContentLoaded', function() {
+    var inp = document.getElementById('loc-input');
+    if (!inp) return;
+    inp.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { clearTimeout(_locTimer); applyLocation(inp.value.trim()); }
+    });
+    inp.addEventListener('input', function() {
+      clearTimeout(_locTimer);
+      var val = inp.value.trim();
+      if (!val) { clearLocation(); return; }
+      if (val.length > 4) _locTimer = setTimeout(function() { applyLocation(val); }, 1200);
+    });
+  });
+})();
 
 /* ── Boot ──────────────────────────────────────────────────── */
 renderPlants();
@@ -1225,16 +1256,6 @@ function applyState(s) {
   _currentState = s;
   if (s.dwg_name) document.getElementById('hdr-filename').textContent = ': ' + s.dwg_name.replace(/\.dwg$/i,'');
   document.getElementById('site-area-val').textContent = s.site_area ? fmt(s.site_area) + ' m²' : '_ m²';
-
-  // Location — trigger climate resolution if address changed
-  const newAddr = s.location?.address || null;
-  const curAddr = _projectLocation?.raw_address || null;
-  if (newAddr && newAddr !== curAddr) {
-    _projectLocation = { raw_address: newAddr }; // placeholder to detect change
-    applyLocation(newAddr);
-  } else if (!newAddr && _projectLocation) {
-    clearLocation();
-  }
 
   const tbody = document.getElementById('calc-tbody');
   const areas  = s.planting_areas || [];
