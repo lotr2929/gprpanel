@@ -42,10 +42,49 @@
   .tab-bar { display: flex; border-bottom: 0.5px solid var(--border); background: var(--green-lt); flex-shrink: 0; }
   .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-sec); border-bottom: 2px solid transparent; margin-bottom: -1px; user-select: none; }
   .tab.active { color: var(--green); border-bottom-color: var(--green); font-weight: 600; background: var(--bg); }
-  /* link to the picture gallery page (website only, not inside the CAD plugins) */
-  .tab-link { margin-left: auto; padding: 8px 14px; font-size: 12px; font-weight: 600; color: var(--green); text-decoration: none; }
-  .tab-link:hover { text-decoration: underline; }
-  body[class*="host-"] .tab-link { display: none; }
+  /* ── tab labels: "Plant Selector" inside CAD, "Plant List" on the website ── */
+  .lbl-web { display: none; }
+  body:not([class*="host-"]) .lbl-cad { display: none; }
+  body:not([class*="host-"]) .lbl-web { display: inline; }
+  /* the gallery is a website-only tab */
+  body[class*="host-"] .tab-web, body[class*="host-"] #tab-gallery { display: none !important; }
+
+  /* ── plant pop-up: one pop-up for the plant list and the gallery ── */
+  #plant-detail.active { position: fixed; z-index: 50; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: min(560px, calc(100vw - 24px)); max-height: 92vh; overflow-y: auto; flex: none;
+    background: var(--bg); border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.35); }
+  #detail-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 49; }
+  #plant-detail.active + #detail-backdrop { display: block; }
+  #plant-detail .detail-body { padding: 12px 14px 0; }
+  #plant-detail .detail-back { position: sticky; top: 0; z-index: 2; border-radius: 10px 10px 0 0; }
+  #plant-detail .detail-illustration { flex-direction: column; height: auto; padding-top: 6px; }
+  #plant-detail .detail-illustration .detail-img-credit { text-align: center; width: 100%; }
+
+  /* ── Plant Gallery tab ── */
+  #tab-gallery { padding: 10px; }
+  .g-controls { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-bottom: 10px; flex-shrink: 0; }
+  .g-controls input[type=search] { flex: 1 1 240px; min-width: 180px; font-size: 12px; padding: 6px 9px; border: 0.5px solid var(--border-md); border-radius: var(--radius); font-family: var(--font); outline: none; background: #fff; }
+  .g-controls input[type=search]:focus { border-color: var(--green); }
+  .g-seg { display: flex; flex-wrap: wrap; gap: 4px; }
+  .g-seg button { font: inherit; font-size: 12px; padding: 5px 10px; border: 0.5px solid var(--border-md); background: #fff; color: var(--text-sec); border-radius: 14px; cursor: pointer; }
+  .g-seg button.on { background: var(--green); border-color: var(--green); color: #fff; }
+  .g-chk { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-sec); cursor: pointer; user-select: none; }
+  .g-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+  .g-card { display: flex; flex-direction: column; text-align: left; font: inherit; color: inherit; background: var(--bg); border: 0.5px solid var(--border); border-radius: 8px; overflow: hidden; cursor: pointer; padding: 0; }
+  .g-card:hover, .g-card:focus-visible { border-color: var(--green); box-shadow: 0 2px 10px rgba(0,0,0,0.12); outline: none; }
+  .g-pic { position: relative; aspect-ratio: 4 / 3; background: var(--bg-sec); overflow: hidden; }
+  .g-pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .g-credit { position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 6px 2px; font-size: 9px; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,0.6)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .g-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-ter); }
+  .g-ph svg { width: 44px; height: 44px; }
+  .g-body { padding: 7px 9px 9px; display: flex; flex-direction: column; gap: 2px; }
+  .g-nm { font-style: italic; font-weight: 600; font-size: 12px; overflow-wrap: anywhere; }
+  .g-cn { font-size: 11px; color: var(--text-sec); min-height: 14px; overflow-wrap: anywhere; }
+  .g-row { display: flex; align-items: center; justify-content: space-between; margin-top: 3px; }
+  .g-lai { font-size: 11px; color: var(--green); font-weight: 600; }
+  .g-status { text-align: center; color: var(--text-sec); padding: 16px 0; font-size: 12px; }
+  .g-status button { font: inherit; margin-left: 8px; padding: 4px 10px; cursor: pointer; }
+  .g-foot { text-align: center; font-size: 10px; color: var(--text-ter); padding: 4px 0 14px; }
   .tab-content { display: none; overflow-y: auto; flex: 1; }
   #tab-plants { padding: 10px 10px 0; }
   #tab-calc { padding: 10px; }
@@ -365,10 +404,10 @@
   </div>
 
   <div class="tab-bar">
-    <div class="tab active" onclick="switchTab('plants')">Plant Selector</div>
+    <div class="tab active" onclick="switchTab('plants')"><span class="lbl-cad">Plant Selector</span><span class="lbl-web">Plant List</span></div>
     <div class="tab" onclick="switchTab('calc')">GPR Calculation</div>
+    <div class="tab tab-web" onclick="switchTab('gallery')">Plant Gallery</div>
     <div class="tab" onclick="switchTab('docs')">Documentation</div>
-    <a class="tab-link" href="gallery.html">Picture gallery &rarr;</a>
   </div>
 
   <!-- ── TAB 1: PLANT SELECTOR ── -->
@@ -421,10 +460,12 @@
       </table>
     </div>
 
-    <!-- Detail view -->
+  </div>
+
+    <!-- Plant pop-up (opened from the Plant List and from the Plant Gallery) -->
     <div id="plant-detail">
       <div class="detail-back" onclick="closeDetail()">
-        <i class="ti ti-arrow-left"></i> Back to list
+        <i class="ti ti-x"></i> Close
       </div>
       <div class="detail-illustration" id="detail-illustration"></div>
       <div class="detail-body">
@@ -460,7 +501,7 @@
       <button class="detail-select" id="detail-select-btn" onclick="selectFromDetail()">Select this plant</button>
       <button class="detail-account" id="detail-account-btn" onclick="openFullAccount()">Full Description →</button>
     </div>
-  </div>
+    <div id="detail-backdrop" onclick="closeDetail()"></div>
 
   <!-- ── TAB 2: GPR CALCULATION ── -->
   <div id="tab-calc" class="tab-content">
@@ -513,6 +554,24 @@
       <input type="text" id="share-url" readonly onclick="this.select()" />
       <button onclick="copyShareUrl()">Copy</button>
     </div>
+  </div>
+  <!-- ── TAB: PLANT GALLERY (website only) ── -->
+  <div id="tab-gallery" class="tab-content">
+    <div class="g-controls">
+      <input id="g-q" type="search" placeholder="Search species or common name…" autocomplete="off">
+      <div class="g-seg" id="g-seg">
+        <button type="button" data-cat="all" class="on">All</button>
+        <button type="button" data-cat="trees">Trees</button>
+        <button type="button" data-cat="shrubs">Shrubs</button>
+        <button type="button" data-cat="hedges">Hedges</button>
+        <button type="button" data-cat="groundcover">Groundcover</button>
+      </div>
+      <label class="g-chk"><input type="checkbox" id="g-photos"> Photos only</label>
+    </div>
+    <div id="g-grid" class="g-grid"></div>
+    <div id="g-status" class="g-status"></div>
+    <div id="g-sentinel"></div>
+    <div class="g-foot">Photos: iNaturalist and Wikimedia Commons contributors. The credit for each photo is shown on its card and in the plant pop-up.</div>
   </div>
   <div id="status">Connecting…</div>
 
@@ -695,6 +754,8 @@ function closeFdesc() {
 const SB_URL = 'https://sfvwhbzxkzlscfsnyrwq.supabase.co';
 const SB_KEY = 'sb_publishable_ZjIAD7ZfEnODLZkRfJUWMw_enaacB4T';
 const sb = supabase.createClient(SB_URL, SB_KEY);
+
+const PLANT_COLS = 'species, common_name, lai_mean, lai_min, lai_max, tier, landscape_category, growth_form, leaf_phenology, native_koppen, native_region, family, height_mature_m, growth_rate, drought_tolerance, shade_tolerance, pollution_tolerance, fire_tolerance, salinity_tolerance, frost_hardiness_c, canopy_shape, root_depth, moisture_use, toxicity, sources, tier_source, image_url, image_credit, image_source, leaf_storage_mm, pm_deposition_rate, wood_density, carbon_seq_kg_yr, shade_factor';   // shared by the Plant List and the Plant Gallery
 
 /* ── Category → Supabase filter map ───────────────────────── */
 const CAT_FILTER = {
@@ -919,7 +980,7 @@ async function renderPlants(searchQuery) {
   tbody.innerHTML = '<tr><td colspan="2" style="color:var(--text-ter);font-style:italic">Loading…</td></tr>';
 
   let q = sb.from('gpr_plant_species')
-    .select('species, common_name, lai_mean, lai_min, lai_max, tier, landscape_category, growth_form, leaf_phenology, native_koppen, native_region, family, height_mature_m, growth_rate, drought_tolerance, shade_tolerance, pollution_tolerance, fire_tolerance, salinity_tolerance, frost_hardiness_c, canopy_shape, root_depth, moisture_use, toxicity, sources, tier_source, image_url, image_credit, image_source, leaf_storage_mm, pm_deposition_rate, wood_density, carbon_seq_kg_yr, shade_factor')
+    .select(PLANT_COLS)
     .not('lai_mean', 'is', null)
     .not('common_name', 'is', null)
     .not('native_region', 'is', null)
@@ -1033,8 +1094,8 @@ function fetchWikipediaImage(p, illus) {
 /* ── Detail view ───────────────────────────────────────────── */
 function openDetail(p) {
   _detailPlant = p;
-  document.getElementById('plant-list').style.display = 'none';
-  document.getElementById('plant-detail').classList.add('active');
+  document.getElementById('plant-detail').classList.add('active');   // pop-up: the list stays visible behind it
+  document.getElementById('plant-detail').scrollTop = 0;             // every plant opens at the top
 
   document.getElementById('detail-name').textContent   = p.species || p.name;
   const common = p.common_name || p.common || '';
@@ -1231,8 +1292,8 @@ function handleTagQuery(s) {
 
 function openDetailStub(s) {
   _detailPlant = { species: s.species, lai_mean: s.lai };
-  document.getElementById('plant-list').style.display = 'none';
-  document.getElementById('plant-detail').classList.add('active');
+  document.getElementById('plant-detail').classList.add('active');   // pop-up: the list stays visible behind it
+  document.getElementById('plant-detail').scrollTop = 0;             // every plant opens at the top
   document.getElementById('detail-name').textContent    = s.species;
   document.getElementById('detail-common').style.display = 'none';
   document.getElementById('detail-illustration').innerHTML =
@@ -1851,10 +1912,18 @@ function closeDocSection() {
 function switchTab(t) {
   document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  const tabs = ['plants','calc','docs'];
+  const tabs = ['plants','calc','gallery','docs'];
   document.querySelectorAll('.tab')[tabs.indexOf(t)].classList.add('active');
   document.getElementById('tab-'+t).classList.add('active');
+  if (t === 'gallery' && window.GPRGallery) window.GPRGallery.show();
 }
+
+/* Esc closes the top-most pop-up: Full Description first, then the plant pop-up */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  const fd = document.getElementById('fdesc-overlay');
+  if (fd && fd.classList.contains('open')) closeFdesc(); else closeDetail();
+});
 
 /* ── Helpers ───────────────────────────────────────────────── */
 function fmt(n) { return Number(n).toLocaleString('en-AU', { maximumFractionDigits:1 }); }
@@ -1874,6 +1943,140 @@ if (window.chrome?.webview) {
 } else {
   setStatus('Ready — search for plants or load a session');
 }
+</script>
+
+<script>
+/* ── Plant Gallery tab (website only) ─────────────────────────────────────
+   Plants with photos first, then the rest, 48 at a time. A card opens the same pop-up as the Plant List (openDetail). */
+window.GPRGallery = (function () {
+  const PAGE = 48;
+  const $ = id => document.getElementById(id);
+  let cat = 'all', term = '', photosOnly = false, started = false, timer = null;
+  let token = 0, loading = false, done = false, feed = 0, offset = 0, shown = 0, lastError = '';
+
+  const cleanTerm = s => String(s || '').replace(/[,()%*\\]/g, ' ').replace(/\s+/g, ' ').trim();
+  const safeUrl = u => (typeof u === 'string' && /^https?:\/\//i.test(u.trim())) ? u.trim() : '';
+  const laiText = v => (v === null || v === undefined || v === '' || isNaN(+v)) ? '—' : (+v).toFixed(1);
+  const creditOf = p => (p.image_credit && String(p.image_credit).trim()) || (p.image_source ? 'Source: ' + p.image_source : '');
+  const PH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 11C12 7 9 4 4 4c0 4 2 7 8 7z"/><path d="M12 14c0-3 2.5-5.5 8-5.5 0 3.5-2 5.5-8 5.5z"/></svg>';
+  const feeds = () => photosOnly ? ['with'] : ['with', 'without'];
+
+  function placeholder() { const d = document.createElement('div'); d.className = 'g-ph'; d.innerHTML = PH; return d; }
+
+  function makeCard(p) {
+    const el = document.createElement('button');
+    el.type = 'button'; el.className = 'g-card';
+    const pic = document.createElement('div'); pic.className = 'g-pic';
+    const url = safeUrl(p.image_url);
+    if (url) {
+      const img = new Image();
+      img.loading = 'lazy'; img.decoding = 'async'; img.alt = p.species || '';
+      img.onerror = () => { pic.replaceChildren(placeholder()); };   // a dead link becomes a placeholder card
+      img.src = url;
+      pic.appendChild(img);
+      const cr = creditOf(p);
+      if (cr) { const c = document.createElement('div'); c.className = 'g-credit'; c.textContent = cr; c.title = cr; pic.appendChild(c); }
+    } else {
+      pic.appendChild(placeholder());
+    }
+    el.appendChild(pic);
+    const body = document.createElement('div'); body.className = 'g-body';
+    const nm = document.createElement('div'); nm.className = 'g-nm'; nm.textContent = p.species || '';
+    const cn = document.createElement('div'); cn.className = 'g-cn'; cn.textContent = p.common_name || '';
+    const row = document.createElement('div'); row.className = 'g-row';
+    const tb = document.createElement('span'); tb.className = 'tb t' + (p.tier || ''); tb.textContent = p.tier ? 'T' + p.tier : '';
+    const lai = document.createElement('span'); lai.className = 'g-lai'; lai.textContent = 'LAI ' + laiText(p.lai_mean);
+    row.append(tb, lai); body.append(nm, cn, row); el.appendChild(body);
+    el.addEventListener('click', () => openDetail(p));   // the same pop-up as the Plant List
+    return el;
+  }
+
+  function buildQuery(kind, from, to) {
+    let q = sb.from('gpr_plant_species').select(PLANT_COLS);
+    q = kind === 'with' ? q.not('image_url', 'is', null).neq('image_url', '') : q.is('image_url', null);
+    if (term) q = q.or(`species.ilike.%${term}%,common_name.ilike.%${term}%`);
+    const f = CAT_FILTER[cat];
+    if (f) q = q.eq(f.col, f.val);
+    return q.order('tier', { ascending: true }).order('species', { ascending: true }).range(from, to);
+  }
+
+  function setMsg(text, withRetry) {
+    const s = $('g-status');
+    s.textContent = text;
+    if (withRetry) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = 'Try again';
+      b.onclick = () => { lastError = ''; loadMore(); };
+      s.appendChild(b);
+    }
+  }
+
+  async function loadMore() {
+    if (loading || done || lastError) return;
+    loading = true;
+    const mine = token;
+    setMsg('Loading…');
+    try {
+      let batch = [];
+      while (batch.length < PAGE && !done) {
+        const need = PAGE - batch.length;
+        const { data, error } = await buildQuery(feeds()[feed], offset, offset + need - 1);
+        if (mine !== token) return;                 // the search changed while this was loading
+        if (error) throw error;
+        batch = batch.concat(data || []);
+        offset += (data || []).length;
+        if ((data || []).length < need) {           // this group is used up: move on to the next
+          feed += 1; offset = 0;
+          if (feed >= feeds().length) done = true;
+        }
+      }
+      const frag = document.createDocumentFragment();
+      batch.forEach(p => frag.appendChild(makeCard(p)));
+      $('g-grid').appendChild(frag);
+      shown += batch.length;
+      setMsg(done ? (shown ? shown.toLocaleString('en-AU') + ' plants' : 'No plants found.') : '');
+    } catch (e) {
+      if (mine !== token) return;
+      lastError = (e && e.message) ? e.message : 'unknown error';
+      setMsg('Could not load plants (' + lastError + ').', true);
+    } finally {
+      if (mine === token) { loading = false; fillIfNeeded(); }
+    }
+  }
+
+  function fillIfNeeded() {
+    if (!started || done || loading || lastError) return;
+    const tab = $('tab-gallery');
+    if (!tab || !tab.classList.contains('active')) return;
+    if ($('g-sentinel').getBoundingClientRect().top < tab.getBoundingClientRect().bottom + 800) loadMore();
+  }
+
+  function reset() {
+    token += 1; loading = false; done = false; feed = 0; offset = 0; shown = 0; lastError = '';
+    $('g-grid').replaceChildren();
+    loadMore();
+  }
+
+  $('g-q').addEventListener('input', e => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { term = cleanTerm(e.target.value); if (started) reset(); }, 300);
+  });
+  $('g-seg').addEventListener('click', e => {
+    const b = e.target.closest('button[data-cat]');
+    if (!b) return;
+    cat = b.dataset.cat;
+    document.querySelectorAll('#g-seg button').forEach(x => x.classList.toggle('on', x === b));
+    if (started) reset();
+  });
+  $('g-photos').addEventListener('change', e => { photosOnly = e.target.checked; if (started) reset(); });
+  new IntersectionObserver(entries => { if (entries.some(en => en.isIntersecting)) fillIfNeeded(); }, { root: $('tab-gallery'), rootMargin: '800px' })
+    .observe($('g-sentinel'));
+
+  return { show() { if (!started) { started = true; reset(); } else fillIfNeeded(); } };
+})();
+
+// Old links (gallery.html) and bookmarks open the gallery tab directly
+if (location.hash === '#gallery') switchTab('gallery');
 </script>
 
   <!-- Full Description modal -->
